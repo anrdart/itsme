@@ -1,0 +1,122 @@
+/* Custom cursor animation */
+.cursorMoveAnimation,
+.cursorMoveAnimation2 {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border 0.3s ease;
+  will-change: transform;
+  user-select: none;
+}
+
+.cursorMoveAnimation {
+  width: 12px;
+  height: 12px;
+  background-color: var(--skin-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--skin-color) 60%, transparent);
+}
+
+.cursorMoveAnimation2 {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--skin-color);
+  transition: all 0.2s ease-out;
+  animation: cursor-pulse 1.5s infinite;
+  box-shadow: 0 0 15px color-mix(in srgb, var(--skin-color) 30%, transparent);
+}
+
+/* Animation for the outer cursor circle */
+@keyframes cursor-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Sparkle effect for cursor */
+@keyframes sparkle {
+  0% {
+    box-shadow: 0 0 10px 2px color-mix(in srgb, var(--skin-color) 30%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 16px 4px color-mix(in srgb, var(--skin-color) 60%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 10px 2px color-mix(in srgb, var(--skin-color) 30%, transparent);
+  }
+}
+
+/* Hover effects using classes */
+.cursorMoveAnimation.hover {
+  transform: translate(-50%, -50%) scale(0);
+  animation: sparkle 1s infinite;
+}
+
+.cursorMoveAnimation2.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: color-mix(in srgb, var(--skin-color) 10%, transparent);
+  border-width: 2px;
+  border-color: color-mix(in srgb, var(--skin-color) 80%, transparent);
+  animation: none;
+  transition: all 0.3s cubic-bezier(.17,.67,.83,.67);
+}
+
+/* Add ripple effect on click */
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0px color-mix(in srgb, var(--skin-color) 30%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 15px transparent;
+  }
+}
+
+.cursorMoveAnimation.click {
+  animation: ripple 0.6s linear;
+}
+
+/* Hide default cursor when custom cursor is active */
+html, body {
+  cursor: none !important;
+}
+
+a, button, .link-item, .outer-shadow {
+  cursor: none !important;
+}
+
+/* Fix for specific elements to ensure they show properly */
+.filter-item, .pp-close, .view-project, 
+.tab-item, .color-1, .color-2, .color-3, .color-4, .color-5,
+.style-switcher-toggler, .day-night {
+  cursor: none !important;
+}
+
+/* Maintain default cursor on mobile devices */
+@media (max-width: 768px) {
+  html, body, 
+  a, button, .link-item, .outer-shadow,
+  .filter-item, .pp-close, .view-project, 
+  .tab-item, .color-1, .color-2, .color-3, .color-4, .color-5,
+  .style-switcher-toggler, .day-night {
+    cursor: auto !important;
+  }
+  
+  .cursorMoveAnimation,
+  .cursorMoveAnimation2 {
+    display: none;
+  }
+} 
