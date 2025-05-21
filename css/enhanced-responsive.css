@@ -1,0 +1,375 @@
+/* Enhanced Responsive Styles for All Screen Sizes */
+
+/* Extra Large Devices (1400px and up) */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+  
+  .home-section .home-text h1 {
+    font-size: 24px;
+  }
+  
+  .home-section .home-text #auto-typing-animation p {
+    font-size: 60px;
+  }
+}
+
+/* Large Devices (1200px to 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* Medium Devices (992px to 1199px) */
+@media (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+  
+  .home-section .home-text #auto-typing-animation p {
+    font-size: 50px;
+  }
+  
+  .section-title h2 {
+    font-size: 32px;
+  }
+  
+  /* Service items responsive adjustment */
+  .service-section .service-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 30px;
+  }
+  
+  .service-section .service-item-inner {
+    padding: 25px 15px;
+  }
+  
+  /* Portfolio items responsive adjustment */
+  .portfolio-section .portfolio-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+/* Small Devices (768px to 991px) */
+@media (max-width: 991px) {
+  .container {
+    max-width: 720px;
+  }
+  
+  .home-section .home-text #auto-typing-animation p {
+    font-size: 45px;
+  }
+  
+  .section-title h2 {
+    font-size: 30px;
+  }
+  
+  /* Adjust padding for all sections */
+  .section {
+    padding: 70px 0;
+  }
+  
+  /* Adjust service items */
+  .service-section .service-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  /* Adjust contact items */
+  .contact-section .contact-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 30px;
+  }
+  
+  /* Adjust contact form */
+  .contact-section .w-50 {
+    padding: 0 0 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  /* Adjust portfolio items */
+  .portfolio-section .portfolio-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  /* Adjust about tabs */
+  .about-section .about-tabs {
+    padding: 40px 15px 30px;
+  }
+  
+  .about-section .about-tabs .tab-item {
+    margin: 0 5px 10px;
+    padding: 5px 10px;
+  }
+}
+
+/* Extra Small Devices (576px to 767px) */
+@media (max-width: 767px) {
+  .container {
+    max-width: 540px;
+  }
+  
+  .home-section .home-text #auto-typing-animation p {
+    font-size: 40px;
+  }
+  
+  .section-title h2 {
+    font-size: 28px;
+  }
+  
+  /* Make all columns full width on mobile */
+  .portfolio-section .portfolio-item,
+  .about-section .skills .skill-item,
+  .service-section .service-item,
+  .contact-section .contact-item,
+  .portfolio-popup .description,
+  .about-section .about-info,
+  .home-section .home-image,
+  .about-section .about-img,
+  .home-section .home-text,
+  .portfolio-popup .info {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  /* Adjust home section */
+  .home-section .home-text {
+    order: 2;
+    text-align: center;
+  }
+  
+  .home-section .full-screen {
+    padding: 100px 0;
+  }
+  
+  /* Adjust about section */
+  .about-section .about-img {
+    padding-bottom: 30px;
+  }
+  
+  /* Adjust timeline */
+  .about-section .timeline .timeline-item:nth-child(odd) {
+    padding-right: 15px;
+    text-align: left;
+    padding-left: 75px;
+  }
+  
+  .about-section .timeline .timeline-item:nth-child(even) {
+    padding-left: 75px;
+  }
+  
+  .about-section .timeline:before {
+    left: 35px;
+  }
+  
+  .about-section .timeline .timeline-item:nth-child(odd) .icon {
+    right: auto;
+    left: -60px;
+  }
+  
+  .about-section .timeline .timeline-item:nth-child(even) .icon {
+    left: -60px;
+  }
+  
+  .about-section .timeline .timeline-item {
+    margin-bottom: 40px;
+  }
+  
+  /* Adjust service items */
+  .service-section .service-item {
+    margin-bottom: 30px;
+  }
+  
+  .service-section .service-item-inner:hover h3, 
+  .service-section .service-item-inner:hover p {
+    padding: 0 15px;
+  }
+  
+  /* Adjust contact form */
+  .contact-section .input-group {
+    width: 100%;
+  }
+  
+  /* Adjust portfolio popup */
+  .portfolio-popup .pp-details {
+    padding: 40px 0 30px;
+  }
+  
+  .portfolio-popup .description p {
+    margin-bottom: 30px;
+  }
+  
+  .portfolio-popup .pp-project-details-btn {
+    position: relative;
+    display: block;
+    margin: 15px auto 0;
+    text-align: center;
+  }
+  
+  .portfolio-popup .pp-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+}
+
+/* Very Small Devices (Up to 575px) */
+@media (max-width: 575px) {
+  .container {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .home-section .home-text #auto-typing-animation p {
+    font-size: 32px;
+  }
+  
+  .home-section .home-text h1 {
+    font-size: 18px;
+  }
+  
+  .section-title h2 {
+    font-size: 24px;
+  }
+  
+  /* Adjust padding for all sections */
+  .section {
+    padding: 50px 0;
+  }
+  
+  /* Adjust about tabs */
+  .about-section .about-tabs {
+    padding: 20px 5px;
+  }
+  
+  .about-section .about-tabs .tab-item {
+    margin: 0 3px 10px;
+    padding: 5px 8px;
+    font-size: 14px;
+  }
+  
+  /* Adjust service items */
+  .service-section .service-item-inner {
+    padding: 20px 10px;
+  }
+  
+  .service-section .service-item-inner h3 {
+    font-size: 18px;
+  }
+  
+  /* Adjust contact items */
+  .contact-section .contact-item-inner {
+    padding: 20px 10px;
+  }
+  
+  .contact-section .contact-item-inner span {
+    font-size: 15px;
+  }
+  
+  .contact-section .contact-item-inner p {
+    font-size: 14px;
+  }
+  
+  /* Adjust buttons */
+  .btn-1 {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+  
+  /* Adjust navigation */
+  .nav-menu ul li a {
+    font-size: 24px;
+    padding: 5px 20px;
+  }
+  
+  /* Adjust portfolio popup */
+  .portfolio-popup .pp-details {
+    padding: 30px 0 20px;
+  }
+  
+  .portfolio-popup .pp-title h2 {
+    font-size: 20px;
+  }
+}
+
+/* Very Very Small Devices (Up to 375px) */
+@media (max-width: 375px) {
+  .home-section .home-text #auto-typing-animation p {
+    font-size: 28px;
+  }
+  
+  .section-title h2 {
+    font-size: 22px;
+  }
+  
+  /* Adjust about tabs */
+  .about-section .about-tabs .tab-item {
+    margin: 0 2px 8px;
+    padding: 4px 6px;
+    font-size: 13px;
+  }
+  
+  /* Adjust service items */
+  .service-section .service-item-inner h3 {
+    font-size: 16px;
+  }
+  
+  .service-section .service-item-inner p {
+    font-size: 14px;
+  }
+  
+  /* Adjust buttons */
+  .btn-1 {
+    padding: 6px 15px;
+    font-size: 13px;
+  }
+  
+  /* Adjust navigation */
+  .nav-menu ul li a {
+    font-size: 20px;
+    padding: 5px 15px;
+  }
+}
+
+/* Fix for the What I'm Doing section to ensure all cards are responsive */
+@media (max-width: 991px) {
+  .service-section .service-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-section .service-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .service-section .service-item-inner {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}
+
+/* Fix for the social links in the about section */
+@media (max-width: 575px) {
+  .about-img .social-links {
+    gap: 10px;
+  }
+  
+  .about-img .social-links a {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}

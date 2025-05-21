@@ -1,728 +1,734 @@
 <!DOCTYPE html>
 <html lang="zxx">
-  <head>
-    <meta charset="utf-8" />
-    <title>Personal Portfolio Website</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <!-- for scrolling animation -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css">
-    <!-- main css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
-    <!-- cursor animation -->
-    <link rel="stylesheet" type="text/css" href="css/cursor-animation.css" />
-    <!-- CV dropdown css -->
-    <link rel="stylesheet" type="text/css" href="css/cv-dropdown.css" />
-    <!-- GitHub button css -->
-    <link rel="stylesheet" type="text/css" href="css/github-button.css" />
-    <!-- default color css  -->
-    <link rel="stylesheet" href="css/skins/color-1.css" disabled>
-    <link rel="stylesheet" href="css/style-switcher.css">
-    <!-- theme colors -->
-    <link rel="stylesheet" class="alternate-style" title="color-1" href="/css/skins/color-1.css" disabled>
-    <link rel="stylesheet" class="alternate-style" title="color-2" href="/css/skins/color-2.css" disabled>
-    <link rel="stylesheet" class="alternate-style" title="color-3" href="/css/skins/color-3.css" disabled>
-    <link rel="stylesheet" class="alternate-style" title="color-4" href="/css/skins/color-4.css">
-    <link rel="stylesheet" class="alternate-style" title="color-5" href="/css/skins/color-5.css" disabled>
-    <!-- fav icon  -->
-    <link rel="shortcut icon" href="./img/favicon/favicon.ico">
-  </head>
-  <body class="dark">
 
-    <!-- ========== Start pre loader ========== -->
-    <div class="preloader">
-      <div class="box">
+<head>
+  <meta charset="utf-8" />
+  <title>Personal Portfolio Website</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <!-- for scrolling animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- main css -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+  <link rel="stylesheet" type="text/css" href="css/enhanced-responsive.css" />
+  <link rel="stylesheet" type="text/css" href="css/tailwind-nav.css" />
+  <!-- cursor animation -->
+  <link rel="stylesheet" type="text/css" href="css/cursor-animation.css" />
+  <!-- CV dropdown css -->
+  <link rel="stylesheet" type="text/css" href="css/cv-dropdown.css" />
+  <!-- GitHub button css -->
+  <link rel="stylesheet" type="text/css" href="css/github-button.css" />
+  <!-- Timeline icon fix css -->
+  <link rel="stylesheet" type="text/css" href="css/timeline-fix.css" />
+  <!-- Modern image styles -->
+  <link rel="stylesheet" type="text/css" href="css/modern-images.css" />
+  <!-- Modern sidebar popup menu -->
+  <link rel="stylesheet" type="text/css" href="css/modern-sidebar.css" />
+  <!-- Popup styles -->
+  <link rel="stylesheet" type="text/css" href="css/popup.css" />
+  <!-- Color picker CSS has been removed -->
+  <!-- Modern Dropdown Menu -->
+  <link rel="stylesheet" type="text/css" href="css/modern-dropdown.css" />
+  <!-- default color css  -->
+  <link rel="stylesheet" href="css/skins/color-1.css" disabled>
+  <link rel="stylesheet" href="css/style-switcher.css">
+  <!-- theme colors -->
+  <link rel="stylesheet" class="alternate-style" title="color-1" href="css/skins/color-1.css" disabled>
+  <link rel="stylesheet" class="alternate-style" title="color-2" href="css/skins/color-2.css" disabled>
+  <link rel="stylesheet" class="alternate-style" title="color-3" href="css/skins/color-3.css" disabled>
+  <link rel="stylesheet" class="alternate-style" title="color-4" href="css/skins/color-4.css">
+  <link rel="stylesheet" class="alternate-style" title="color-5" href="css/skins/color-5.css" disabled>
+  <!-- fav icon  -->
+  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+</head>
+
+<body class="dark">
+
+  <!-- ========== Start pre loader ========== -->
+  <div class="preloader">
+    <div class="box">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <!-- ========== End pre loader ========== -->
+
+  <!-- start header  -->
+  <div class="header">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="nav-logo">
+          <a href="/">Ekal<span>liptus</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- NGEBUG....!!!-->
+  <!-- Fixed Navigation Elements (visible on all sections) -->
+  <!-- <div class="hamburger-btn outer-shadow hover-in-shadow">
+    <div class="hamburger-icon straight-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div> -->
+  <!-- Modern Dropdown Menu -->
+  <!-- <div class="dropdown-menu">
+    <ul>
+      <li><a href="#home" class="link-item home">Home</a></li>
+      <li><a href="#about" class="link-item about">About</a></li>
+      <li><a href="#services" class="link-item services">Services</a></li>
+      <li><a href="#portfolio" class="link-item portfolio">Portfolio</a></li>
+      <li><a href="#contact" class="link-item contact">Contact</a></li>
+    </ul>
+    <div class="dropdown-copyright">&copy; 2025 Ekalliptus</div>
+  </div> -->
+  <!-- end  -->
+
+  <!-- Navigasi menu lama dinonaktifkan -->
+
+  <!-- home section start  -->
+  <section class="home-section section active" id="home">
+    <!-- effect wrap -->
+    <div class="effect-wrap">
+      <div class="effect effect-1">
+
+      </div>
+      <div class="effect effect-2">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="effect effect-3">
+      </div>
+      <div class="effect effect-4">
+      </div>
+      <div class="effect effect-5">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
     </div>
-    <!-- ========== End pre loader ========== -->
-
-    <!-- start header  -->
-    <div class="header">
-      <div class="container">
-        <div class="row justify-content-between">
-          <div class="logo">
-            <a href="index.html">g</a>
-          </div>
-          <div class="hamburger-btn outer-shadow hover-in-shadow">
-            <i class="fas fa-bars"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end  -->
-
-    <!-- navigation menu start  -->
-    <nav class="nav-menu">
-      <div class="close-nav-menu outer-shadow hover-in-shadow">&times;</div>
-      <div class="nav-menu-inner">
-        <ul>
-          <li class="home"><a href="#home" class="link-item inner-shadow active home">Home</a></li>
-          <li class="about"><a href="#about" class="link-item outer-shadow hover-in-shadow about">About</a></li>
-          <li class="services"><a href="#services" class="link-item outer-shadow hover-in-shadow services">Services</a></li>
-          <li class="portfolio"><a href="#portfolio" class="link-item outer-shadow hover-in-shadow portfolio">Portfolio</a></li>
-          <li class="contact"><a href="#contact" class="link-item outer-shadow hover-in-shadow contact">Contact</a></li>
-        </ul>
-      </div>
-      <p class="copyright-text">&copy; 2021 This is demo</p>
-
-      <div class="fade-out-effect"></div>
-    </nav>
-    <!-- end  -->
-
-    <!-- home section start  -->
-    <section class="home-section section active" id="home">
-      <!-- effect wrap -->
-        <div class="effect-wrap">
-          <div class="effect effect-1">
-
-          </div>
-          <div class="effect effect-2">  <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
-          </div>
-          <div class="effect effect-3">
-          </div>
-          <div class="effect effect-4">
-          </div>
-          <div class="effect effect-5">
-            <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
-          </div>
-        </div>
-      <!-- end -->
-      <div class="container">
-        <div class="row full-screen align-items-center">
-          <div class="home-text" data-aos="fade-down">
-            <p>Hello, </p>
-            <!-- ========== Start typing animation ========== -->
-            <div id="auto-typing-animation">
-              <p>I'm <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
-            </div>
-            <!-- ========== End typing animation ========== -->
-            <h1>IT Enthusiast</h1>
-            <a href="#about" class="link-item btn-1 outer-shadow hover-in-shadow">More About Me</a>
-          </div>
-
-          <div class="home-image" data-aos="fade-left">
-            <div class="img-box inner-shadow">
-              <img src="./img/me.jpg" class="outer-shadow" alt="profile-pic" srcset="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <!-- end -->
+    <div class="container">
+      <div class="row full-screen align-items-center">
+        <div class="home-text" data-aos="fade-down">
+          <p><br>Hello, </p>
+          <!-- ========== Start typing animation ========== -->
+          <div id="auto-typing-animation">
+            <p>I'm <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
+          </div>
+          <!-- ========== End typing animation ========== -->
+          <h1>IT Enthusiast</h1>
+        </div>
 
-    <!-- about section  -->
-    <section class="about-section section" id="about">
-      <div class="container">
-        <div class="row">
-          <div class="section-title">
-            <div class="data-heading">MAIN INFO</div>
-            <h2>About me</h2>
+        <div class="home-image" data-aos="fade-left">
+          <div class="modern-img-container">
+            <img src="./img/me.jpg" alt="profile-pic">
           </div>
         </div>
-        <div class="row">
-          <div class="about-img" data-aos="fade-up">
-            <div class="img-box inner-shadow">
-              <img src="./img/me.jpg" alt="" class="outer-shadow">
-            </div>
-            <!-- social icons -->
-              <div class="social-links">
-                <a href="https://github.com/anrdart" target="_nextTab" class="outer-shadow hover-in-shadow link-card" data-tilt data-tilt-scale="1.1"><i class="fab fa-github"></i></a>
-                <a href="https://wa.me/6285156242860" target="_nextTab" class="outer-shadow hover-in-shadow link-card" data-tilt data-tilt-scale="1.1"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.instagram.com/ekalliptus" target="_nextTab" class="outer-shadow hover-in-shadow link-card" data-tilt data-tilt-scale="1.1"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/alulanr" target="_nextTab" class="outer-shadow hover-in-shadow link-card" data-tilt data-tilt-scale="1.1"><i class="fab fa-linkedin"></i></a>
-              </div>
-            </div>
-          <div class="about-info" data-aos="fade-left">
-            <p class="about-info-inner">
-              <!-- content will fetch from  "TODO: js/autoTypingAnimation " -->
-            </p>
-            <!-- this is a just demo text  -->
+      </div>
+    </div>
+  </section>
+  <!-- end -->
 
-            <!-- <span>Hi, this is a demo name</span>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit eius officia ea ut vonsectetur adipisicing elit. Illo voluptatum iste, tempora rem obcaecati omnis delectus sunt, consequuntur, et ut quasi aperiam assumenda! <br><br> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex beatae reprehenderit vero maiores dignissimos error vitae, optio inventore explicabo quia officiis magni delectus? -->
-
-
-            <div class="cv-dropdown">
-              <a href="#" class="cv-dropdown-btn btn-1 outer-shadow hover-in-shadow">Download CV</a>
-              <div class="cv-dropdown-content outer-shadow">
-                <a href="CV_IT_Support.pdf" target="next_page"><i class="fas fa-desktop"></i> IT Support</a>
-                <a href="CV_Mobile_Flutter_Developer.pdf" target="next_page"><i class="fas fa-mobile-alt"></i> Mobile Flutter Developer</a>
-                <a href="CV_Web_Developer.pdf" target="next_page"><i class="fas fa-code"></i> Web Developer</a>
-              </div>
-            </div>
-            <a href="#contact" class="link-item btn-1 outer-shadow hover-in-shadow">Hire Me</a>
+  <!-- about section  -->
+  <section class="about-section section" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="section-title">
+          <h2>About me</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="about-img" data-aos="fade-up">
+          <div class="modern-img-container">
+            <img src="./img/me.jpg" alt="">
+          </div>
+          <!-- social icons -->
+          <div class="social-links">
+            <a href="https://github.com/anrdart" target="_nextTab" data-tilt data-tilt-scale="1.1">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://wa.me/6285156242860" target="_nextTab" data-tilt data-tilt-scale="1.1">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/ekalliptus" target="_nextTab" data-tilt data-tilt-scale="1.1">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/alulanr" target="_nextTab" data-tilt data-tilt-scale="1.1">
+              <i class="fab fa-linkedin"></i>
+            </a>
           </div>
         </div>
-        <!-- about section start -->
-        <div class="row" data-aos="zoom-in-down">
-          <div class="about-tabs">
-            <span class="tab-item outer-shadow active" data-target = ".skills">skills</span>
-            <span class="tab-item" data-target = ".experience">experience</span>
-            <span class="tab-item" data-target = ".education">education</span>
-          </div>
-        </div>
-        <!-- end -->
-        <!-- skill section start  -->
-        <div class="row" data-aos="zoom-in-down">
-          <div class="skills tab-content active">
-            <!-- skill item -->
-            <div class="row">
-
-              <!-- ========== Start skills ========== -->
-              <div class="skill-item">
-                <p>HTML</p>
-                <div class="progress inner-shadow">
-                  <div class="progress-bar" style="width: calc(50% - 14px)">
-                    <span>50%</span>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="skill-item">
-                <p>JavaScript</p>
-                <div class="progress inner-shadow">
-                  <div class="progress-bar" style="width: calc(60% - 14px);">
-                    <span>60%</span>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="skill-item">
-                <p>PHP</p>
-                <div class="progress inner-shadow">
-                  <div class="progress-bar" style="width: calc(70% - 14px);">
-                    <span>70%</span>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="skill-item">
-                <p>Bootstrap</p>
-                <div class="progress inner-shadow">
-                  <div class="progress-bar" style="width: calc(80% - 14px);">
-                    <span>80%</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <p>Angular</p>
-                <div class="progress inner-shadow">
-                  <div class="progress-bar" style="width: calc(90% - 14px);">
-                    <span>90%</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <p>JQuery</p>
-                <div class="progress inner-shadow">
-                  <div class="progress-bar" style="width: calc(95% - 14px);">
-                    <span>95%</span>
-                  </div>
-                </div>
-              </div>
-              <!-- ========== End skills ========== -->
+        <div class="about-info" data-aos="fade-left">
+          <p class="about-info-inner">
+          <div class="cv-dropdown">
+            <a href="#" class="cv-dropdown-btn btn-1 outer-shadow hover-in-shadow">Download CV</a>
+            <div class="cv-dropdown-content outer-shadow">
+              <a href="CV_IT_Support.pdf" target="next_page"><i class="fas fa-desktop"></i> IT Support</a>
+              <a href="CV_Mobile_Flutter_Developer.pdf" target="next_page"><i class="fas fa-mobile-alt"></i> Mobile
+                Flutter Developer</a>
+              <a href="CV_Web_Developer.pdf" target="next_page"><i class="fas fa-code"></i> Web Developer</a>
             </div>
-            <!-- end -->
           </div>
+          <a href="#contact" class="link-item btn-1 outer-shadow hover-in-shadow">Hire Me</a>
         </div>
-        <!-- end  -->
-
-        <!-- experience  -->
-        <div class="row" data-aos="zoom-in-down">
-          <div class="experience tab-content">
-            <div class="row">
-              <div class="timeline">
-                <div class="row">
-                  <!-- time line items  -->
-                  <div class="timeline-item">
-                    <div class="timeline-item-inner outer-shadow">
-                      <i class="fas fa-briefcase icon"></i>
-                      <span>Aug, 2021</span>
-                      <h3>Web Developer</h3>
-                      <h4>Web Developer</h4>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, nostrum quibusdam. Dolor aut tempora eligendi.</p>
-                    </div>
-                  </div>
-                  <!-- end  -->
-                  <!-- time line items  -->
-                  <div class="timeline-item">
-                    <div class="timeline-item-inner outer-shadow">
-                      <i class="fas fa-briefcase icon"></i>
-                      <span>Aug, 2021</span>
-                      <h3>Web Developer</h3>
-                      <h4>Web Developer</h4>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, nostrum quibusdam. Dolor aut tempora eligendi.</p>
-                    </div>
-                  </div>
-
-                  <!-- end  -->
-                  <!-- time line items  -->
-                  <div class="timeline-item">
-                    <div class="timeline-item-inner outer-shadow">
-                      <i class="fas fa-briefcase icon"></i>
-                      <span>Aug, 2021</span>
-                      <h3>Web Developer</h3>
-                      <h4>Web Developer</h4>
-                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, nostrum quibusdam. Dolor aut tempora eligendi.</p>
-                    </div>
-                  </div>
-
-                  <!-- end  -->
+      </div>
+      <!-- about section start -->
+      <div class="row" data-aos="zoom-in-down">
+        <div class="about-tabs">
+          <span class="tab-item outer-shadow active" data-target=".skills">skills</span>
+          <span class="tab-item" data-target=".experience">experience</span>
+          <span class="tab-item" data-target=".education">education</span>
+        </div>
+      </div>
+      <!-- end -->
+      <div class="row" data-aos="zoom-in-down">
+        <div class="skills tab-content active">
+          <!-- skill item -->
+          <div class="row-center">
+            <!-- skill section start  -->
+            <!-- skills logo section start -->
+            <div class="row" style="justify-content:center; margin-top:32px;">
+              <div style="display:flex; gap:36px; flex-wrap:wrap; justify-content:center; align-items:center;">
+                <div style="text-align:center;">
+                  <img src="img/skills/flutter.svg" alt="Flutter" width="60" height="60"
+                    style="display:block;margin:0 auto 8px;">
+                  <div style="font-weight:500;">Flutter</div>
+                </div>
+                <div style="text-align:center;">
+                  <img src="img/skills/nextjs.svg" alt="Next.js" width="60" height="60"
+                    style="display:block;margin:0 auto 8px;">
+                  <div style="font-weight:500;">Next.js</div>
+                </div>
+                <div style="text-align:center;">
+                  <img src="img/skills/reactjs.svg" alt="React.js" width="60" height="60"
+                    style="display:block;margin:0 auto 8px;">
+                  <div style="font-weight:500;">React.js</div>
+                </div>
+                <div style="text-align:center;">
+                  <img src="img/skills/python.svg" alt="Python" width="60" height="60"
+                    style="display:block;margin:0 auto 8px;">
+                  <div style="font-weight:500;">Python</div>
+                </div>
+                <div style="text-align:center;">
+                  <img src="img/skills/tailwindcss.svg" alt="Tailwind CSS" width="60" height="60"
+                    style="display:block;margin:0 auto 8px;">
+                  <div style="font-weight:500;">Tailwind CSS</div>
+                </div>
+                <div style="text-align:center;">
+                  <img src="img/skills/laravel.svg" alt="Laravel" width="60" height="60"
+                    style="display:block;margin:0 auto 8px;">
+                  <div style="font-weight:500;">Laravel</div>
                 </div>
               </div>
             </div>
+            <!-- skills logo section end -->
           </div>
+          <!-- end -->
         </div>
-        <!--experience end -->
+      </div>
+      <!-- end  -->
 
-        <!-- education start -->
-        <div class="row" data-aos="zoom-in-down">
-          <div class="education tab-content">
-            <div class="row">
-              <div class="timeline">
-                <div class="row">
-                  <!-- time line items  -->
-                  <div class="timeline-item">
-                    <div class="timeline-item-inner outer-shadow">
-                      <i class="fas fa-graduation-cap icon"></i>
-                      <span>2012 - 2020</span>
-                      <h3>Web Developer</h3>
-
-                      <p>demo education Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure necessitatibus repellendus aut?</p>
-                    </div>
-                  </div>
-
-                  <!-- end  -->
-                  <!-- time line items  -->
-                  <div class="timeline-item">
-                    <div class="timeline-item-inner outer-shadow">
-                      <i class="fas fa-graduation-cap icon"></i>
-                      <span>2012 - 2020</span>
-                      <h3>graduate</h3>
-
-                      <p>demo education Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure necessitatibus repellendus aut?</p>
-                    </div>
-                  </div>
-
-                  <!-- end  -->
-                  <!-- time line items  -->
-                  <div class="timeline-item">
-                    <div class="timeline-item-inner outer-shadow">
-                      <i class="fas fa-graduation-cap icon"></i>
-                      <span>2012 - 2020</span>
-                      <h3>graduate</h3>
-
-                      <p>demo education Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure necessitatibus repellendus aut?</p>
-                    </div>
-                  </div>
-
-                  <!-- end  -->
-                </div>
+      <!-- experience and education section - modern design -->
+      <div class="row" data-aos="fade-up">
+        <!-- education section -->
+        <div class="education tab-content">
+          <section class="timeline-section">
+            <div class="title-wrapper outer-shadow">
+              <div class="icon-box">
+                <i class="fas fa-graduation-cap"></i>
               </div>
+              <h3 class="section-subtitle">Education</h3>
             </div>
-          </div>
+
+            <ol class="timeline-list">
+              <li class="timeline-item outer-shadow" data-aos="fade-right">
+                <h4 class="timeline-item-title">Universitas Bina Sarana Informatika</h4>
+                <span class="timeline-period">2021 — 2024</span>
+                <p class="timeline-text">Information Systems</p>
+              </li>
+
+              <li class="timeline-item outer-shadow" data-aos="fade-right" data-aos-delay="200">
+                <h4 class="timeline-item-title">SMK Al-Irsyad Tegal</h4>
+                <span class="timeline-period">2018 — 2021</span>
+                <p class="timeline-text">Software Engineering</p>
+              </li>
+            </ol>
+          </section>
         </div>
         <!-- education end -->
 
-      </div>
-    </section>
-    <!-- end  -->
+        <!-- experience section -->
+        <div class="experience tab-content">
+          <section class="timeline-section">
+            <div class="title-wrapper outer-shadow">
+              <div class="icon-box">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <h3 class="section-subtitle">Experience</h3>
+            </div>
 
-    <!-- ========== Start service section ========== -->
+            <ol class="timeline-list">
+              <li class="timeline-item outer-shadow" data-aos="fade-left">
+                <h4 class="timeline-item-title">PT. Visionet Data Internasional</h4>
+                <span class="timeline-period">Nov 2024 — Apr 2025</span>
+                <p class="timeline-text">Service Area Engineer</p>
+              </li>
 
-    <section class="service-section section" id="services">
-      <div class="container">
-        <div class="row" data-aos="fade-in">
-          <div class="section-title">
-            <div class="data-heading">Services</div>
-            <h2>What i do</h2>
-          </div>
+              <li class="timeline-item outer-shadow" data-aos="fade-left" data-aos-delay="200">
+                <h4 class="timeline-item-title">ANRAVT</h4>
+                <span class="timeline-period">Sep 2020 — Present</span>
+                <p class="timeline-text">Freelancer</p>
+              </li>
+
+              <li class="timeline-item outer-shadow" data-aos="fade-left" data-aos-delay="400">
+                <h4 class="timeline-item-title">PT. Marka Kreasi Persada</h4>
+                <span class="timeline-period">Aug 2023 — Dec 2023</span>
+                <p class="timeline-text">MSIB - Flutter Developer</p>
+              </li>
+            </ol>
+          </section>
         </div>
-        <div class="row" data-aos="fade-up">
-          <!-- ========== Start service item ========== -->
-              <div class="service-item card" data-tilt data-tilt-scale="1.1">
-                <div class="service-item-inner outer-shadow">
-                  <div class="icon inner-shadow">
-                    <i class="fas fa-mobile-alt"></i>
-                  </div>
-                  <h3>Responsive design</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo cum eos facere.</p>
-                </div>
-              </div>
+        <!-- experience end -->
+      </div>
+      <!-- experience and education section end -->
 
+    </div>
+  </section>
+  <!-- end  -->
 
-              <div class="service-item card" data-tilt data-tilt-scale="1.1">
-                <div class="service-item-inner outer-shadow">
-                  <div class="icon inner-shadow">
-                    <i class="fas fa-laptop-code"></i>
-                  </div>
-                  <h3>Web design</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta qui libero voluptates eligendi?.</p>
-                </div>
-              </div>
+  <!-- ========== Start service section ========== -->
 
-
-              <div class="service-item card" data-tilt data-tilt-scale="1.1">
-                <div class="service-item-inner outer-shadow">
-                  <div class="icon inner-shadow">
-                    <i class="fas fa-palette"></i>
-                  </div>
-                  <h3>Graphic design</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo cum eos facere.</p>
-                </div>
-              </div>
-
-              <div class="service-item card" data-tilt data-tilt-scale="1.1">
-                <div class="service-item-inner outer-shadow">
-                  <div class="icon inner-shadow">
-                    <i class="fas fa-code"></i>
-                  </div>
-                  <h3>Clean code</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo cum eos facere.</p>
-                </div>
-              </div>
-
-              <div class="service-item card" data-tilt data-tilt-scale="1.1">
-                <div class="service-item-inner outer-shadow">
-                  <div class="icon inner-shadow">
-                    <i class="fas fa-search"></i>
-                  </div>
-                  <h3>SEO Marketing</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo cum eos facere.</p>
-                </div>
-              </div>
-
-              <div class="service-item card" data-tilt data-tilt-scale="1.1">
-                <div class="service-item-inner outer-shadow">
-                  <div class="icon inner-shadow">
-                    <i class="fas fa-bullhorn"></i>
-                  </div>
-                  <h3>Great Support</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo cum eos facere.</p>
-                </div>
-              </div>
-
-          <!-- ========== End service item ========== -->
+  <section class="service-section section" id="services">
+    <div class="container">
+      <div class="row" data-aos="fade-in">
+        <div class="section-title">
+          <h2>What I'm Doing</h2>
         </div>
       </div>
-    </section>
-    <!-- ========== End service section ========== -->
-
-
-    <!-- ========== Start portfolio section ========== -->
-        <section class="portfolio-section section" id="portfolio">
-          <div class="container">
-            <div class="row">
-              <div class="section-title" data-aos="fade-in">
-                <div class="data-heading">portfolio</div>
-                <h2>Latest Works</h2>
-              </div>
+      <div class="row" data-aos="fade-up">
+        <!-- ========== Start service item ========== -->
+        <div class="service-item card" data-tilt data-tilt-scale="1.1">
+          <div class="service-item-inner outer-shadow">
+            <div class="icon inner-shadow">
+              <i class="fas fa-pencil-ruler"></i>
             </div>
-            <!-- ========== Start portfolio filter========== -->
-                <div class="row" data-aos="fade-right">
-                  <div class="portfolio-filter">
-                    <span class="filter-item outer-shadow active" data-target="all">All</span>
-                    <span class="filter-item" data-target="web-application">Web application</span>
-                  </div>
-                </div>
-            <!-- ========== End portfolio filter========== -->
-
-            <!-- ========== Start portfolio items ========== -->
-                <div class="row portfolio-items" data-aos="zoom-in-left">
-                  <!-- ========== Start portfolio item ========== -->
-                  <div class="portfolio-item" data-category="web-application">
-                    <div class="portfolio-item-inner outer-shadow">
-                      <div class="portfolio-item-image">
-                        <img src="img/portfolio/thumb/project-1.png" alt="portfolio" data-screenshots="img/portfolio/large/project-1/1.png,
-                        img/portfolio/large/project-1/2.png,
-                        img/portfolio/large/project-1/3.png,
-                        img/portfolio/large/project-1/4.png,
-                        img/portfolio/large/project-1/5.png,
-                        img/portfolio/large/project-1/6.png",
-                        >
-
-                        <!-- view project button  -->
-                        <span class="view-project">view project</span>
-                      </div>
-                      <p class="portfolio-item-title">personal portfolio</p>
-                      <!-- ========== Start portfolio item details ========== -->
-                          <div class="portfolio-item-details">
-                            <div class="row">
-                              <div class="description">
-                                <h3>Project brief: </h3>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic doloribus labore assumenda nostrum commodi. Officia.</p>
-                              </div>
-                              <div class="info">
-                                <h3>Project info</h3>
-                                <ul>
-                                  <li>Date - <span>2021</span></li>
-                                  <li>Client - <span>xyz</span></li>
-                                  <li>Tools - <span>html, css, js</span></li>
-                                  <li>GitHub - <span><a href="https://github.com/anrdart" id="link" target="_blank">github.com/anrdart</a></span></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                      <!-- ========== End portfolio item details ========== -->
-                    </div>
-                  </div>
-                  <!-- ========== End portfolio item ========== -->
-                </div>
-            <!-- ========== End portfolio items ========== -->
-
-          </div>
-        </section>
-    <!-- ========== End portfolio section ========== -->
-
-    <!-- ========== Start contact section ========== -->
-    <section class="contact-section section" id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="section-title" data-aos="fade-up">
-            <div class="data-heading">contact</div>
-            <h2>Get In Touch</h2>
+            <h3>UI/UX Design</h3>
+            <p>The most modern and high-quality design made at a professional level.</p>
           </div>
         </div>
-        <div class="row" data-aos="fade-left">
-          <!-- ========== Start contact item ========== -->
-          <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
-            <div class="contact-item-inner outer-shadow">
-              <i class="fas fa-phone">
-                <span class="contact-span">Phone</span>
-                <p class="contact-p">+6285156242860</p>
-              </i>
+
+        <div class="service-item card" data-tilt data-tilt-scale="1.1">
+          <div class="service-item-inner outer-shadow">
+            <div class="icon inner-shadow">
+              <i class="fas fa-code"></i>
             </div>
-          </div>
-          <!-- ========== End contact item ========== -->
-          <!-- ========== Start contact item ========== -->
-          <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
-            <div class="contact-item-inner outer-shadow">
-              <i class="fas fa-envelope">
-                <span class="contact-span">Email Address</span>
-                <p class="contact-p">haikalalul@gmail.com</p>
-              </i>
-            </div>
-          </div>
-          <!-- ========== End contact item ========== -->
-          <!-- ========== Start contact item ========== -->
-          <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
-            <div class="contact-item-inner outer-shadow">
-              <i class="fas fa-map-marker-alt">
-                <span class="contact-span">Address</span>
-                <p class="contact-p">Central Java, Indonesia</p>
-              </i>
-            </div>
-          </div>
-          <!-- ========== End contact item ========== -->
-        </div>
-        <!-- ========== Start contact from ========== -->
-        <div class="row" data-aos="fade-right">
-          <div class="contact-form">
-            <form action="" method="">
-              <div class="row">
-                <div class="w-50">
-                  <div class="input-group outer-shadow hover-in-shadow">
-                    <input class="input-control" type="text" name="name" id="name" placeholder="Name" required>
-                  </div>
-                  <div class="input-group outer-shadow hover-in-shadow">
-                    <input class="input-control" type="email" name="email" id="sender" placeholder="Email" required>
-                  </div>
-                  <div class="input-group outer-shadow hover-in-shadow">
-                    <input class="input-control" type="tel" name="subject" id="subject" placeholder="Subject" required>
-                  </div>
-                </div>
-                <div class="w-50">
-                  <div class="input-group outer-shadow hover-in-shadow">
-                    <textarea class="input-control" name="user_dtls" id="user_dtls" required placeholder="Your message here..."></textarea>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="submit-btn">
-                  <button class="btn-1 outer-shadow outer-shadow hover-in-shadow submit">Send Message</button>
-                </div>
-              </div>
-            </form>
+            <h3>Web Development</h3>
+            <p>High-quality development of sites at the professional level.</p>
           </div>
         </div>
-        <!-- ========== End contact from ========== -->
-      </div>
-    </section>
-    <!-- ========== End contact section ========== -->
 
-    <!-- ========== Start portfolio popup ========== -->
-        <div class="pp portfolio-popup">
-          <div class="pp-details">
-            <div class="pp-details-inner">
-              <div class="pp-title">
-                <h2>personal portfolio</h2>
-                <p>Category - <span class="pp-project-category">Web Application</span></p>
-              </div>
-              <div class="pp-project-details">
-                <div class="row">
-                  <div class="description">
-                    <h3>Project brief: </h3>
-                    <p>Lorem ipsum dolor, sit Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem perferendis corporis culpa! amet consectetur adipisicing elit. Hic doloribus labore assumenda nostrum commodi. Officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt.</p>
-                  </div>
-                  <div class="info">
-                    <h3>Project info</h3>
-                    <ul>
-                      <li>Date - <span>2021</span></li>
-                      <li>Client - <span>xyz</span></li>
-                      <li>Tools - <span>html, css, js</span></li>
-                      <li>GitHub - <span><a href="https://github.com/anrdart" id="link" target="_blank">github.com/anrdart</a></span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+        <div class="service-item card" data-tilt data-tilt-scale="1.1">
+          <div class="service-item-inner outer-shadow">
+            <div class="icon inner-shadow">
+              <i class="fas fa-mobile-alt"></i>
             </div>
-          </div>
-
-          <div class="separator"></div>
-
-          <div class="pp-main">
-            <div class="pp-main-inner">
-              <a href="https://github.com/anrdart" target="_blank" class="pp-project-details-btn outer-shadow hover-in-shadow">Project Details<i class="fab fa-github"></i></a>
-              <div class="pp-close outer-shadow hover-in-shadow">&times;</div>
-              <img src="img/portfolio/large/project-1/1.png" alt="img" class="pp-img outer-shadow">
-              <div class="pp-counter">1 of 6</div>
-            </div>
-            <div class="pp-loader">
-              <div class="loader"></div>
-            </div>
-            <!-- ========== Start pp navigation ========== -->
-            <div class="pp-pre"><i class="fas fa-play"></i></div>
-            <div class="pp-next"><i class="fas fa-play"></i></div>
-            <!-- ========== End pp navigation ========== -->
+            <h3>Mobile Apps</h3>
+            <p>Professional development of applications for iOS and Android.</p>
           </div>
         </div>
-    <!-- ========== End portfolio popup ========== -->
 
-    <!-- ========== Start style switciher start - for demo pirposs only ========== -->
-    <div class="style-switcher outer-shadow">
-      <div class="style-switcher-toggler s-icon outer-shadow hover-in-shadow">
-        <i class="fas fa-cog fa-spin"></i>
-      </div>
-      <div class="day-night s-icon outer-shadow hover-in-shadow">
-        <i class="fas fa-moon"></i>
-      </div>
+        <div class="service-item card" data-tilt data-tilt-scale="1.1">
+          <div class="service-item-inner outer-shadow">
+            <div class="icon inner-shadow">
+              <i class="fas fa-camera"></i>
+            </div>
+            <h3>Photography</h3>
+            <p>I make high-quality photos of any category at a professional level.</p>
+          </div>
+        </div>
 
-      <h4>Theme Color</h4>
-      <div class="colors">
-        <span class="color-1" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-1')"></span>
-        <span class="color-2" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-2')"></span>
-        <span class="color-3" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-3')"></span>
-        <span class="color-4" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-4')"></span>
-        <span class="color-5" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-5')"></span>
+        <div class="service-item card" data-tilt data-tilt-scale="1.1">
+          <div class="service-item-inner outer-shadow">
+            <div class="icon inner-shadow">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Software Development</h3>
+            <p>Creating software applications using programming languages Python.</p>
+          </div>
+        </div>
+
+        <div class="service-item card" data-tilt data-tilt-scale="1.1">
+          <div class="service-item-inner outer-shadow">
+            <div class="icon inner-shadow">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <h3>IT Support</h3>
+            <p>Providing technical support and troubleshooting hardware/software issues.
+              Ensuring systems run smoothly for optimal performance.</p>
+          </div>
+        </div>
+
+        <!-- ========== End service item ========== -->
       </div>
     </div>
-    <!-- ========== End style switciher start - for demo pirposs only ========== -->
+  </section>
+  <!-- ========== End service section ========== -->
 
-    <!-- ========== Start Custom Cursor ========== -->
-    <div class="cursorMoveAnimation"></div>
-    <div class="cursorMoveAnimation2"></div>
-    <!-- ========== End Custom Cursor ========== -->
 
-    <!-- main js -->
-    <script src="js/main.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-    <!-- style switcher js -->
-    <script src="js/style-switcher.js"></script>
-    <script src="js/autoNavHighlight.js"></script>
-    <script src="js/animation.js"></script>
-    <script src="js/glassmorphism-animation.js"></script>
-    <script src="js/autoTypingAnimation.js"></script>
-    <script src="js/accordion.js"></script>
-    <script src="js/cv-dropdown.js"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script>
-      VanillaTilt.init(document.querySelectorAll(".contact-card"), {
-        max: 25,
-        speed: 400
+  <!-- ========== Start portfolio section ========== -->
+  <section class="portfolio-section section" id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="section-title" data-aos="fade-in">
+
+          <h2>Coming Soon!</h2>
+        </div>
+      </div>
+      
+      <!-- ========== Start coming soon message ========== -->
+      <div class="row" style="min-height: 70vh; display: flex; align-items: center; justify-content: center;" data-aos="zoom-in">
+        <div style="width: 100%; max-width: 600px;">
+          <div class="outer-shadow" style="text-align: center; padding: 40px; border-radius: 15px; margin: 0 auto;">
+            <i class="fas fa-clock" style="font-size: 60px; color: var(--skin-color); margin-bottom: 25px;"></i>
+            <h3 style="font-size: 26px; margin-bottom: 20px; color: var(--text-black-700);">Portfolio projects are in development</h3>
+            <p style="color: var(--text-black-600); line-height: 1.8; font-size: 18px;">New and exciting projects will be showcased here soon. Check back later!</p>
+          </div>
+        </div>
+      </div>
+      <!-- ========== End coming soon message ========== -->
+
+    </div>
+  </section>
+  <!-- ========== End portfolio section ========== -->
+
+  <!-- ========== Start contact section ========== -->
+  <section class="contact-section section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="section-title" data-aos="fade-up">
+
+          <h2>Get In Touch</h2>
+        </div>
+      </div>
+      <div class="row" data-aos="fade-left">
+        <!-- ========== Start contact item ========== -->
+        <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
+          <div class="contact-item-inner outer-shadow">
+            <i class="fas fa-phone">
+              <span class="contact-span">Phone</span>
+              <p class="contact-p">+6285156242860</p>
+            </i>
+          </div>
+        </div>
+        <!-- ========== End contact item ========== -->
+        <!-- ========== Start contact item ========== -->
+        <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
+          <div class="contact-item-inner outer-shadow">
+            <i class="fas fa-envelope">
+              <span class="contact-span">Email Address</span>
+              <p class="contact-p">ekalliptus@gmail.com</p>
+            </i>
+          </div>
+        </div>
+        <!-- ========== End contact item ========== -->
+        <!-- ========== Start contact item ========== -->
+        <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
+          <div class="contact-item-inner outer-shadow">
+            <i class="fas fa-map-marker-alt">
+              <span class="contact-span">Address</span>
+              <p class="contact-p">Tegal, Indonesia</p>
+            </i>
+          </div>
+        </div>
+        <!-- ========== End contact item ========== -->
+      </div>
+      <!-- ========== Start contact from ========== -->
+      <div class="row" data-aos="fade-right">
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="row">
+              <div class="w-50">
+                <div class="input-group outer-shadow hover-in-shadow">
+                  <input class="input-control" type="text" name="name" id="name" placeholder="Name" required>
+                </div>
+                <div class="input-group outer-shadow hover-in-shadow">
+                  <input class="input-control" type="email" name="email" id="sender" placeholder="Email" required>
+                </div>
+                <div class="input-group outer-shadow hover-in-shadow">
+                  <input class="input-control" type="text" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+              </div>
+              <div class="w-50">
+                <div class="input-group outer-shadow hover-in-shadow">
+                  <textarea class="input-control" name="message" id="message" required
+                    placeholder="Your message here..."></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="submit-btn">
+                <button type="submit" class="btn-1 outer-shadow outer-shadow hover-in-shadow submit">Send Message</button>
+              </div>
+              <div id="statusMessage" style="text-align: center; margin-top: 15px; width: 100%;"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- ========== End contact from ========== -->
+    </div>
+  </section>
+  <!-- ========== End contact section ========== -->
+
+  <!-- ========== Start portfolio popup ========== -->
+  <div class="pp portfolio-popup">
+    <div class="pp-details">
+      <div class="pp-details-inner">
+        <div class="pp-title">
+          <h2>personal portfolio</h2>
+          <p>Category - <span class="pp-project-category">Web Application</span></p>
+        </div>
+        <div class="pp-project-details">
+          <div class="row">
+            <div class="description">
+              <h3>Project brief: </h3>
+              <p>Lorem ipsum dolor, sit Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem perferendis
+                corporis culpa! amet consectetur adipisicing elit. Hic doloribus labore assumenda nostrum commodi.
+                Officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt.</p>
+            </div>
+            <div class="info">
+              <h3>Project info</h3>
+              <ul>
+                <li>Date - <span>2021</span></li>
+                <li>Client - <span>xyz</span></li>
+                <li>Tools - <span>html, css, js</span></li>
+                <li>GitHub - <span><a href="https://github.com/anrdart" id="link"
+                      target="_blank">github.com/anrdart</a></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="pp-main">
+      <div class="pp-main-inner">
+        <a href="https://github.com/anrdart" target="_blank"
+          class="pp-project-details-btn outer-shadow hover-in-shadow">Project Details<i class="fab fa-github"></i></a>
+        <div class="pp-close outer-shadow hover-in-shadow">&times;</div>
+        <img src="img/portfolio/large/project-1/1.png" alt="img" class="pp-img outer-shadow">
+        <div class="pp-counter">1 of 6</div>
+      </div>
+      <div class="pp-loader">
+        <div class="loader"></div>
+      </div>
+      <!-- ========== Start pp navigation ========== -->
+      <div class="pp-pre"><i class="fas fa-play"></i></div>
+      <div class="pp-next"><i class="fas fa-play"></i></div>
+      <!-- ========== End pp navigation ========== -->
+    </div>
+  </div>
+  <!-- ========== End portfolio popup ========== -->
+
+  <!-- Moved .style-switcher-toggler and .day-night outside of .style-switcher -->
+  <div class="style-switcher-toggler s-icon outer-shadow hover-in-shadow">
+    <i class="fas fa-cog straight-icon" style="transform: rotate(0deg) !important;"></i>
+  </div>
+  <div class="day-night s-icon outer-shadow hover-in-shadow">
+    <i class="fas fa-moon straight-icon" style="transform: rotate(0deg) !important;"></i>
+  </div>
+
+  <!-- ========== Start style switciher start - for demo pirposs only ========== -->
+  <div class="style-switcher outer-shadow">
+    <h4>Theme Color</h4>
+    <div class="colors">
+      <span class="color-1" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-1')"></span>
+      <span class="color-2" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-2')"></span>
+      <span class="color-3" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-3')"></span>
+      <span class="color-4" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-4')"></span>
+      <span class="color-5" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-5')"></span>
+    </div>
+  </div>
+  <!-- ========== End style switciher start - for demo pirposs only ========== -->
+
+  <!-- ========== Start Custom Cursor ========== -->
+  <div class="cursorMoveAnimation"></div>
+  <div class="cursorMoveAnimation2"></div>
+  <!-- ========== End Custom Cursor ========== -->
+
+  <!-- ========== Success Popup ========== -->
+  <div class="popup-overlay" id="successPopup">
+    <div class="popup-content">
+      <div class="popup-close" onclick="closePopup()"><i class="fas fa-times"></i></div>
+      <div class="popup-icon"><i class="fas fa-check-circle"></i></div>
+      <h3 class="popup-title">Pesan Terkirim!</h3>
+      <p class="popup-message">Terima kasih telah menghubungi. Kami akan segera membalas pesan Anda.</p>
+      <button class="popup-button" onclick="redirectToHome()">Kembali ke Home</button>
+    </div>
+  </div>
+  
+  <!-- Status Message -->
+  <div class="status-message" id="statusMessagePopup">
+    <p><i class="fas fa-spinner"></i> <span id="statusText">Mengirim pesan...</span></p>
+  </div>
+  <!-- ========== End Success Popup ========== -->
+
+  <!-- Color picker has been removed -->
+
+  <!-- main js -->
+  <script src="js/main.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+  <!-- style switcher js -->
+  <script src="js/style-switcher.js"></script>
+  <script src="js/autoNavHighlight.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/glassmorphism-animation.js"></script>
+  <script src="js/autoTypingAnimation.js"></script>
+  <script src="js/section-navigation.js"></script>
+  <script src="js/accordion.js"></script>
+  <script src="js/cv-dropdown.js"></script>
+  <script src="js/modern-dropdown.js"></script>
+  <script src="js/icon-manager.js"></script>
+  <!-- Email Handling with FormSubmit.co -->
+  <script src="js/email-handler-simplified.js"></script>
+  <script src="js/404-handler.js"></script>
+  <script>
+    // Make sure the preloader is properly removed once the page loads
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const preloader = document.querySelector('.preloader');
+        if (preloader) {
+          preloader.style.opacity = '0';
+          setTimeout(function() {
+            preloader.style.display = 'none';
+          }, 500);
+        }
+      }, 500);
+    });
+    
+    // Contact form handling has been moved to email-handler.js
+    
+    // Tilt effects
+    VanillaTilt.init(document.querySelectorAll(".contact-card"), {
+      max: 25,
+      speed: 400
+    });
+
+    VanillaTilt.init(document.querySelectorAll(".link-card"), {
+      max: 25,
+      speed: 400
+    });
+
+    VanillaTilt.init(document.querySelectorAll(".card")), {
+      max: 25,
+      speed: 300
+    };
+
+    // Enhanced cursor animation
+    const cursorMoveAnimation = document.querySelector(".cursorMoveAnimation");
+    const cursorMoveAnimation2 = document.querySelector(".cursorMoveAnimation2");
+
+    // Memastikan elemen kursor ada sebelum menjalankan script
+    if (cursorMoveAnimation && cursorMoveAnimation2) {
+      // Inisialisasi posisi awal
+      cursorMoveAnimation.style.cssText = "left: 50%; top: 50%;";
+      cursorMoveAnimation2.style.cssText = "left: 50%; top: 50%;";
+
+      // Handle cursor movement
+      document.addEventListener("mousemove", function (e) {
+        requestAnimationFrame(function () {
+          cursorMoveAnimation.style.left = e.clientX + "px";
+          cursorMoveAnimation.style.top = e.clientY + "px";
+
+          // Add slight delay to the outer circle for a trailing effect
+          setTimeout(function () {
+            cursorMoveAnimation2.style.left = e.clientX + "px";
+            cursorMoveAnimation2.style.top = e.clientY + "px";
+          }, 50);
+        });
       });
 
-      VanillaTilt.init(document.querySelectorAll(".link-card"), {
-        max: 25,
-        speed: 400
+      // Add click effect
+      document.addEventListener("mousedown", function () {
+        cursorMoveAnimation.classList.add('click');
+        cursorMoveAnimation.style.transform = "translate(-50%, -50%) scale(0.7)";
+        cursorMoveAnimation2.style.transform = "translate(-50%, -50%) scale(0.7)";
       });
 
-      VanillaTilt.init(document.querySelectorAll(".card")),{
-        max: 25,
-        speed: 300
-      };
-
-      // Enhanced cursor animation
-      const cursorMoveAnimation = document.querySelector(".cursorMoveAnimation");
-      const cursorMoveAnimation2 = document.querySelector(".cursorMoveAnimation2");
-
-      // Memastikan elemen kursor ada sebelum menjalankan script
-      if (cursorMoveAnimation && cursorMoveAnimation2) {
-        // Inisialisasi posisi awal
-        cursorMoveAnimation.style.cssText = "left: 50%; top: 50%;";
-        cursorMoveAnimation2.style.cssText = "left: 50%; top: 50%;";
-
-        // Handle cursor movement
-        document.addEventListener("mousemove", function(e) {
-          requestAnimationFrame(function() {
-            cursorMoveAnimation.style.left = e.clientX + "px";
-            cursorMoveAnimation.style.top = e.clientY + "px";
-
-            // Add slight delay to the outer circle for a trailing effect
-            setTimeout(function() {
-              cursorMoveAnimation2.style.left = e.clientX + "px";
-              cursorMoveAnimation2.style.top = e.clientY + "px";
-            }, 50);
-          });
-        });
-
-        // Add click effect
-        document.addEventListener("mousedown", function() {
-          cursorMoveAnimation.classList.add('click');
-          cursorMoveAnimation.style.transform = "translate(-50%, -50%) scale(0.7)";
-          cursorMoveAnimation2.style.transform = "translate(-50%, -50%) scale(0.7)";
-        });
-
-        document.addEventListener("mouseup", function() {
-          cursorMoveAnimation.classList.remove('click');
-          cursorMoveAnimation.style.transform = "translate(-50%, -50%) scale(1)";
-          cursorMoveAnimation2.style.transform = "translate(-50%, -50%) scale(1)";
-        });
-
-        // Handle interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .link-item, .outer-shadow, .filter-item, .tab-item, .color-1, .color-2, .color-3, .color-4, .color-5, .style-switcher-toggler, .day-night, .view-project, .pp-close');
-
-        interactiveElements.forEach(element => {
-          element.addEventListener('mouseenter', () => {
-            cursorMoveAnimation.classList.add('hover');
-            cursorMoveAnimation2.classList.add('hover');
-          });
-
-          element.addEventListener('mouseleave', () => {
-            cursorMoveAnimation.classList.remove('hover');
-            cursorMoveAnimation2.classList.remove('hover');
-          });
-        });
-      }
-    </script>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        offset: 120,
-        duration: 1000
+      document.addEventListener("mouseup", function () {
+        cursorMoveAnimation.classList.remove('click');
+        cursorMoveAnimation.style.transform = "translate(-50%, -50%) scale(1)";
+        cursorMoveAnimation2.style.transform = "translate(-50%, -50%) scale(1)";
       });
-    </script>
-  </body>
+
+      // Handle interactive elements
+      const interactiveElements = document.querySelectorAll('a, button, .link-item, .outer-shadow, .filter-item, .tab-item, .color-1, .color-2, .color-3, .color-4, .color-5, .style-switcher-toggler, .day-night, .view-project, .pp-close');
+
+      interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+          cursorMoveAnimation.classList.add('hover');
+          cursorMoveAnimation2.classList.add('hover');
+        });
+
+        element.addEventListener('mouseleave', () => {
+          cursorMoveAnimation.classList.remove('hover');
+          cursorMoveAnimation2.classList.remove('hover');
+        });
+      });
+    }
+  </script>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      offset: 120,
+      duration: 1000
+    });
+  </script>
+</body>
+
 </html>

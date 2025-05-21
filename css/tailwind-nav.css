@@ -1,0 +1,90 @@
+/* Modern Navigation Styles for Logo Only */
+/* Modern Logo Styling Only */
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.nav-logo span {
+  color: var(--skin-color);
+}
+
+/* Custom properties to match your theme */
+:root {
+  --bg-black-50-rgb: 239, 240, 244; /* Light mode */
+}
+
+body.dark {
+  --bg-black-50-rgb: 43, 44, 47; /* Dark mode */
+}
+
+/* Utility classes */
+.text-skin-accent {
+  color: var(--skin-color);
+}
+
+.bg-skin-accent {
+  background-color: var(--skin-color);
+}
+
+.bg-bg-color {
+  background-color: var(--bg-black-50);
+}
+
+.text-text-color {
+  color: var(--text-black-900);
+}
+
+/* Additional animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-link {
+    font-size: 1.25rem; /* text-xl */
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-link {
+    font-size: 1.125rem; /* text-lg */
+  }
+  
+  .nav-toggle {
+    width: 2rem; /* w-8 */
+    height: 2rem; /* h-8 */
+  }
+  
+  .nav-toggle-icon,
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    width: 1.25rem; /* w-5 */
+  }
+}

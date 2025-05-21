@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="utf-8" />
+  <title>404 - Page Not Found | Personal Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- main css -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/skins/color-4.css">
+  <!-- fav icon  -->
+  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+  <style>
+    .not-found-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .background-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(var(--skin-color-rgb), 0.05);
+      z-index: -1;
+    }
+    
+    .shape-1 {
+      width: 400px;
+      height: 400px;
+      top: -150px;
+      right: -150px;
+    }
+    
+    .shape-2 {
+      width: 300px;
+      height: 300px;
+      bottom: -100px;
+      left: -100px;
+    }
+    
+    .shape-3 {
+      width: 200px;
+      height: 200px;
+      bottom: 50%;
+      right: 10%;
+      opacity: 0.3;
+    }
+    
+    .not-found-container {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      z-index: 1;
+    }
+    
+    .error-code {
+      font-size: 150px;
+      font-weight: 700;
+      color: var(--skin-color);
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(var(--skin-color-rgb), 0.2);
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fade-in-up 0.8s ease forwards 0.2s;
+      position: relative;
+    }
+    
+    .error-code::after {
+      content: '';
+      position: absolute;
+      height: 5px;
+      width: 100px;
+      background: var(--skin-color);
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    
+    .error-card {
+      background-color: var(--bg-black-50);
+      padding: 40px;
+      border-radius: 15px;
+      border: 2px solid rgba(var(--skin-color-rgb), 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      transform: translateY(30px);
+      opacity: 0;
+      animation: fade-in-up 0.6s ease forwards 0.6s;
+      margin-top: 30px;
+    }
+    
+    .error-title {
+      font-size: 32px;
+      color: var(--text-black-700);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .error-message {
+      color: var(--text-black-600);
+      margin-bottom: 30px;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    
+    .back-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-primary {
+      background-color: var(--skin-color);
+      color: #fff;
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-black-700);
+      border-color: var(--skin-color);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+    
+    .btn-primary:hover {
+      background-color: transparent;
+      color: var(--skin-color);
+      border-color: var(--skin-color);
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--skin-color);
+      color: #fff;
+    }
+    
+    .icon-404 {
+      font-size: 60px;
+      color: var(--skin-color);
+      opacity: 0;
+      animation: bounceIn 1s ease forwards 1s;
+      margin-bottom: 20px;
+    }
+    
+    @keyframes fade-in-up {
+      0% {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 120px;
+      }
+      
+      .error-title {
+        font-size: 28px;
+      }
+      
+      .error-message {
+        font-size: 16px;
+      }
+      
+      .error-card {
+        padding: 30px 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .error-code {
+        font-size: 100px;
+      }
+      
+      .back-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <div class="not-found-page">
+    <!-- Background shapes for visual interest -->
+    <div class="background-shape shape-1"></div>
+    <div class="background-shape shape-2"></div>
+    <div class="background-shape shape-3"></div>
+    
+    <div class="not-found-container">
+      <div class="error-code">404</div>
+      
+      <div class="error-card">
+        <div class="icon-404">
+          <i class="fas fa-map-signs"></i>
+        </div>
+        <h1 class="error-title">Halaman Tidak Ditemukan</h1>
+        <p class="error-message">Sepertinya Anda mencoba mengakses halaman yang tidak ada atau telah dipindahkan. Silakan kembali ke halaman utama atau coba navigasi lain dari menu.</p>
+        
+        <div class="back-buttons">
+          <a href="index.html" class="btn btn-primary">
+            <i class="fas fa-home"></i> Kembali ke Home
+          </a>
+          <a href="javascript:history.back()" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Halaman Sebelumnya
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Detect and apply dark/light mode from user's website preference
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if the page should be displayed in dark mode
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      
+      if (prefersDarkScheme) {
+        document.body.classList.add('dark');
+      } else {
+        // Default to the same theme as your main website
+        document.body.classList.add('dark');
+      }
+    });
+  </script>
+</body>
+
+</html>

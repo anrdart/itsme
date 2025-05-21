@@ -1,0 +1,182 @@
+/* Modern Timeline Design - New Approach */
+
+/* Timeline Section Styling */
+.timeline-section {
+  position: relative;
+  padding: 30px 0;
+  margin-bottom: 40px;
+}
+
+/* Title Wrapper Styling */
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  background-color: var(--bg-black-100);
+  transition: all 0.3s ease;
+}
+
+.title-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.title-wrapper .icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 15px;
+  background-color: var(--bg-black-50);
+  color: var(--skin-color);
+  font-size: 20px;
+  border: 2px solid var(--skin-color);
+  box-shadow: 0 0 10px rgba(213, 77, 102, 0.3);
+}
+
+.section-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-black-700);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Timeline List Styling */
+.timeline-list {
+  position: relative;
+  padding-left: 0;
+}
+
+/* Line down the middle of the timeline */
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--skin-color), transparent);
+}
+
+/* Timeline Item Styling */
+.timeline-item {
+  position: relative;
+  padding: 20px 0 20px 60px;
+  margin-bottom: 30px;
+  list-style: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item:hover {
+  transform: translateX(10px);
+}
+
+/* Dot on the timeline */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 30px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--skin-color);
+  background-color: var(--bg-black-50);
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(213, 77, 102, 0.5);
+}
+
+/* Timeline Item Content Styling */
+.timeline-item-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-black-700);
+  margin: 0 0 8px;
+  letter-spacing: 0.5px;
+}
+
+.timeline-period {
+  font-weight: 500;
+  color: var(--skin-color);
+  display: block;
+  margin: 0 0 12px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.timeline-text {
+  font-size: 16px;
+  color: var(--text-black-600);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 768px) {
+  .timeline-list::before {
+    left: 30px;
+  }
+  
+  .timeline-item {
+    padding-left: 80px;
+  }
+  
+  .timeline-item::before {
+    left: 20px;
+  }
+}
+
+/* Tab Content Styling */
+.tab-content {
+  width: 100%;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 992px) {
+  .education.tab-content,
+  .experience.tab-content {
+    width: 50%;
+    float: left;
+  }
+  
+  /* Experience section styling for right alignment */
+  .experience .title-wrapper {
+    justify-content: flex-end;
+    text-align: right;
+  }
+  
+  .experience .title-wrapper .icon-box {
+    order: 2;
+    margin-right: 0;
+    margin-left: 15px;
+  }
+  
+  .experience .timeline-list::before {
+    left: auto;
+    right: 30px;
+  }
+  
+  .experience .timeline-item {
+    padding-left: 0;
+    padding-right: 80px;
+    text-align: right;
+  }
+  
+  .experience .timeline-item::before {
+    left: auto;
+    right: 20px;
+  }
+  
+  .experience .timeline-item:hover {
+    transform: translateX(-10px);
+  }
+}

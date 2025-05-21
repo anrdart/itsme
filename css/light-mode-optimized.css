@@ -1,0 +1,280 @@
+/* Light Mode Optimization */
+body.light {
+  --bg-black-900: #f2f2fc;
+  --bg-black-900-rgb: 242, 242, 252;
+  --bg-black-100: #fdf9ff;
+  --bg-black-100-rgb: 253, 249, 255;
+  --bg-black-50: #e8dfec;
+  --bg-black-50-rgb: 232, 223, 236;
+  --text-black-900: #302e4d;
+  --text-black-700: #504e70;
+  --text-black-600: #6c6a89;
+  --shadow-color-1: rgba(0, 0, 0, 0.1);
+  --shadow-color-2: rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced section visibility in light mode */
+body.light .section {
+  background-color: var(--bg-black-900);
+  min-height: 100vh;
+  display: none;
+  padding: 80px 0;
+}
+
+/* Improved contrast for link items in light mode */
+body.light .link-item {
+  color: var(--text-black-900);
+}
+
+/* Better shadows for light mode */
+body.light .outer-shadow {
+  box-shadow: 3px 3px 5px var(--shadow-color-1), 
+              -3px -3px 5px var(--shadow-color-2);
+}
+
+body.light .inner-shadow {
+  box-shadow: inset 3px 3px 5px var(--shadow-color-1), 
+              inset -3px -3px 5px var(--shadow-color-2);
+}
+
+body.light .hover-in-shadow {
+  position: relative;
+  z-index: 1;
+}
+
+body.light .hover-in-shadow:hover {
+  box-shadow: 0 0 10px var(--shadow-color-1);
+}
+
+/* Enhanced text contrast in light mode */
+body.light h1,
+body.light h2,
+body.light h3,
+body.light h4,
+body.light h5,
+body.light h6 {
+  color: var(--text-black-900);
+}
+
+body.light p {
+  color: var(--text-black-700);
+}
+
+/* Enhanced home section for light mode */
+body.light .home-section .home-text p {
+  color: var(--text-black-700);
+}
+
+body.light .home-section .home-text h1 {
+  color: var(--text-black-900);
+}
+
+/* Enhanced about section */
+body.light .about-section .about-info p {
+  color: var(--text-black-700);
+}
+
+/* Enhanced tab items */
+body.light .tab-item {
+  color: var(--text-black-900);
+}
+
+body.light .tab-item.active {
+  color: var(--skin-color);
+}
+
+/* Enhanced timeline */
+body.light .timeline-item {
+  background-color: var(--bg-black-100);
+}
+
+body.light .timeline-item::before {
+  border: 1px solid var(--bg-black-50);
+}
+
+body.light .timeline-item h4 {
+  color: var(--text-black-900);
+}
+
+body.light .timeline-item h3 {
+  color: var(--text-black-700);
+}
+
+/* Enhanced service items */
+body.light .service-item {
+  background-color: var(--bg-black-100);
+}
+
+body.light .service-item .service-item-inner h3 {
+  color: var(--text-black-900);
+}
+
+body.light .service-item .service-item-inner p {
+  color: var(--text-black-700);
+}
+
+/* Enhanced portfolio */
+body.light .portfolio-filter button {
+  color: var(--text-black-900);
+}
+
+body.light .portfolio-item-details {
+  display: none;
+}
+
+body.light .portfolio-item-details p {
+  color: var(--text-black-700);
+}
+
+/* Enhanced contact section */
+body.light .contact-card {
+  background-color: var(--bg-black-100);
+  border: 1px solid var(--bg-black-50);
+}
+
+body.light .contact-card h3 {
+  color: var(--text-black-900);
+}
+
+body.light .contact-form .form-item .form-control {
+  background-color: var(--bg-black-100);
+  border: 1px solid var(--bg-black-50);
+  color: var(--text-black-700);
+}
+
+body.light .contact-form .form-item .form-control::placeholder {
+  color: var(--text-black-600);
+}
+
+/* Improved popup appearance in light mode */
+body.light .popup-overlay {
+  background-color: rgba(242, 242, 252, 0.8);
+}
+
+body.light .popup-content {
+  background-color: var(--bg-black-100);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light .popup-title {
+  color: var(--text-black-900);
+}
+
+body.light .popup-message {
+  color: var(--text-black-700);
+}
+
+body.light .status-message {
+  background-color: rgba(var(--bg-black-100-rgb), 0.95);
+  color: var(--text-black-900);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced 404 page for light mode */
+body.light .not-found-page {
+  background-color: var(--bg-black-900);
+}
+
+body.light .error-card {
+  background-color: var(--bg-black-100);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light .error-title {
+  color: var(--text-black-900);
+}
+
+body.light .error-message {
+  color: var(--text-black-700);
+}
+
+/* Enhanced success page for light mode */
+body.light .success-page {
+  background-color: var(--bg-black-900);
+}
+
+body.light .success-card {
+  background-color: var(--bg-black-100);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light .success-title {
+  color: var(--text-black-900);
+}
+
+body.light .success-message {
+  color: var(--text-black-700);
+}
+
+/* Fix for modern-img-container in light mode */
+body.light .modern-img-container {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border: 5px solid var(--bg-black-100);
+}
+
+/* Fix for dropdown menu in light mode */
+body.light .dropdown-menu {
+  background-color: var(--bg-black-100);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light .dropdown-menu ul li a {
+  color: var(--text-black-900);
+}
+
+body.light .dropdown-menu ul li a:hover,
+body.light .dropdown-menu ul li a.active {
+  color: var(--skin-color);
+}
+
+body.light .dropdown-copyright {
+  color: var(--text-black-700);
+}
+
+/* Fix for form fields in light mode */
+body.light input, 
+body.light textarea {
+  background-color: var(--bg-black-100) !important;
+  border: 1px solid var(--bg-black-50) !important;
+  color: var(--text-black-900) !important;
+}
+
+body.light input::placeholder, 
+body.light textarea::placeholder {
+  color: var(--text-black-600) !important;
+}
+
+/* Fix for scrollbar in light mode */
+body.light::-webkit-scrollbar-track {
+  background-color: var(--bg-black-100);
+}
+
+body.light::-webkit-scrollbar-thumb {
+  background-color: var(--bg-black-50);
+}
+
+/* Fix for preloader in light mode */
+body.light .preloader {
+  background-color: var(--bg-black-900);
+}
+
+/* Fix for auto-typing animation in light mode */
+body.light .typed-text {
+  color: var(--skin-color);
+}
+
+body.light .cursor {
+  background-color: var(--text-black-900);
+}
+
+/* Improved buttons in light mode */
+body.light .btn-1 {
+  background-color: var(--skin-color);
+  color: white;
+  border: 2px solid var(--skin-color);
+}
+
+body.light .btn-1:hover {
+  background-color: transparent;
+  color: var(--skin-color);
+}
