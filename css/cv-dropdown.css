@@ -42,6 +42,20 @@
   box-shadow: var(--inner-shadow);
 }
 
+/* Style for main buttons to match dropdown */
+.cv-dropdown-btn:hover,
+a[href="#contact"]:hover {
+  color: var(--skin-color) !important;
+  box-shadow: var(--outer-shadow-0) !important;
+}
+
+.cv-dropdown-btn:hover::after,
+a[href="#contact"]:hover::after {
+  box-shadow: var(--inner-shadow) !important;
+  content: "" !important;
+  display: block !important;
+}
+
 .cv-dropdown-content a::after {
   content: "";
   position: absolute;

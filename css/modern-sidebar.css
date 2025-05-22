@@ -93,10 +93,14 @@
 /* Hover and active states for menu links */
 .nav-menu ul li a:hover {
   color: var(--skin-color);
+  border-bottom: none;
+  text-decoration: none;
 }
 
 .nav-menu ul li a.active {
   color: var(--skin-color);
+  border-bottom: none;
+  text-decoration: none;
 }
 
 /* Style the close button */

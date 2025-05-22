@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Personal Portfolio Website</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <!-- for scrolling animation -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <!-- font awesome -->
@@ -33,6 +33,10 @@
   <!-- Color picker CSS has been removed -->
   <!-- Modern Dropdown Menu -->
   <link rel="stylesheet" type="text/css" href="css/modern-dropdown.css" />
+  <!-- mobile fixes css -->
+  <link rel="stylesheet" type="text/css" href="css/mobile-fixes.css" />
+  <!-- style switcher mobile fixes -->
+  <link rel="stylesheet" type="text/css" href="css/style-switcher-mobile.css" />
   <!-- default color css  -->
   <link rel="stylesheet" href="css/skins/color-1.css" disabled>
   <link rel="stylesheet" href="css/style-switcher.css">
@@ -44,6 +48,29 @@
   <link rel="stylesheet" class="alternate-style" title="color-5" href="css/skins/color-5.css" disabled>
   <!-- fav icon  -->
   <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+  <!-- Inline CSS for hard-fixing style switcher position problems on mobile -->  
+  <style>
+    /* Hard override untuk posisi style switcher di mobile */
+    @media (max-width: 768px) {
+      .style-switcher-toggler, .day-night {
+        position: fixed !important;
+        right: 20px !important;
+        left: auto !important;
+        z-index: 10000 !important;
+      }
+      .style-switcher-toggler {
+        top: 20px !important;
+      }
+      .day-night {
+        top: 80px !important;
+      }
+      .style-switcher {
+        right: 0 !important;
+        left: auto !important;
+        top: 20px !important;
+      }
+    }
+  </style>
 </head>
 
 <body class="dark">
@@ -63,7 +90,7 @@
     <div class="container">
       <div class="row justify-content-between">
         <div class="nav-logo">
-          <a href="/">Ekal<span>liptus</span></a>
+          <a href="/" style="color: white;">Ekal<span>liptus</span></a>
         </div>
       </div>
     </div>
@@ -202,17 +229,17 @@
         <div class="about-info" data-aos="fade-left">
           <p class="about-info-inner">
           <div class="cv-dropdown">
-            <a href="#" class="cv-dropdown-btn btn-1 outer-shadow hover-in-shadow">Download CV</a>
+            <a href="#" class="cv-dropdown-btn btn-1 outer-shadow" style="min-width: 160px; text-align: center;">Download CV</a>
             <div class="cv-dropdown-content outer-shadow">
               <a href="CV_IT_Support.pdf" target="next_page"><i class="fas fa-desktop"></i> IT Support</a>
-              <a href="CV_Mobile_Flutter_Developer.pdf" target="next_page"><i class="fas fa-mobile-alt"></i> Mobile
-                Flutter Developer</a>
+              <a href="CV_Mobile_Flutter_Developer.pdf" target="next_page"><i class="fas fa-mobile-alt"></i> Mobile Flutter Developer</a>
               <a href="CV_Web_Developer.pdf" target="next_page"><i class="fas fa-code"></i> Web Developer</a>
             </div>
           </div>
-          <a href="#contact" class="link-item btn-1 outer-shadow hover-in-shadow">Hire Me</a>
+          <a href="#contact" class="link-item btn-1 outer-shadow" style="min-width: 160px; text-align: center;">Hire Me</a>
         </div>
       </div>
+      <br><br><br>
       <!-- about section start -->
       <div class="row" data-aos="zoom-in-down">
         <div class="about-tabs">

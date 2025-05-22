@@ -11,6 +11,7 @@
     --text-black-600: #666666; 
     --text-black-300: #bbbbbb;
     --skin-color: #d54d66;
+    --skin-color-rgb: 213, 77, 102; /* Added RGB values for skin color */
     --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
     --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
     --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
@@ -112,7 +113,10 @@ html {
     box-sizing: border-box;
 }
 a{
-    text-decoration: none;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    position: relative;
+    box-shadow: none !important;
 }
 ul{
     list-style: none;
@@ -165,6 +169,19 @@ img{
     transition: all 0.3s ease;
     z-index: -1;
 }
+
+/* Ensure no underlines on links */
+a.link-item, a[href="#contact"] {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+a.link-item::after, a[href="#contact"]::after {
+    content: none !important;
+    display: none !important;
+    border-bottom: none !important;
+    background: none !important;
+}
 .align-items-center{
     align-items: center;
 }
@@ -181,9 +198,81 @@ img{
     border-radius: 30px;
     display: inline-block;
     border: none;
+    text-decoration: none;
+    width: auto;
+    min-width: 160px;
+    text-align: center;
 }
 .btn-1::after{
     border-radius: 30px;
+    background: none !important;
+    border-bottom: none !important;
+}
+
+/* Override specific styling for Hire Me button */
+a[href="#contact"].btn-1::after,
+a[href="#contact"].btn-1::before {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    border-bottom: none !important;
+    text-decoration: none !important;
+}
+
+/* No-underline class for guaranteed removal of blue line */
+.no-underline {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+    background: transparent !important;
+    position: relative;
+}
+
+.no-underline::after,
+.no-underline::before {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    border-bottom: none !important;
+    text-decoration: none !important;
+    border: none !important;
+    position: static !important;
+}
+
+/* Enhanced hover effects to match dropdown menu style */
+.btn-1 {
+    transition: all 0.3s ease !important;
+}
+
+/* Reset any no-underline effects for hover */
+.btn-1::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 30px !important;
+    z-index: -1 !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-1:hover {
+    color: var(--skin-color) !important;
+    box-shadow: var(--outer-shadow-0) !important;
+}
+
+.btn-1:hover::after {
+    box-shadow: var(--inner-shadow) !important;
+}
+
+/* Reset the hover effect for menu buttons */
+.cv-dropdown-content a:hover {
+    background-color: transparent;
+    color: var(--skin-color);
 }
 .hover-in-shadow:hover::after{
     box-shadow: var(--inner-shadow);
@@ -595,8 +684,9 @@ img{
     color: var(--skin-color);
 }
 
-.nav-menu ul li a::after{
-    border-radius: 30px;
+.nav-menu ul li a::after {
+    content: none;
+    display: none;
 }
 
 .nav-menu .copyright-text{
