@@ -28,11 +28,10 @@
   width: 90%;
   text-align: center;
   position: relative;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--outer-shadow);
   transform: translateY(-20px);
   transition: all 0.4s ease-in-out;
-  border: 2px solid var(--skin-color);
-  backdrop-filter: blur(10px);
+  border: none;
 }
 
 .popup-overlay.active .popup-content {
@@ -71,31 +70,54 @@
   font-size: 24px;
   color: var(--text-black-700);
   margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .popup-message {
   color: var(--text-black-600);
   margin-bottom: 20px;
   line-height: 1.6;
+  font-size: 16px;
 }
 
 .popup-button {
   display: inline-block;
-  padding: 12px 30px;
-  background-color: var(--skin-color);
-  color: var(--bg-black-900);
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--skin-color);
+  background-color: transparent;
+  line-height: 1.5;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
   border-radius: 30px;
   text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  cursor: pointer;
+  width: auto;
+  min-width: 160px;
+  text-align: center;
+  box-shadow: var(--outer-shadow);
+  border: none;
+  position: relative;
+  z-index: 1;
 }
 
 .popup-button:hover {
-  background-color: transparent;
   color: var(--skin-color);
-  border-color: var(--skin-color);
+  box-shadow: var(--outer-shadow-0);
+}
+
+.popup-button:hover::after {
+  box-shadow: var(--inner-shadow);
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  z-index: -1;
 }
 
 /* Status message styling */
@@ -104,14 +126,14 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(var(--bg-black-50-rgb), 0.9);
+  background-color: var(--bg-black-50);
   padding: 15px 30px;
   border-radius: 30px;
   z-index: 1000;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  border: 2px solid var(--skin-color);
+  box-shadow: var(--outer-shadow);
   display: none;
+  min-width: 200px;
+  text-align: center;
 }
 
 .status-message.active {
@@ -131,11 +153,14 @@
   font-weight: 500;
   display: flex;
   align-items: center;
+  justify-content: center;
+  color: var(--text-black-600);
 }
 
 .status-message p i {
   margin-right: 10px;
   animation: spin 1.5s linear infinite;
+  color: var(--skin-color);
 }
 
 @keyframes spin {

@@ -3,8 +3,21 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Personal Portfolio Website</title>
+  <title>єкαℓℓιρтυѕ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <!-- Tema instan untuk mencegah flicker selama load -->
+  <script>
+    // Terapkan tema dari localStorage sebelum halaman dirender
+    (function() {
+      const isDark = localStorage.getItem('theme-dark') === 'true';
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
   <!-- for scrolling animation -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <!-- font awesome -->
@@ -22,12 +35,21 @@
   <link rel="stylesheet" type="text/css" href="css/cv-dropdown.css" />
   <!-- GitHub button css -->
   <link rel="stylesheet" type="text/css" href="css/github-button.css" />
-  <!-- Timeline icon fix css -->
-  <link rel="stylesheet" type="text/css" href="css/timeline-fix.css" />
+  <!-- Consolidated Tab Styling -->
+  <link rel="stylesheet" type="text/css" href="css/tab-consolidated.css" />
+  <link rel="stylesheet" type="text/css" href="css/card-consistency.css" />
+  <link rel="stylesheet" type="text/css" href="css/modern-timeline.css" />
+  <link rel="stylesheet" type="text/css" href="css/timeline-theme-fix.css" />
+  <!-- Consolidated Timeline Styling -->
+  <link rel="stylesheet" type="text/css" href="css/timeline-consolidated.css" />
+  <link rel="stylesheet" type="text/css" href="css/text-capitalization-fix.css" />
+  <link rel="stylesheet" type="text/css" href="css/modern-popup.css" />
   <!-- Modern image styles -->
   <link rel="stylesheet" type="text/css" href="css/modern-images.css" />
   <!-- Modern sidebar popup menu -->
   <link rel="stylesheet" type="text/css" href="css/modern-sidebar.css" />
+  <!-- Skills Grid Styling -->
+  <link rel="stylesheet" type="text/css" href="css/skills-grid.css" />
   <!-- Popup styles -->
   <link rel="stylesheet" type="text/css" href="css/popup.css" />
   <!-- Color picker CSS has been removed -->
@@ -37,15 +59,10 @@
   <link rel="stylesheet" type="text/css" href="css/mobile-fixes.css" />
   <!-- style switcher mobile fixes -->
   <link rel="stylesheet" type="text/css" href="css/style-switcher-mobile.css" />
-  <!-- default color css  -->
-  <link rel="stylesheet" href="css/skins/color-1.css" disabled>
+  <!-- Style switcher CSS -->
   <link rel="stylesheet" href="css/style-switcher.css">
-  <!-- theme colors -->
-  <link rel="stylesheet" class="alternate-style" title="color-1" href="css/skins/color-1.css" disabled>
-  <link rel="stylesheet" class="alternate-style" title="color-2" href="css/skins/color-2.css" disabled>
-  <link rel="stylesheet" class="alternate-style" title="color-3" href="css/skins/color-3.css" disabled>
-  <link rel="stylesheet" class="alternate-style" title="color-4" href="css/skins/color-4.css">
-  <link rel="stylesheet" class="alternate-style" title="color-5" href="css/skins/color-5.css" disabled>
+  <!-- Theme Controls CSS -->
+  <link rel="stylesheet" href="css/theme-controls.css">
   <!-- fav icon  -->
   <link rel="shortcut icon" href="./img/favicon/favicon.ico">
   <!-- Inline CSS for hard-fixing style switcher position problems on mobile -->  
@@ -73,7 +90,7 @@
   </style>
 </head>
 
-<body class="dark">
+<body>
 
   <!-- ========== Start pre loader ========== -->
   <div class="preloader">
@@ -90,8 +107,20 @@
     <div class="container">
       <div class="row justify-content-between">
         <div class="nav-logo">
-          <a href="/" style="color: white;">Ekal<span>liptus</span></a>
+          <a href="/" class="logo-text">єкαℓ<span>ℓιρтυѕ</span></a>
         </div>
+        <style>
+          .nav-logo .logo-text {
+            color: var(--text-black-900) !important;
+            text-decoration: none !important;
+          }
+          body.dark .nav-logo .logo-text {
+            color: #ffffff !important;
+          }
+          body:not(.dark) .nav-logo .logo-text {
+            color: #000000 !important;
+          }
+        </style>
       </div>
     </div>
   </div>
@@ -177,8 +206,8 @@
     <!-- end -->
     <div class="container">
       <div class="row full-screen align-items-center">
-        <div class="home-text" data-aos="fade-down">
-          <p><br>Hello, </p>
+        <div class="home-text mobile-visible">
+          <p>Hello, </p>
           <!-- ========== Start typing animation ========== -->
           <div id="auto-typing-animation">
             <p>I'm <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
@@ -241,122 +270,110 @@
       </div>
       <br><br><br>
       <!-- about section start -->
-      <div class="row" data-aos="zoom-in-down">
-        <div class="about-tabs">
-          <span class="tab-item outer-shadow active" data-target=".skills">skills</span>
-          <span class="tab-item" data-target=".experience">experience</span>
-          <span class="tab-item" data-target=".education">education</span>
-        </div>
-      </div>
-      <!-- end -->
-      <div class="row" data-aos="zoom-in-down">
-        <div class="skills tab-content active">
-          <!-- skill item -->
-          <div class="row-center">
-            <!-- skill section start  -->
-            <!-- skills logo section start -->
-            <div class="row" style="justify-content:center; margin-top:32px;">
-              <div style="display:flex; gap:36px; flex-wrap:wrap; justify-content:center; align-items:center;">
-                <div style="text-align:center;">
-                  <img src="img/skills/flutter.svg" alt="Flutter" width="60" height="60"
-                    style="display:block;margin:0 auto 8px;">
-                  <div style="font-weight:500;">Flutter</div>
-                </div>
-                <div style="text-align:center;">
-                  <img src="img/skills/nextjs.svg" alt="Next.js" width="60" height="60"
-                    style="display:block;margin:0 auto 8px;">
-                  <div style="font-weight:500;">Next.js</div>
-                </div>
-                <div style="text-align:center;">
-                  <img src="img/skills/reactjs.svg" alt="React.js" width="60" height="60"
-                    style="display:block;margin:0 auto 8px;">
-                  <div style="font-weight:500;">React.js</div>
-                </div>
-                <div style="text-align:center;">
-                  <img src="img/skills/python.svg" alt="Python" width="60" height="60"
-                    style="display:block;margin:0 auto 8px;">
-                  <div style="font-weight:500;">Python</div>
-                </div>
-                <div style="text-align:center;">
-                  <img src="img/skills/tailwindcss.svg" alt="Tailwind CSS" width="60" height="60"
-                    style="display:block;margin:0 auto 8px;">
-                  <div style="font-weight:500;">Tailwind CSS</div>
-                </div>
-                <div style="text-align:center;">
-                  <img src="img/skills/laravel.svg" alt="Laravel" width="60" height="60"
-                    style="display:block;margin:0 auto 8px;">
-                  <div style="font-weight:500;">Laravel</div>
-                </div>
-              </div>
-            </div>
-            <!-- skills logo section end -->
+        <div class="row">
+          <div class="about-tabs">
+            <span class="tab-item outer-shadow active" data-target="#skills-tab">Skills</span>
+            <span class="tab-item outer-shadow" data-target="#education-tab">Education</span>
+            <span class="tab-item outer-shadow" data-target="#experience-tab">Experience</span>
           </div>
-          <!-- end -->
         </div>
-      </div>
-      <!-- end  -->
+      <!-- end -->
+      
+      <!-- Tab Contents -->
+      <div class="tab-contents">
+        <!-- Skills Tab Content -->
+        <div id="skills-tab" class="tab-content active">
+          <div class="skills-header">
+            <i class="fas fa-code"></i>
+            <h3>Technical Skills</h3>
+          </div>
+          <div class="row-center">
+            <div class="skills-grid">
+              <div class="skill-item outer-shadow">
+                <img src="img/skills/flutter.svg" alt="Flutter">
+                <span class="skill-name">Flutter</span>
+              </div>
+              <div class="skill-item outer-shadow">
+                <img src="img/skills/nextjs.svg" alt="Next.js">
+                <span class="skill-name">Next.js</span>
+              </div>
+              <div class="skill-item outer-shadow">
+                <img src="img/skills/reactjs.svg" alt="React.js">
+                <span class="skill-name">React.js</span>
+              </div>
+              <div class="skill-item outer-shadow">
+                <img src="img/skills/python.svg" alt="Python">
+                <span class="skill-name">Python</span>
+              </div>
+              <div class="skill-item outer-shadow">
+                <img src="img/skills/tailwindcss.svg" alt="Tailwind CSS">
+                <span class="skill-name">Tailwind CSS</span>
+              </div>
+              <div class="skill-item outer-shadow">
+                <img src="img/skills/laravel.svg" alt="Laravel">
+                <span class="skill-name">Laravel</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <!-- experience and education section - modern design -->
-      <div class="row" data-aos="fade-up">
-        <!-- education section -->
-        <div class="education tab-content">
-          <section class="timeline-section">
-            <div class="title-wrapper outer-shadow">
-              <div class="icon-box">
+        <!-- Education Tab Content -->
+        <div id="education-tab" class="tab-content">
+          <div class="row">
+            <section class="timeline-section">
+              <div class="skills-header">
                 <i class="fas fa-graduation-cap"></i>
+                <h3>Education</h3>
               </div>
-              <h3 class="section-subtitle">Education</h3>
-            </div>
 
-            <ol class="timeline-list">
-              <li class="timeline-item outer-shadow" data-aos="fade-right">
-                <h4 class="timeline-item-title">Universitas Bina Sarana Informatika</h4>
-                <span class="timeline-period">2021 — 2024</span>
-                <p class="timeline-text">Information Systems</p>
-              </li>
+              <ol class="timeline-list">
+                <li class="timeline-item timeline-card">
+                  <h4 class="timeline-item-title">Universitas Bina Sarana Informatika</h4>
+                  <span class="timeline-period">2021 — 2024</span>
+                  <p class="timeline-text">Information Systems</p>
+                </li>
 
-              <li class="timeline-item outer-shadow" data-aos="fade-right" data-aos-delay="200">
-                <h4 class="timeline-item-title">SMK Al-Irsyad Tegal</h4>
-                <span class="timeline-period">2018 — 2021</span>
-                <p class="timeline-text">Software Engineering</p>
-              </li>
-            </ol>
-          </section>
+                <li class="timeline-item timeline-card">
+                  <h4 class="timeline-item-title">SMK Al-Irsyad Tegal</h4>
+                  <span class="timeline-period">2018 — 2021</span>
+                  <p class="timeline-text">Software Engineering</p>
+                </li>
+              </ol>
+            </section>
+          </div>
         </div>
-        <!-- education end -->
-
-        <!-- experience section -->
-        <div class="experience tab-content">
-          <section class="timeline-section">
-            <div class="title-wrapper outer-shadow">
-              <div class="icon-box">
+      
+        <!-- Experience Tab Content -->
+        <div id="experience-tab" class="tab-content">
+          <div class="row">
+            <section class="timeline-section">
+              <div class="skills-header">
                 <i class="fas fa-briefcase"></i>
+                <h3>Experience</h3>
               </div>
-              <h3 class="section-subtitle">Experience</h3>
-            </div>
 
-            <ol class="timeline-list">
-              <li class="timeline-item outer-shadow" data-aos="fade-left">
-                <h4 class="timeline-item-title">PT. Visionet Data Internasional</h4>
-                <span class="timeline-period">Nov 2024 — Apr 2025</span>
-                <p class="timeline-text">Service Area Engineer</p>
-              </li>
+              <ol class="timeline-list">
+                <li class="timeline-item timeline-card">
+                  <h4 class="timeline-item-title">PT. Visionet Data Internasional</h4>
+                  <span class="timeline-period">Nov 2024 — Apr 2025</span>
+                  <p class="timeline-text">Service Area Engineer</p>
+                </li>
 
-              <li class="timeline-item outer-shadow" data-aos="fade-left" data-aos-delay="200">
-                <h4 class="timeline-item-title">ANRAVT</h4>
-                <span class="timeline-period">Sep 2020 — Present</span>
-                <p class="timeline-text">Freelancer</p>
-              </li>
-
-              <li class="timeline-item outer-shadow" data-aos="fade-left" data-aos-delay="400">
-                <h4 class="timeline-item-title">PT. Marka Kreasi Persada</h4>
-                <span class="timeline-period">Aug 2023 — Dec 2023</span>
-                <p class="timeline-text">MSIB - Flutter Developer</p>
-              </li>
-            </ol>
-          </section>
+                <li class="timeline-item timeline-card">
+                  <h4 class="timeline-item-title">ANRAVT</h4>
+                  <span class="timeline-period">Sep 2020 — Present</span>
+                  <p class="timeline-text">Freelancer</p>
+                </li>
+              
+                <li class="timeline-item timeline-card">
+                  <h4 class="timeline-item-title">PT. Marka Kreasi Persada</h4>
+                  <span class="timeline-period">Aug 2023 — Dec 2023</span>
+                  <p class="timeline-text">MSIB - Flutter Developer</p>
+                </li>
+              </ol>
+            </section>
+          </div>
         </div>
-        <!-- experience end -->
       </div>
       <!-- experience and education section end -->
 
@@ -473,11 +490,12 @@
   <section class="contact-section section" id="contact">
     <div class="container">
       <div class="row">
-        <div class="section-title" data-aos="fade-up">
+        <div class="section-title" data-aos="fade-in">
 
           <h2>Get In Touch</h2>
         </div>
       </div>
+      
       <div class="row" data-aos="fade-left">
         <!-- ========== Start contact item ========== -->
         <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
@@ -599,48 +617,52 @@
   </div>
   <!-- ========== End portfolio popup ========== -->
 
-  <!-- Moved .style-switcher-toggler and .day-night outside of .style-switcher -->
-  <div class="style-switcher-toggler s-icon outer-shadow hover-in-shadow">
-    <i class="fas fa-cog straight-icon" style="transform: rotate(0deg) !important;"></i>
-  </div>
-  <div class="day-night s-icon outer-shadow hover-in-shadow">
-    <i class="fas fa-moon straight-icon" style="transform: rotate(0deg) !important;"></i>
-  </div>
-
-  <!-- ========== Start style switciher start - for demo pirposs only ========== -->
-  <div class="style-switcher outer-shadow">
-    <h4>Theme Color</h4>
-    <div class="colors">
-      <span class="color-1" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-1')"></span>
-      <span class="color-2" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-2')"></span>
-      <span class="color-3" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-3')"></span>
-      <span class="color-4" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-4')"></span>
-      <span class="color-5" data-tilt data-tilt-scale="1.1" onclick="setActiveStyle('color-5')"></span>
+  <!-- Theme Controls - Bottom Right -->
+  <div class="theme-controls-bottom">
+    <div class="theme-control-btn-bottom outer-shadow day-night-bottom">
+      <i class="fas fa-sun"></i>
     </div>
   </div>
-  <!-- ========== End style switciher start - for demo pirposs only ========== -->
 
-  <!-- ========== Start Custom Cursor ========== -->
-  <div class="cursorMoveAnimation"></div>
-  <div class="cursorMoveAnimation2"></div>
-  <!-- ========== End Custom Cursor ========== -->
-
-  <!-- ========== Success Popup ========== -->
-  <div class="popup-overlay" id="successPopup">
+  <!-- Modern Sending Message Popup -->
+  <div class="modern-popup" id="sendingPopup">
     <div class="popup-content">
-      <div class="popup-close" onclick="closePopup()"><i class="fas fa-times"></i></div>
-      <div class="popup-icon"><i class="fas fa-check-circle"></i></div>
-      <h3 class="popup-title">Pesan Terkirim!</h3>
-      <p class="popup-message">Terima kasih telah menghubungi. Kami akan segera membalas pesan Anda.</p>
-      <button class="popup-button" onclick="redirectToHome()">Kembali ke Home</button>
+      <div class="spinner-container">
+        <div class="modern-spinner"></div>
+      </div>
+      <h3 class="popup-message">Mengirim Pesan...</h3>
+      <p class="popup-submessage">Mohon tunggu sebentar, pesan Anda sedang diproses</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+      </div>
     </div>
   </div>
-  
+
+  <!-- Modern Success Message Popup -->
+  <div class="modern-popup" id="successPopup">
+    <div class="popup-content">
+      <div class="popup-close" onclick="closeSuccessPopup()">
+        <i class="fas fa-times"></i>
+      </div>
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h3 class="popup-message">Pesan Terkirim!</h3>
+      <p class="popup-submessage">Terima kasih telah menghubungi saya. Saya akan segera membalas pesan Anda.</p>
+      <div class="text-center">
+        <button class="popup-button" onclick="closeSuccessPopup()">Kembali ke Beranda</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Status Message -->
   <div class="status-message" id="statusMessagePopup">
     <p><i class="fas fa-spinner"></i> <span id="statusText">Mengirim pesan...</span></p>
   </div>
-  <!-- ========== End Success Popup ========== -->
+  <!-- Custom Cursor -->
+  <div class="cursorMoveAnimation"></div>
+  <div class="cursorMoveAnimation2"></div>
+  <!-- Footer Section Removed -->
 
   <!-- Color picker has been removed -->
 
@@ -649,19 +671,18 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-  <!-- style switcher js -->
-  <script src="js/style-switcher.js"></script>
-  <script src="js/autoNavHighlight.js"></script>
+  <!-- Theme Manager - Complete solution for theme handling -->
+  <script src="js/theme-manager.js"></script>
   <script src="js/animation.js"></script>
   <script src="js/glassmorphism-animation.js"></script>
   <script src="js/autoTypingAnimation.js"></script>
   <script src="js/section-navigation.js"></script>
-  <script src="js/accordion.js"></script>
+  <script src="js/about-tabs.js"></script>
   <script src="js/cv-dropdown.js"></script>
   <script src="js/modern-dropdown.js"></script>
   <script src="js/icon-manager.js"></script>
   <!-- Email Handling with FormSubmit.co -->
-  <script src="js/email-handler-simplified.js"></script>
+  <script src="js/modern-popup-handler.js"></script>
   <script src="js/404-handler.js"></script>
   <script>
     // Make sure the preloader is properly removed once the page loads
@@ -733,7 +754,7 @@
       });
 
       // Handle interactive elements
-      const interactiveElements = document.querySelectorAll('a, button, .link-item, .outer-shadow, .filter-item, .tab-item, .color-1, .color-2, .color-3, .color-4, .color-5, .style-switcher-toggler, .day-night, .view-project, .pp-close');
+      const interactiveElements = document.querySelectorAll('a, button, .link-item, .outer-shadow, .filter-item, .tab-item, .color-1, .color-2, .color-3, .style-switcher-toggler, .day-night, .view-project, .pp-close');
 
       interactiveElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
@@ -752,8 +773,49 @@
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init({
-      offset: 120,
-      duration: 1000
+      offset: 50,
+      duration: 800,
+      once: false,
+      mirror: true,
+      disable: window.innerWidth < 768 ? true : false
+    });
+  </script>
+  
+  <!-- Tab Navigation Script -->
+  <script src="js/tab-switcher.js"></script>
+  
+  <!-- Inline script to ensure tabs work -->
+  <script>
+    // Direct tab implementation
+    window.addEventListener('load', function() {
+      // Force the Skills tab to be visible initially
+      document.querySelector('.skills.tab-content').style.display = 'block';
+      document.querySelector('.tab-item[data-target=".skills"]').classList.add('active');
+      
+      // Hide other tabs
+      document.querySelector('.education.tab-content').style.display = 'none';
+      document.querySelector('.experience.tab-content').style.display = 'none';
+      
+      // Setup click handlers directly
+      document.querySelectorAll('.tab-item').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          const target = this.getAttribute('data-target');
+          
+          // Hide all content
+          document.querySelectorAll('.tab-content').forEach(function(content) {
+            content.style.display = 'none';
+          });
+          
+          // Show target content
+          document.querySelector(target).style.display = 'block';
+          
+          // Update active tab
+          document.querySelectorAll('.tab-item').forEach(function(t) {
+            t.classList.remove('active');
+          });
+          this.classList.add('active');
+        });
+      });
     });
   </script>
 </body>

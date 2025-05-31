@@ -1,0 +1,262 @@
+/* Modern Timeline Style - Simplified & Optimized 2025-05-24 */
+.timeline-list {
+  position: relative;
+  padding: 0;
+  margin: 0 0 20px 0;
+  list-style: none;
+}
+
+/* Garis utama timeline yang elegan - tanpa animasi */
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  width: 2px;
+  background: linear-gradient(to bottom, 
+    rgba(var(--skin-color-rgb), 0.1), 
+    rgba(var(--skin-color-rgb), 1), 
+    rgba(var(--skin-color-rgb), 0.1));
+  z-index: 1;
+}
+
+/* Header untuk setiap section timeline */
+.timeline-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-left: 15px;
+}
+
+.timeline-header i {
+  font-size: 24px;
+  color: var(--skin-color);
+  margin-right: 10px;
+}
+
+.timeline-header h3 {
+  font-size: 22px;
+  color: var(--text-black-700);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Titik-titik pada timeline */
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding: 0;
+  z-index: 1;
+}
+
+/* Titik di timeline - tanpa animasi */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: var(--skin-color);
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 0 3px rgba(var(--skin-color-rgb), 0.2);
+}
+
+/* Card styling - tanpa animasi */
+.timeline-card {
+  background-color: var(--bg-black-50);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--outer-shadow);
+  transition: all 0.3s ease;
+  min-height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  margin-left: 30px;
+  z-index: 2;
+}
+
+/* Title in timeline card */
+.timeline-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-black-700);
+}
+
+/* Period (year range) */
+.timeline-card .period {
+  display: block;
+  font-size: 14px;
+  color: var(--skin-color);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+/* Description text */
+.timeline-card p {
+  margin: 0;
+  color: var(--text-black-600);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Garis penghubung dari titik ke card */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  width: 25px;
+  height: 2px;
+  background-color: var(--skin-color);
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.timeline-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-left: 3px solid var(--skin-color);
+}
+
+/* Gradient overlay effect on hover */
+.timeline-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--skin-color-rgb), 0.05) 0%,
+    transparent 50%,
+    rgba(var(--skin-color-rgb), 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-card:hover::before {
+  opacity: 1;
+}
+
+/* Animasi dihapus untuk performa yang lebih baik */
+
+/* Animation order dihapus */
+
+/* Responsif untuk mobile dan tablet - Ditingkatkan */
+@media screen and (max-width: 768px) {
+  .timeline-list::before {
+    left: 8px;
+  }
+  
+  .timeline-item::before {
+    left: 8px;
+    width: 10px;
+    height: 10px;
+  }
+  
+  .timeline-item::after {
+    left: 14px;
+    width: 18px;
+  }
+  
+  .timeline-card {
+    margin-left: 25px;
+    padding: 15px;
+    min-height: 90px;
+  }
+  
+  .timeline-header {
+    padding-left: 5px;
+    margin-bottom: 15px;
+    justify-content: center;
+  }
+  
+  .timeline-header i {
+    font-size: 18px;
+  }
+  
+  .timeline-header h3 {
+    font-size: 17px;
+  }
+  
+  .timeline-card h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  
+  .timeline-card .period {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  
+  .timeline-card p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .timeline-item {
+    margin-bottom: 25px;
+  }
+}
+
+/* Optimasi khusus untuk mobile kecil */
+@media screen and (max-width: 480px) {
+  .timeline-list::before {
+    left: 7px;
+  }
+  
+  .timeline-item::before {
+    left: 7px;
+    width: 8px;
+    height: 8px;
+  }
+  
+  .timeline-item::after {
+    left: 12px;
+    width: 15px;
+  }
+  
+  .timeline-card {
+    margin-left: 22px;
+    padding: 12px;
+    min-height: 80px;
+  }
+  
+  .timeline-item {
+    margin-bottom: 20px;
+  }
+  
+  .timeline-card h4 {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+  
+  .timeline-card .period {
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  
+  .timeline-card p {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+  
+  .timeline-header i {
+    font-size: 16px;
+  }
+  
+  .timeline-header h3 {
+    font-size: 16px;
+  }
+}

@@ -121,6 +121,15 @@
     font-size: 40px;
   }
   
+  /* Fix for mobile visibility issues */
+  .mobile-visible {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  
   .section-title h2 {
     font-size: 28px;
   }
@@ -144,10 +153,16 @@
   .home-section .home-text {
     order: 2;
     text-align: center;
+    margin-top: 30px;
+  }
+  
+  .home-section .home-image {
+    margin-top: -40px;
+    margin-bottom: 10px;
   }
   
   .home-section .full-screen {
-    padding: 100px 0;
+    padding: 70px 0 100px;
   }
   
   /* Adjust about section */

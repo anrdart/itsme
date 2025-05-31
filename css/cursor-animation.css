@@ -100,7 +100,7 @@ a, button, .link-item, .outer-shadow {
 
 /* Fix for specific elements to ensure they show properly */
 .filter-item, .pp-close, .view-project, 
-.tab-item, .color-1, .color-2, .color-3, .color-4, .color-5,
+.tab-item, .color-1, .color-2, .color-3,
 .style-switcher-toggler, .day-night {
   cursor: none !important;
 }
@@ -110,7 +110,7 @@ a, button, .link-item, .outer-shadow {
   html, body, 
   a, button, .link-item, .outer-shadow,
   .filter-item, .pp-close, .view-project, 
-  .tab-item, .color-1, .color-2, .color-3, .color-4, .color-5,
+  .tab-item, .color-1, .color-2, .color-3,
   .style-switcher-toggler, .day-night {
     cursor: auto !important;
   }

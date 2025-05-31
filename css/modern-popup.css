@@ -1,0 +1,187 @@
+/* Modern Popup Styles */
+
+/* Base popup container */
+.modern-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.modern-popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Popup content */
+.popup-content {
+  background-color: var(--bg-black-50);
+  border-radius: 15px;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-popup.active .popup-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Loading spinner */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.modern-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(var(--skin-color-rgb), 0.2);
+  border-top-color: var(--skin-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Progress bar */
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(var(--skin-color-rgb), 0.2);
+  border-radius: 3px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background-color: var(--skin-color);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  animation: progress 2s ease-in-out infinite;
+}
+
+/* Message text */
+.popup-message {
+  text-align: center;
+  color: var(--text-black-700);
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.popup-submessage {
+  text-align: center;
+  color: var(--text-black-600);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgba(var(--skin-color-rgb), 0.1);
+  color: var(--skin-color);
+  transition: all 0.3s ease;
+}
+
+.popup-close:hover {
+  background-color: rgba(var(--skin-color-rgb), 0.2);
+}
+
+/* Success icon */
+.success-icon {
+  font-size: 50px;
+  color: var(--skin-color);
+  text-align: center;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.4s ease;
+}
+
+.success-icon.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Button */
+.popup-button {
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background-color: var(--skin-color);
+  border-radius: 30px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.popup-button:hover {
+  background-color: rgba(var(--skin-color-rgb), 0.9);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  70% { width: 85%; }
+  90% { width: 95%; }
+  100% { width: 95%; }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 480px) {
+  .popup-content {
+    padding: 25px 20px;
+  }
+  
+  .popup-message {
+    font-size: 16px;
+  }
+  
+  .popup-submessage {
+    font-size: 13px;
+  }
+  
+  .modern-spinner {
+    width: 40px;
+    height: 40px;
+  }
+}

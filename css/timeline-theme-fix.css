@@ -1,0 +1,71 @@
+/* Timeline Theme Fix - Ensures text colors follow light/dark mode */
+
+/* Section titles */
+.section-icon h2 {
+  color: var(--text-black-700) !important;
+}
+
+/* Timeline item titles */
+.timeline-item-title {
+  color: var(--text-black-700) !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+}
+
+/* Timeline period text */
+.timeline-period {
+  color: var(--skin-color) !important;
+  font-size: 14px !important;
+  margin-bottom: 8px !important;
+}
+
+/* Timeline description text */
+.timeline-text {
+  color: var(--text-black-600) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Card background */
+.timeline-card {
+  background-color: var(--bg-black-50) !important;
+  box-shadow: var(--outer-shadow) !important;
+}
+
+/* Card hover effect */
+.timeline-card:hover {
+  box-shadow: var(--outer-shadow-0) !important;
+}
+
+.timeline-card:hover::after {
+  box-shadow: var(--inner-shadow) !important;
+}
+
+/* Dark mode specific adjustments */
+body.dark .timeline-item-title {
+  color: var(--text-black-700) !important;
+}
+
+body.dark .timeline-text {
+  color: var(--text-black-600) !important;
+}
+
+body.dark .timeline-card {
+  background-color: var(--bg-black-50) !important;
+}
+
+/* Tab titles */
+.tab-item {
+  color: var(--text-black-600) !important;
+}
+
+.tab-item.active {
+  color: var(--skin-color) !important;
+}
+
+/* Ensure icon colors are visible in both modes */
+.section-icon i {
+  color: var(--skin-color) !important;
+  background-color: var(--bg-black-50) !important;
+}

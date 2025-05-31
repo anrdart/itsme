@@ -1,0 +1,95 @@
+/* Theme Controls - Optimized Style (2025-05-24) */
+/* Tombol tema lama - tidak digunakan lagi */
+.theme-controls {
+  display: none !important; /* Sembunyikan tombol lama sepenuhnya */
+}
+
+/* Tombol tema baru di pojok kanan bawah - dioptimalkan untuk desktop dan mobile */
+.theme-controls-bottom {
+  position: fixed !important;
+  bottom: 20px !important;
+  top: auto !important; /* Override any top value */
+  right: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 9999 !important; /* Meningkatkan z-index agar selalu di atas */
+  gap: 12px; /* Ruang antar tombol */
+  transition: all 0.3s ease;
+}
+
+.theme-control-btn, .theme-control-btn-bottom {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgba(31, 171, 237, 0.15); /* Lebih terlihat */
+  border: 1px solid rgba(31, 171, 237, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  color: #1fabeb; /* Warna biru */
+  backdrop-filter: blur(4px); /* Efek blur modern */
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Hover effect - lebih responsif */
+.theme-control-btn:hover, .theme-control-btn-bottom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  background-color: rgba(31, 171, 237, 0.25);
+}
+
+/* Optimasi untuk mobile */
+@media (max-width: 768px) {
+  .theme-controls-bottom {
+    bottom: 15px !important;
+    right: 15px !important;
+  }
+  
+  .theme-control-btn, .theme-control-btn-bottom {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Memastikan tombol tetap terlihat di semua mode */
+body.dark .theme-control-btn-bottom {
+  background-color: rgba(31, 171, 237, 0.2);
+  border: 1px solid rgba(31, 171, 237, 0.5);
+  color: #1fabeb;
+}
+
+body:not(.dark) .theme-control-btn-bottom {
+  background-color: rgba(31, 171, 237, 0.15);
+  border: 1px solid rgba(31, 171, 237, 0.4);
+  color: #1fabeb;
+}
+
+.theme-control-btn:hover, .theme-control-btn-bottom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background-color: rgba(31, 171, 237, 0.2);
+}
+
+.theme-control-btn:active, .theme-control-btn-bottom:active {
+  transform: translateY(-1px);
+}
+
+.theme-dot {
+  font-size: 12px;
+}
+
+body.dark .theme-control-btn, body.dark .theme-control-btn-bottom {
+  background-color: rgba(31, 171, 237, 0.2);
+  border: 1px solid rgba(31, 171, 237, 0.4);
+  color: #1fabeb;
+}
+
+/* Menyembunyikan tombol lama */
+.s-icon.day-night, 
+.day-night:not(.day-night-bottom) {
+  display: none !important;
+}

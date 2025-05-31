@@ -1,0 +1,31 @@
+/* Fix untuk masalah kapitalisasi teks */
+
+/* Pastikan teks about-info-inner tidak terpengaruh text-transform */
+.about-section .about-info .about-info-inner,
+.about-section .about-info .about-info-inner p {
+  text-transform: none !important;
+}
+
+/* Pastikan span di dalam about-info juga tidak terpengaruh */
+.about-section .about-info span {
+  text-transform: none !important;
+}
+
+/* Pastikan typed.js tidak mengubah kapitalisasi */
+.typed-cursor,
+.typed-cursor + span,
+span.typed-cursor {
+  text-transform: none !important;
+}
+
+/* Override untuk memastikan teks di about section tetap seperti aslinya */
+.about-section * {
+  text-transform: none !important;
+}
+
+/* Pengecualian untuk elemen yang memang perlu kapitalisasi */
+.about-section h2,
+.about-section .tab-item,
+.about-section .section-title h2 {
+  text-transform: capitalize !important;
+}

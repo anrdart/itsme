@@ -1,0 +1,96 @@
+/* CSS untuk memastikan konsistensi ukuran kartu */
+.timeline-card {
+  height: 120px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  padding: 20px !important;
+}
+
+/* Mengatur konten pada card agar tidak membuat card memanjang */
+.timeline-card .timeline-item-title,
+.timeline-card .timeline-period,
+.timeline-card .timeline-text {
+  max-width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Memastikan seluruh timeline list memiliki lebar yang sama */
+.timeline-list {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-right: 0 !important;
+}
+
+/* Memastikan konten memiliki ukuran yang konsisten */
+.timeline-item-title {
+  font-size: 18px !important;
+  margin-bottom: 8px !important;
+  line-height: 1.4 !important;
+}
+
+.timeline-period {
+  font-size: 14px !important;
+  margin-bottom: 8px !important;
+}
+
+.timeline-text {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Menyeragamkan padding untuk semua kartu */
+.timeline-item {
+  padding: 0 0 0 30px !important;
+  margin-bottom: 60px !important;
+}
+
+/* Menambahkan ruang kosong setelah kartu terakhir */
+.timeline-item:last-child {
+  margin-bottom: 30px !important;
+}
+
+/* Memperkuat garis timeline */
+.timeline-list::before {
+  width: 4px !important;
+  background-color: var(--skin-color) !important;
+  opacity: 0.8 !important;
+  box-shadow: 0 0 5px rgba(var(--skin-color-rgb), 0.5) !important;
+  z-index: -2 !important;
+}
+
+/* Menghapus titik pada timeline item */
+.timeline-item::before {
+  display: none !important;
+}
+
+/* Menambahkan garis vertikal yang menghubungkan antar item */
+.timeline-item::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 9px !important;
+  top: 24px !important;
+  bottom: -40px !important;
+  width: 2px !important;
+  background-color: var(--skin-color) !important;
+  opacity: 0.5 !important;
+  z-index: -1 !important;
+}
+
+/* Menghilangkan garis pada item terakhir */
+.timeline-item:last-child::after {
+  display: none !important;
+}
+
+/* Memastikan semua bagian kartu memiliki tampilan yang konsisten */
+#education-tab .timeline-card,
+#experience-tab .timeline-card {
+  padding: 20px !important;
+  margin: 0 !important;
+}
