@@ -85,6 +85,15 @@ function initDropdown() {
     const btn = document.querySelector('.hamburger-btn');
     const menu = document.querySelector('.dropdown-menu');
     
+    // Periksa apakah klik di CV dropdown area
+    const cvDropdown = document.querySelector('.cv-dropdown');
+    const cvDropdownBtn = document.querySelector('.cv-dropdown-btn');
+    
+    // Jangan tutup menu jika klik di area CV dropdown
+    if (cvDropdown && (cvDropdown.contains(e.target) || (cvDropdownBtn && cvDropdownBtn.contains(e.target)))) {
+      return;
+    }
+    
     if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
       btn.classList.remove('active');
       menu.classList.remove('open');

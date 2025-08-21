@@ -1,823 +1,275 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>єкαℓℓιρтυѕ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  
-  <!-- Tema instan untuk mencegah flicker selama load -->
-  <script>
-    // Terapkan tema dari localStorage sebelum halaman dirender
-    (function() {
-      const isDark = localStorage.getItem('theme-dark') === 'true';
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    })();
-  </script>
-  <!-- for scrolling animation -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <!-- font awesome -->
-  <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- main css -->
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="stylesheet" type="text/css" href="css/responsive.css" />
-  <link rel="stylesheet" type="text/css" href="css/enhanced-responsive.css" />
-  <link rel="stylesheet" type="text/css" href="css/tailwind-nav.css" />
-  <!-- cursor animation -->
-  <link rel="stylesheet" type="text/css" href="css/cursor-animation.css" />
-  <!-- CV dropdown css -->
-  <link rel="stylesheet" type="text/css" href="css/cv-dropdown.css" />
-  <!-- GitHub button css -->
-  <link rel="stylesheet" type="text/css" href="css/github-button.css" />
-  <!-- Consolidated Tab Styling -->
-  <link rel="stylesheet" type="text/css" href="css/tab-consolidated.css" />
-  <link rel="stylesheet" type="text/css" href="css/card-consistency.css" />
-  <link rel="stylesheet" type="text/css" href="css/modern-timeline.css" />
-  <link rel="stylesheet" type="text/css" href="css/timeline-theme-fix.css" />
-  <!-- Consolidated Timeline Styling -->
-  <link rel="stylesheet" type="text/css" href="css/timeline-consolidated.css" />
-  <link rel="stylesheet" type="text/css" href="css/text-capitalization-fix.css" />
-  <link rel="stylesheet" type="text/css" href="css/modern-popup.css" />
-  <!-- Modern image styles -->
-  <link rel="stylesheet" type="text/css" href="css/modern-images.css" />
-  <!-- Modern sidebar popup menu -->
-  <link rel="stylesheet" type="text/css" href="css/modern-sidebar.css" />
-  <!-- Skills Grid Styling -->
-  <link rel="stylesheet" type="text/css" href="css/skills-grid.css" />
-  <!-- Popup styles -->
-  <link rel="stylesheet" type="text/css" href="css/popup.css" />
-  <!-- Color picker CSS has been removed -->
-  <!-- Modern Dropdown Menu -->
-  <link rel="stylesheet" type="text/css" href="css/modern-dropdown.css" />
-  <!-- mobile fixes css -->
-  <link rel="stylesheet" type="text/css" href="css/mobile-fixes.css" />
-  <!-- style switcher mobile fixes -->
-  <link rel="stylesheet" type="text/css" href="css/style-switcher-mobile.css" />
-  <!-- Style switcher CSS -->
-  <link rel="stylesheet" href="css/style-switcher.css">
-  <!-- Theme Controls CSS -->
-  <link rel="stylesheet" href="css/theme-controls.css">
-  <!-- fav icon  -->
-  <link rel="shortcut icon" href="./img/favicon/favicon.ico">
-  <!-- Inline CSS for hard-fixing style switcher position problems on mobile -->  
-  <style>
-    /* Hard override untuk posisi style switcher di mobile */
-    @media (max-width: 768px) {
-      .style-switcher-toggler, .day-night {
-        position: fixed !important;
-        right: 20px !important;
-        left: auto !important;
-        z-index: 10000 !important;
-      }
-      .style-switcher-toggler {
-        top: 20px !important;
-      }
-      .day-night {
-        top: 80px !important;
-      }
-      .style-switcher {
-        right: 0 !important;
-        left: auto !important;
-        top: 20px !important;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>єкαℓℓιρтus</title>
+  <meta name="description" content="Modern portfolio with 3D background and elegant cursor animations">
+  <link rel="icon" type="image/x-icon" href="/img/favicon/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CV Dropdown CSS -->
+
+  <!-- Modern About Me CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/about-modern.css" />
 </head>
-
 <body>
-
-  <!-- ========== Start pre loader ========== -->
-  <div class="preloader">
-    <div class="box">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading-screen">
+    <div class="loading-spinner"></div>
   </div>
-  <!-- ========== End pre loader ========== -->
 
-  <!-- start header  -->
-  <div class="header">
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="nav-logo">
-          <a href="/" class="logo-text">єкαℓ<span>ℓιρтυѕ</span></a>
-        </div>
-        <style>
-          .nav-logo .logo-text {
-            color: var(--text-black-900) !important;
-            text-decoration: none !important;
-          }
-          body.dark .nav-logo .logo-text {
-            color: #ffffff !important;
-          }
-          body:not(.dark) .nav-logo .logo-text {
-            color: #000000 !important;
-          }
-        </style>
+  <!-- 3D Background Canvas -->
+  <canvas id="background-canvas"></canvas>
+
+  <!-- Header -->
+  <header class="liquid-glass-header">
+    <nav class="nav-capsule">
+      <div class="nav-logo">
+        <span class="logo-text">єкαℓℓιρтuѕ</span>
       </div>
-    </div>
-  </div>
-  
-  <!-- NGEBUG....!!!-->
-  <!-- Fixed Navigation Elements (visible on all sections) -->
-  <!-- <div class="hamburger-btn outer-shadow hover-in-shadow">
-    <div class="hamburger-icon straight-icon">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
       <span></span>
-      <span></span>
-      <span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Floating Menu Button -->
+  <button class="mobile-fab" id="mobile-fab" aria-label="Open mobile menu">
+    <span></span>
+  </button>
+
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobile-sidebar">
+    <div class="mobile-sidebar-header">
+      <div class="site-logo">
+        <span class="logo-text">єкαℓℓιρтuѕ</span>
+      </div>
+      <button class="mobile-menu-toggle" id="close-sidebar" aria-label="Close mobile menu">
+        <span></span>
+      </button>
     </div>
-  </div> -->
-  <!-- Modern Dropdown Menu -->
-  <!-- <div class="dropdown-menu">
-    <ul>
-      <li><a href="#home" class="link-item home">Home</a></li>
-      <li><a href="#about" class="link-item about">About</a></li>
-      <li><a href="#services" class="link-item services">Services</a></li>
-      <li><a href="#portfolio" class="link-item portfolio">Portfolio</a></li>
-      <li><a href="#contact" class="link-item contact">Contact</a></li>
-    </ul>
-    <div class="dropdown-copyright">&copy; 2025 Ekalliptus</div>
-  </div> -->
-  <!-- end  -->
+    <nav class="mobile-nav">
+      <a href="#home" class="mobile-nav-link">Home</a>
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#skills" class="mobile-nav-link">Skills</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+    </nav>
+    <div class="mobile-theme-capsule">
+      <button class="theme-toggle" id="mobile-theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
 
-  <!-- Navigasi menu lama dinonaktifkan -->
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-  <!-- home section start  -->
-  <section class="home-section section active" id="home">
-    <!-- effect wrap -->
-    <div class="effect-wrap">
-      <div class="effect effect-1">
-
-      </div>
-      <div class="effect effect-2">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div class="effect effect-3">
-      </div>
-      <div class="effect effect-4">
-      </div>
-      <div class="effect effect-5">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content animate-on-scroll">
+      <h1>Hello,<br>I'm <span class="gradient-text">Haikal Akhalul Azhar</span></h1>
+      <p class="subtitle">
+        <span class="typing-animation" id="typing-text"></span>
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
       </div>
     </div>
-    <!-- end -->
-    <div class="container">
-      <div class="row full-screen align-items-center">
-        <div class="home-text mobile-visible">
-          <p>Hello, </p>
-          <!-- ========== Start typing animation ========== -->
-          <div id="auto-typing-animation">
-            <p>I'm <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title animate-on-scroll">About Me</h2>
+    <div class="about-container">
+      <!-- Profile Card -->
+      <div class="profile-card glass-container animate-on-scroll">
+        <div class="profile-image-wrapper">
+          <img src="/img/profile.png" alt="Profile" class="profile-image">
+          <div class="profile-status">
+            <span class="status-dot"></span>
+            <span class="status-text">Working at Alfatihah</span>
           </div>
-          <!-- ========== End typing animation ========== -->
-          <h1>IT Enthusiast</h1>
         </div>
-
-        <div class="home-image" data-aos="fade-left">
-          <div class="modern-img-container">
-            <img src="./img/me.jpg" alt="profile-pic">
+        <div class="profile-info">
+          <h3 class="profile-name">Haikal Akhalul Azhar</h3>
+          <p class="profile-title">Web Developer</p>
+          <div class="profile-stats">
+          </div>
+        </div>
+      </div>
+      
+      <!-- About Content -->
+      <div class="about-content">
+        <div class="about-text glass-container animate-on-scroll">
+          <h4 class="about-subtitle">Who I Am</h4>
+          <p class="about-description">
+            Full-stack developer with proven expertise in modern web and mobile technologies. Skilled in React, Next.js, and Flutter development, complemented by strong UI/UX design sensibilities.
+          </p>
+          <p class="about-description">
+            Demonstrated success in delivering responsive, user-centric applications while maintaining high code quality. Passionate about solving complex technical challenges and driving innovation in cross-platform development.
+          </p>
+        </div>
+        
+        <!-- Expertise Cards -->
+        <div class="expertise-grid">
+          <div class="expertise-card glass-container animate-on-scroll">
+            <div class="expertise-icon">🚀</div>
+            <h5 class="expertise-title">Frontend Development</h5>
+            <p class="expertise-desc">React, Next.js, Vue.js with modern CSS frameworks</p>
+          </div>
+          <div class="expertise-card glass-container animate-on-scroll">
+            <div class="expertise-icon">⚡</div>
+            <h5 class="expertise-title">Backend Development</h5>
+            <p class="expertise-desc">Node.js, Python, Laravel with database design</p>
+          </div>
+          <div class="expertise-card glass-container animate-on-scroll">
+            <div class="expertise-icon">🎨</div>
+            <h5 class="expertise-title">UI/UX Design</h5>
+            <p class="expertise-desc">User-centered design with modern aesthetics</p>
+          </div>
+          <div class="expertise-card glass-container animate-on-scroll">
+            <div class="expertise-icon">📱</div>
+            <h5 class="expertise-title">Mobile Development</h5>
+            <p class="expertise-desc">Flutter for cross-platform mobile applications</p>
+          </div>
+        </div>
+        
+        <!-- CV Download Section -->
+        <div class="cv-section glass-container animate-on-scroll">
+          <h4 class="cv-title">Download My Resume</h4>
+          <p class="cv-subtitle">Choose the version that best fits your needs</p>
+          <div class="cv-section-button">
+            <a href="https://anrdart-my.sharepoint.com/:f:/g/personal/haikalalul_anrdart_onmicrosoft_com/ErSqO6JANTFOk84_42HDtegBYw-s6vBYJWkE7ApPsgtiMQ?e=vdMyUN" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download CV</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- end -->
 
-  <!-- about section  -->
-  <section class="about-section section" id="about">
-    <div class="container">
-      <div class="row">
-        <div class="section-title">
-          <h2>About me</h2>
-        </div>
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <h2 class="section-title animate-on-scroll">Skills & Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-item glass-container animate-on-scroll">
+        <img src="/img/skills/reactjs.svg" alt="React" class="skill-icon">
+        <h3>React</h3>
       </div>
-      <div class="row">
-        <div class="about-img" data-aos="fade-up">
-          <div class="modern-img-container">
-            <img src="./img/me.jpg" alt="">
-          </div>
-          <!-- social icons -->
-          <div class="social-links">
-            <a href="https://github.com/anrdart" target="_nextTab" data-tilt data-tilt-scale="1.1">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://wa.me/6285156242860" target="_nextTab" data-tilt data-tilt-scale="1.1">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://www.instagram.com/ekalliptus" target="_nextTab" data-tilt data-tilt-scale="1.1">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/alulanr" target="_nextTab" data-tilt data-tilt-scale="1.1">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </div>
-        </div>
-        <div class="about-info" data-aos="fade-left">
-          <p class="about-info-inner">
-          <div class="cv-dropdown">
-            <a href="#" class="cv-dropdown-btn btn-1 outer-shadow" style="min-width: 160px; text-align: center;">Download CV</a>
-            <div class="cv-dropdown-content outer-shadow">
-              <a href="CV_IT_Support.pdf" target="next_page"><i class="fas fa-desktop"></i> IT Support</a>
-              <a href="CV_Mobile_Flutter_Developer.pdf" target="next_page"><i class="fas fa-mobile-alt"></i> Mobile Flutter Developer</a>
-              <a href="CV_Web_Developer.pdf" target="next_page"><i class="fas fa-code"></i> Web Developer</a>
-            </div>
-          </div>
-          <a href="#contact" class="link-item btn-1 outer-shadow" style="min-width: 160px; text-align: center;">Hire Me</a>
-        </div>
+      <div class="skill-item glass-container animate-on-scroll">
+        <img src="/img/skills/nextjs.svg" alt="Next.js" class="skill-icon">
+        <h3>Next.js</h3>
       </div>
-      <br><br><br>
-      <!-- about section start -->
-        <div class="row">
-          <div class="about-tabs">
-            <span class="tab-item outer-shadow active" data-target="#skills-tab">Skills</span>
-            <span class="tab-item outer-shadow" data-target="#education-tab">Education</span>
-            <span class="tab-item outer-shadow" data-target="#experience-tab">Experience</span>
-          </div>
-        </div>
-      <!-- end -->
-      
-      <!-- Tab Contents -->
-      <div class="tab-contents">
-        <!-- Skills Tab Content -->
-        <div id="skills-tab" class="tab-content active">
-          <div class="skills-header">
-            <i class="fas fa-code"></i>
-            <h3>Technical Skills</h3>
-          </div>
-          <div class="row-center">
-            <div class="skills-grid">
-              <div class="skill-item outer-shadow">
-                <img src="img/skills/flutter.svg" alt="Flutter">
-                <span class="skill-name">Flutter</span>
-              </div>
-              <div class="skill-item outer-shadow">
-                <img src="img/skills/nextjs.svg" alt="Next.js">
-                <span class="skill-name">Next.js</span>
-              </div>
-              <div class="skill-item outer-shadow">
-                <img src="img/skills/reactjs.svg" alt="React.js">
-                <span class="skill-name">React.js</span>
-              </div>
-              <div class="skill-item outer-shadow">
-                <img src="img/skills/python.svg" alt="Python">
-                <span class="skill-name">Python</span>
-              </div>
-              <div class="skill-item outer-shadow">
-                <img src="img/skills/tailwindcss.svg" alt="Tailwind CSS">
-                <span class="skill-name">Tailwind CSS</span>
-              </div>
-              <div class="skill-item outer-shadow">
-                <img src="img/skills/laravel.svg" alt="Laravel">
-                <span class="skill-name">Laravel</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Education Tab Content -->
-        <div id="education-tab" class="tab-content">
-          <div class="row">
-            <section class="timeline-section">
-              <div class="skills-header">
-                <i class="fas fa-graduation-cap"></i>
-                <h3>Education</h3>
-              </div>
-
-              <ol class="timeline-list">
-                <li class="timeline-item timeline-card">
-                  <h4 class="timeline-item-title">Universitas Bina Sarana Informatika</h4>
-                  <span class="timeline-period">2021 — 2024</span>
-                  <p class="timeline-text">Information Systems</p>
-                </li>
-
-                <li class="timeline-item timeline-card">
-                  <h4 class="timeline-item-title">SMK Al-Irsyad Tegal</h4>
-                  <span class="timeline-period">2018 — 2021</span>
-                  <p class="timeline-text">Software Engineering</p>
-                </li>
-              </ol>
-            </section>
-          </div>
-        </div>
-      
-        <!-- Experience Tab Content -->
-        <div id="experience-tab" class="tab-content">
-          <div class="row">
-            <section class="timeline-section">
-              <div class="skills-header">
-                <i class="fas fa-briefcase"></i>
-                <h3>Experience</h3>
-              </div>
-
-              <ol class="timeline-list">
-                <li class="timeline-item timeline-card">
-                  <h4 class="timeline-item-title">PT. Visionet Data Internasional</h4>
-                  <span class="timeline-period">Nov 2024 — Apr 2025</span>
-                  <p class="timeline-text">Service Area Engineer</p>
-                </li>
-
-                <li class="timeline-item timeline-card">
-                  <h4 class="timeline-item-title">ANRAVT</h4>
-                  <span class="timeline-period">Sep 2020 — Present</span>
-                  <p class="timeline-text">Freelancer</p>
-                </li>
-              
-                <li class="timeline-item timeline-card">
-                  <h4 class="timeline-item-title">PT. Marka Kreasi Persada</h4>
-                  <span class="timeline-period">Aug 2023 — Dec 2023</span>
-                  <p class="timeline-text">MSIB - Flutter Developer</p>
-                </li>
-              </ol>
-            </section>
-          </div>
-        </div>
+      <div class="skill-item glass-container animate-on-scroll">
+        <img src="/img/skills/tailwindcss.svg" alt="Tailwind CSS" class="skill-icon">
+        <h3>Tailwind</h3>
       </div>
-      <!-- experience and education section end -->
-
-    </div>
-  </section>
-  <!-- end  -->
-
-  <!-- ========== Start service section ========== -->
-
-  <section class="service-section section" id="services">
-    <div class="container">
-      <div class="row" data-aos="fade-in">
-        <div class="section-title">
-          <h2>What I'm Doing</h2>
-        </div>
+      <div class="skill-item glass-container animate-on-scroll">
+        <img src="/img/skills/python.svg" alt="Python" class="skill-icon">
+        <h3>Python</h3>
       </div>
-      <div class="row" data-aos="fade-up">
-        <!-- ========== Start service item ========== -->
-        <div class="service-item card" data-tilt data-tilt-scale="1.1">
-          <div class="service-item-inner outer-shadow">
-            <div class="icon inner-shadow">
-              <i class="fas fa-pencil-ruler"></i>
-            </div>
-            <h3>UI/UX Design</h3>
-            <p>The most modern and high-quality design made at a professional level.</p>
-          </div>
-        </div>
-
-        <div class="service-item card" data-tilt data-tilt-scale="1.1">
-          <div class="service-item-inner outer-shadow">
-            <div class="icon inner-shadow">
-              <i class="fas fa-code"></i>
-            </div>
-            <h3>Web Development</h3>
-            <p>High-quality development of sites at the professional level.</p>
-          </div>
-        </div>
-
-        <div class="service-item card" data-tilt data-tilt-scale="1.1">
-          <div class="service-item-inner outer-shadow">
-            <div class="icon inner-shadow">
-              <i class="fas fa-mobile-alt"></i>
-            </div>
-            <h3>Mobile Apps</h3>
-            <p>Professional development of applications for iOS and Android.</p>
-          </div>
-        </div>
-
-        <div class="service-item card" data-tilt data-tilt-scale="1.1">
-          <div class="service-item-inner outer-shadow">
-            <div class="icon inner-shadow">
-              <i class="fas fa-camera"></i>
-            </div>
-            <h3>Photography</h3>
-            <p>I make high-quality photos of any category at a professional level.</p>
-          </div>
-        </div>
-
-        <div class="service-item card" data-tilt data-tilt-scale="1.1">
-          <div class="service-item-inner outer-shadow">
-            <div class="icon inner-shadow">
-              <i class="fas fa-code"></i>
-            </div>
-            <h3>Software Development</h3>
-            <p>Creating software applications using programming languages Python.</p>
-          </div>
-        </div>
-
-        <div class="service-item card" data-tilt data-tilt-scale="1.1">
-          <div class="service-item-inner outer-shadow">
-            <div class="icon inner-shadow">
-              <i class="fas fa-desktop"></i>
-            </div>
-            <h3>IT Support</h3>
-            <p>Providing technical support and troubleshooting hardware/software issues.
-              Ensuring systems run smoothly for optimal performance.</p>
-          </div>
-        </div>
-
-        <!-- ========== End service item ========== -->
+      <div class="skill-item glass-container animate-on-scroll">
+        <img src="/img/skills/flutter.svg" alt="Flutter" class="skill-icon">
+        <h3>Flutter</h3>
+      </div>
+      <div class="skill-item glass-container animate-on-scroll">
+        <img src="/img/skills/laravel.svg" alt="Laravel" class="skill-icon">
+        <h3>Laravel</h3>
       </div>
     </div>
   </section>
-  <!-- ========== End service section ========== -->
 
-
-  <!-- ========== Start portfolio section ========== -->
-  <section class="portfolio-section section" id="portfolio">
-    <div class="container">
-      <div class="row">
-        <div class="section-title" data-aos="fade-in">
-
-          <h2>Coming Soon!</h2>
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <h2 class="section-title animate-on-scroll">Featured Projects</h2>
+    <div class="card-grid">
+      <div class="project-card glass-container animate-on-scroll">
+        <h3>Personal Portfolio</h3>
+        <p style="color: var(--text-secondary); margin: 1rem 0;">
+          Personal portfolio website showcasing modern web technologies with 3D background, elegant cursor animations, and responsive design.
+        </p>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a href="https://ekalliptus.my.id/" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" target="_blank" rel="noopener noreferrer">Live Demo</a>
+          <a href="https://github.com/anrdart/itsme" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
       
-      <!-- ========== Start coming soon message ========== -->
-      <div class="row" style="min-height: 70vh; display: flex; align-items: center; justify-content: center;" data-aos="zoom-in">
-        <div style="width: 100%; max-width: 600px;">
-          <div class="outer-shadow" style="text-align: center; padding: 40px; border-radius: 15px; margin: 0 auto;">
-            <i class="fas fa-clock" style="font-size: 60px; color: var(--skin-color); margin-bottom: 25px;"></i>
-            <h3 style="font-size: 26px; margin-bottom: 20px; color: var(--text-black-700);">Portfolio projects are in development</h3>
-            <p style="color: var(--text-black-600); line-height: 1.8; font-size: 18px;">New and exciting projects will be showcased here soon. Check back later!</p>
-          </div>
+      <div class="project-card glass-container animate-on-scroll">
+        <h3>WhatsApp Broadcast Tool</h3>
+        <p style="color: var(--text-secondary); margin: 1rem 0;">
+          WhatsApp broadcast tool for sending messages to multiple contacts simultaneously with real-time connection, contact management, and media support.
+        </p>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a href="https://whatsapp-broadcast-gj2d4pejr-anr-teams.vercel.app/" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" target="_blank" rel="noopener noreferrer">Live Demo</a>
+          <a href="https://github.com/anrdart/wa-broadcast" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
-      <!-- ========== End coming soon message ========== -->
-
+      
+      <div class="project-card glass-container animate-on-scroll">
+        <h3>Express Delivery Service</h3>
+        <p style="color: var(--text-secondary); margin: 1rem 0;">
+          Express delivery service platform providing point-to-point shipping across cities, provinces, and islands with efficient logistics management.
+        </p>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <a href="https://wuzz-express.vercel.app/" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" target="_blank" rel="noopener noreferrer">Live Demo</a>
+          <a href="https://github.com/anrdart/wuzz-express" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
     </div>
   </section>
-  <!-- ========== End portfolio section ========== -->
 
-  <!-- ========== Start contact section ========== -->
-  <section class="contact-section section" id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="section-title" data-aos="fade-in">
-
-          <h2>Get In Touch</h2>
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+    <div class="contact-form glass-container animate-on-scroll">
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
         </div>
-      </div>
-      
-      <div class="row" data-aos="fade-left">
-        <!-- ========== Start contact item ========== -->
-        <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
-          <div class="contact-item-inner outer-shadow">
-            <i class="fas fa-phone">
-              <span class="contact-span">Phone</span>
-              <p class="contact-p">+6285156242860</p>
-            </i>
-          </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
         </div>
-        <!-- ========== End contact item ========== -->
-        <!-- ========== Start contact item ========== -->
-        <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
-          <div class="contact-item-inner outer-shadow">
-            <i class="fas fa-envelope">
-              <span class="contact-span">Email Address</span>
-              <p class="contact-p">ekalliptus@gmail.com</p>
-            </i>
-          </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required>
         </div>
-        <!-- ========== End contact item ========== -->
-        <!-- ========== Start contact item ========== -->
-        <div class="contact-item contact-card" data-tilt data-tilt-axis="x" data-tilt data-tilt-scale="1.1">
-          <div class="contact-item-inner outer-shadow">
-            <i class="fas fa-map-marker-alt">
-              <span class="contact-span">Address</span>
-              <p class="contact-p">Tegal, Indonesia</p>
-            </i>
-          </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
         </div>
-        <!-- ========== End contact item ========== -->
-      </div>
-      <!-- ========== Start contact from ========== -->
-      <div class="row" data-aos="fade-right">
-        <div class="contact-form">
-          <form id="contactForm">
-            <div class="row">
-              <div class="w-50">
-                <div class="input-group outer-shadow hover-in-shadow">
-                  <input class="input-control" type="text" name="name" id="name" placeholder="Name" required>
-                </div>
-                <div class="input-group outer-shadow hover-in-shadow">
-                  <input class="input-control" type="email" name="email" id="sender" placeholder="Email" required>
-                </div>
-                <div class="input-group outer-shadow hover-in-shadow">
-                  <input class="input-control" type="text" name="subject" id="subject" placeholder="Subject" required>
-                </div>
-              </div>
-              <div class="w-50">
-                <div class="input-group outer-shadow hover-in-shadow">
-                  <textarea class="input-control" name="message" id="message" required
-                    placeholder="Your message here..."></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="submit-btn">
-                <button type="submit" class="btn-1 outer-shadow outer-shadow hover-in-shadow submit">Send Message</button>
-              </div>
-              <div id="statusMessage" style="text-align: center; margin-top: 15px; width: 100%;"></div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <!-- ========== End contact from ========== -->
+        
+        <!-- FormSubmit.co hidden fields -->
+        <input type="hidden" name="_subject" value="Portfolio Contact Form Submission">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+      </form>
     </div>
   </section>
-  <!-- ========== End contact section ========== -->
 
-  <!-- ========== Start portfolio popup ========== -->
-  <div class="pp portfolio-popup">
-    <div class="pp-details">
-      <div class="pp-details-inner">
-        <div class="pp-title">
-          <h2>personal portfolio</h2>
-          <p>Category - <span class="pp-project-category">Web Application</span></p>
-        </div>
-        <div class="pp-project-details">
-          <div class="row">
-            <div class="description">
-              <h3>Project brief: </h3>
-              <p>Lorem ipsum dolor, sit Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem perferendis
-                corporis culpa! amet consectetur adipisicing elit. Hic doloribus labore assumenda nostrum commodi.
-                Officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt.</p>
-            </div>
-            <div class="info">
-              <h3>Project info</h3>
-              <ul>
-                <li>Date - <span>2021</span></li>
-                <li>Client - <span>xyz</span></li>
-                <li>Tools - <span>html, css, js</span></li>
-                <li>GitHub - <span><a href="https://github.com/anrdart" id="link"
-                      target="_blank">github.com/anrdart</a></span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- Footer -->
+  <footer style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+    <p>&copy; 2025 єкαℓℓιρтus</p>
+  </footer>
 
-    <div class="separator"></div>
+  <!-- CV Dropdown JS and 404 Handler -->
 
-    <div class="pp-main">
-      <div class="pp-main-inner">
-        <a href="https://github.com/anrdart" target="_blank"
-          class="pp-project-details-btn outer-shadow hover-in-shadow">Project Details<i class="fab fa-github"></i></a>
-        <div class="pp-close outer-shadow hover-in-shadow">&times;</div>
-        <img src="img/portfolio/large/project-1/1.png" alt="img" class="pp-img outer-shadow">
-        <div class="pp-counter">1 of 6</div>
-      </div>
-      <div class="pp-loader">
-        <div class="loader"></div>
-      </div>
-      <!-- ========== Start pp navigation ========== -->
-      <div class="pp-pre"><i class="fas fa-play"></i></div>
-      <div class="pp-next"><i class="fas fa-play"></i></div>
-      <!-- ========== End pp navigation ========== -->
-    </div>
-  </div>
-  <!-- ========== End portfolio popup ========== -->
-
-  <!-- Theme Controls - Bottom Right -->
-  <div class="theme-controls-bottom">
-    <div class="theme-control-btn-bottom outer-shadow day-night-bottom">
-      <i class="fas fa-sun"></i>
-    </div>
-  </div>
-
-  <!-- Modern Sending Message Popup -->
-  <div class="modern-popup" id="sendingPopup">
-    <div class="popup-content">
-      <div class="spinner-container">
-        <div class="modern-spinner"></div>
-      </div>
-      <h3 class="popup-message">Mengirim Pesan...</h3>
-      <p class="popup-submessage">Mohon tunggu sebentar, pesan Anda sedang diproses</p>
-      <div class="progress-bar-container">
-        <div class="progress-bar"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modern Success Message Popup -->
-  <div class="modern-popup" id="successPopup">
-    <div class="popup-content">
-      <div class="popup-close" onclick="closeSuccessPopup()">
-        <i class="fas fa-times"></i>
-      </div>
-      <div class="success-icon">
-        <i class="fas fa-check-circle"></i>
-      </div>
-      <h3 class="popup-message">Pesan Terkirim!</h3>
-      <p class="popup-submessage">Terima kasih telah menghubungi saya. Saya akan segera membalas pesan Anda.</p>
-      <div class="text-center">
-        <button class="popup-button" onclick="closeSuccessPopup()">Kembali ke Beranda</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Status Message -->
-  <div class="status-message" id="statusMessagePopup">
-    <p><i class="fas fa-spinner"></i> <span id="statusText">Mengirim pesan...</span></p>
-  </div>
-  <!-- Custom Cursor -->
-  <div class="cursorMoveAnimation"></div>
-  <div class="cursorMoveAnimation2"></div>
-  <!-- Footer Section Removed -->
-
-  <!-- Color picker has been removed -->
-
-  <!-- main js -->
-  <script src="js/main.js"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-  <!-- Theme Manager - Complete solution for theme handling -->
-  <script src="js/theme-manager.js"></script>
-  <script src="js/animation.js"></script>
-  <script src="js/glassmorphism-animation.js"></script>
-  <script src="js/autoTypingAnimation.js"></script>
-  <script src="js/section-navigation.js"></script>
-  <script src="js/about-tabs.js"></script>
-  <script src="js/cv-dropdown.js"></script>
-  <script src="js/modern-dropdown.js"></script>
-  <script src="js/icon-manager.js"></script>
-  <!-- Email Handling with FormSubmit.co -->
-  <script src="js/modern-popup-handler.js"></script>
-  <script src="js/404-handler.js"></script>
-  <script>
-    // Make sure the preloader is properly removed once the page loads
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        const preloader = document.querySelector('.preloader');
-        if (preloader) {
-          preloader.style.opacity = '0';
-          setTimeout(function() {
-            preloader.style.display = 'none';
-          }, 500);
-        }
-      }, 500);
-    });
-    
-    // Contact form handling has been moved to email-handler.js
-    
-    // Tilt effects
-    VanillaTilt.init(document.querySelectorAll(".contact-card"), {
-      max: 25,
-      speed: 400
-    });
-
-    VanillaTilt.init(document.querySelectorAll(".link-card"), {
-      max: 25,
-      speed: 400
-    });
-
-    VanillaTilt.init(document.querySelectorAll(".card")), {
-      max: 25,
-      speed: 300
-    };
-
-    // Enhanced cursor animation
-    const cursorMoveAnimation = document.querySelector(".cursorMoveAnimation");
-    const cursorMoveAnimation2 = document.querySelector(".cursorMoveAnimation2");
-
-    // Memastikan elemen kursor ada sebelum menjalankan script
-    if (cursorMoveAnimation && cursorMoveAnimation2) {
-      // Inisialisasi posisi awal
-      cursorMoveAnimation.style.cssText = "left: 50%; top: 50%;";
-      cursorMoveAnimation2.style.cssText = "left: 50%; top: 50%;";
-
-      // Handle cursor movement
-      document.addEventListener("mousemove", function (e) {
-        requestAnimationFrame(function () {
-          cursorMoveAnimation.style.left = e.clientX + "px";
-          cursorMoveAnimation.style.top = e.clientY + "px";
-
-          // Add slight delay to the outer circle for a trailing effect
-          setTimeout(function () {
-            cursorMoveAnimation2.style.left = e.clientX + "px";
-            cursorMoveAnimation2.style.top = e.clientY + "px";
-          }, 50);
-        });
-      });
-
-      // Add click effect
-      document.addEventListener("mousedown", function () {
-        cursorMoveAnimation.classList.add('click');
-        cursorMoveAnimation.style.transform = "translate(-50%, -50%) scale(0.7)";
-        cursorMoveAnimation2.style.transform = "translate(-50%, -50%) scale(0.7)";
-      });
-
-      document.addEventListener("mouseup", function () {
-        cursorMoveAnimation.classList.remove('click');
-        cursorMoveAnimation.style.transform = "translate(-50%, -50%) scale(1)";
-        cursorMoveAnimation2.style.transform = "translate(-50%, -50%) scale(1)";
-      });
-
-      // Handle interactive elements
-      const interactiveElements = document.querySelectorAll('a, button, .link-item, .outer-shadow, .filter-item, .tab-item, .color-1, .color-2, .color-3, .style-switcher-toggler, .day-night, .view-project, .pp-close');
-
-      interactiveElements.forEach(element => {
-        element.addEventListener('mouseenter', () => {
-          cursorMoveAnimation.classList.add('hover');
-          cursorMoveAnimation2.classList.add('hover');
-        });
-
-        element.addEventListener('mouseleave', () => {
-          cursorMoveAnimation.classList.remove('hover');
-          cursorMoveAnimation2.classList.remove('hover');
-        });
-      });
-    }
-  </script>
-
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      offset: 50,
-      duration: 800,
-      once: false,
-      mirror: true,
-      disable: window.innerWidth < 768 ? true : false
-    });
-  </script>
-  
-  <!-- Tab Navigation Script -->
-  <script src="js/tab-switcher.js"></script>
-  
-  <!-- Inline script to ensure tabs work -->
-  <script>
-    // Direct tab implementation
-    window.addEventListener('load', function() {
-      // Force the Skills tab to be visible initially
-      document.querySelector('.skills.tab-content').style.display = 'block';
-      document.querySelector('.tab-item[data-target=".skills"]').classList.add('active');
-      
-      // Hide other tabs
-      document.querySelector('.education.tab-content').style.display = 'none';
-      document.querySelector('.experience.tab-content').style.display = 'none';
-      
-      // Setup click handlers directly
-      document.querySelectorAll('.tab-item').forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          const target = this.getAttribute('data-target');
-          
-          // Hide all content
-          document.querySelectorAll('.tab-content').forEach(function(content) {
-            content.style.display = 'none';
-          });
-          
-          // Show target content
-          document.querySelector(target).style.display = 'block';
-          
-          // Update active tab
-          document.querySelectorAll('.tab-item').forEach(function(t) {
-            t.classList.remove('active');
-          });
-          this.classList.add('active');
-        });
-      });
-    });
-  </script>
+  <script src="/js/404-handler.js"></script>
+  <script type="module" src="/src/main.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/email-handler.js"></script>
 </body>
-
 </html>

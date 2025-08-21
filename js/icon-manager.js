@@ -73,6 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Tambahkan event listener untuk menutup menu
   document.addEventListener('click', function(e) {
+    // Periksa apakah klik di CV dropdown area
+    const cvDropdown = document.querySelector('.cv-dropdown');
+    const cvDropdownBtn = document.querySelector('.cv-dropdown-btn');
+    
+    // Jangan lakukan apa-apa jika klik di area CV dropdown
+    if (cvDropdown && (cvDropdown.contains(e.target) || (cvDropdownBtn && cvDropdownBtn.contains(e.target)))) {
+      return;
+    }
+    
     // Periksa apakah klik di luar menu
     const isOutsideAnyMenu = menus.every(menuSelector => {
       const menu = document.querySelector(menuSelector);
