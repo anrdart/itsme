@@ -6,13 +6,38 @@
   <title>єкαℓℓιρтus</title>
   <meta name="description" content="Modern portfolio with 3D background and elegant cursor animations">
   <link rel="icon" type="image/x-icon" href="/img/favicon/favicon.ico">
+  <!-- Resource Hints untuk optimasi loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- CV Dropdown CSS -->
-
-  <!-- Modern About Me CSS -->
-  <link rel="stylesheet" type="text/css" href="/css/about-modern.css" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/img/profile.png" as="image" type="image/png">
+  <link rel="preload" href="/src/main.js" as="script">
+  <link rel="preload" href="/src/style.css" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+  
+  
+  <!-- Critical CSS inline untuk instant rendering -->
+  <style id="critical-css">
+    /* Loading screen styles */
+    .loading-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0f0f23,#1a1a2e);display:flex;justify-content:center;align-items:center;z-index:9999;transition:opacity 0.3s ease}
+    .loading-spinner{width:50px;height:50px;border:3px solid rgba(34,197,94,0.3);border-top:3px solid #22c55e;border-radius:50%;animation:spin 1s linear infinite}
+    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    
+    /* Critical layout styles */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:#0f0f23;color:#e2e8f0;overflow-x:hidden}
+    .liquid-glass-header{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:1000;width:90%;max-width:800px}
+  </style>
+  
+  <!-- Non-critical CSS dengan lazy loading -->
+  <link rel="preload" href="/css/optimized/non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/css/optimized/non-critical.min.css"></noscript>
+  
+  <!-- Fallback untuk CSS individual jika optimized tidak tersedia -->
+  <link rel="stylesheet" href="/css/about-modern.css" media="print" onload="this.media='all'; this.onload=null;">
+  <noscript><link rel="stylesheet" href="/css/about-modern.css"></noscript>
 </head>
 <body>
   <!-- Loading Screen -->
@@ -270,11 +295,147 @@
     <p>&copy; 2025 єкαℓℓιρтus</p>
   </footer>
 
-  <!-- CV Dropdown JS and 404 Handler -->
+  
+  <!-- CSS Lazy Loading Script -->
+  <script>
+    // Function untuk lazy load CSS
+    function loadCSS(href, before, media) {
+      var doc = window.document;
+      var ss = doc.createElement('link');
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName('head')[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      ss.rel = 'stylesheet';
+      ss.href = href;
+      ss.media = 'only x';
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function() {
+          ready(cb);
+        });
+      }
+      ready(function() {
+        ref.parentNode.insertBefore(ss, (before ? ref : ref.nextSibling));
+      });
+      var onloadcssdefined = function(cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function() {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener('load', loadCB);
+        }
+        ss.media = media || 'all';
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener('load', loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    }
+    
+    // Load non-critical CSS setelah page load
+    window.addEventListener('load', function() {
+      loadCSS('/css/optimized/non-critical.min.css');
+    });
+  </script>
 
-  <script src="/js/404-handler.js"></script>
-  <script type="module" src="/src/main.js"></script>
-  <script src="/js/config.js"></script>
-  <script src="/js/email-handler.js"></script>
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+
+  <!-- JavaScript Loading - Individual Scripts for Better Compatibility -->
+  <!-- Core scripts loaded first -->
+  <script type="module" src="/src/cursor-animation.js" defer></script>
+  <script type="module" src="/src/3d-background.js" defer></script>
+  
+  <!-- Configuration loaded early -->
+  <script src="/js/config.js" defer></script>
+  
+  <!-- jQuery and Typed.js for autoTypingAnimation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+  
+  <!-- Main functionality -->
+  <script type="module" src="/src/main.js" defer></script>
+  <script src="/js/theme-manager.js" defer></script>
+  
+  <!-- Feature scripts loaded after DOM -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const scripts = [
+        '/js/modern-dropdown.js',
+        '/js/email-handler.js',
+        '/js/about-tabs.js',
+        '/js/tab-switcher.js',
+        '/js/section-navigation.js',
+        '/js/icon-manager.js'
+      ];
+      
+      scripts.forEach(function(src, index) {
+        setTimeout(function() {
+          const script = document.createElement('script');
+          script.src = src;
+          script.async = true;
+          script.onerror = function() {
+            console.warn('Failed to load script:', src);
+          };
+          document.head.appendChild(script);
+        }, index * 100);
+      });
+    });
+  </script>
+  
+  <!-- Non-critical scripts loaded after page load -->
+  <script>
+    window.addEventListener('load', function() {
+      const scripts = [
+        '/js/404-handler.js',
+        '/js/animation.js',
+        '/js/modern-popup-handler.js',
+        '/js/autoTypingAnimation.js',
+        '/js/glassmorphism-animation.js'
+      ];
+      
+      scripts.forEach(function(src, index) {
+        setTimeout(function() {
+          const script = document.createElement('script');
+          script.src = src;
+          script.async = true;
+          script.onerror = function() {
+            console.warn('Failed to load script:', src);
+          };
+          document.head.appendChild(script);
+        }, index * 150);
+      });
+    });
+  </script>
 </body>
 </html>

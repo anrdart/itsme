@@ -1,50 +1,63 @@
-# Custom 404 error page
-ErrorDocument 404 /404.html
-
-# Prevent directory listing
-Options -Indexes
-
-# Enable URL rewriting
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
-    
-    # Redirect to HTTPS (uncomment when your site has SSL)
-    # RewriteCond %{HTTPS} off
-    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-    
-    # Handle 404 errors
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ /404.html [L]
-</IfModule>
-
-# Set default charset
-AddDefaultCharset UTF-8
-
-# Set MIME types
-<IfModule mod_mime.c>
-    AddType application/javascript js
-    AddType text/css css
-    AddType image/svg+xml svg svgz
-</IfModule>
+# Optimasi Caching dan Kompresi
 
 # Enable compression
 <IfModule mod_deflate.c>
-    <IfModule mod_filter.c>
-        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json
-    </IfModule>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
-# Set browser caching
+# Leverage Browser Caching
 <IfModule mod_expires.c>
     ExpiresActive On
+    
+    # Images
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
+    
+    # CSS and JavaScript
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType text/html "access plus 1 day"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    
+    # Fonts
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    
+    # HTML
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# Add Cache-Control headers
+<IfModule mod_headers.c>
+    # Cache static assets for 1 year
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|css|js|woff|woff2)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+    
+    # Cache HTML for 1 hour
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=3600, public, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
