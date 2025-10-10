@@ -1,0 +1,7 @@
+{
+  "name": "itsme-portfolio",
+  "compatibility_date": "2025-10-10",
+  "assets": {
+    "directory": "./dist"
+  }
+}
