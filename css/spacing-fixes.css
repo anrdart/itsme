@@ -8,7 +8,7 @@
   justify-content: center;
   text-align: center;
   padding: 2rem 1.5rem;
-  padding-top: 10rem; /* Account for fixed header */
+  padding-top: 5rem; /* Account for fixed header */
   padding-bottom: 3rem;
   position: relative;
   z-index: 1;
