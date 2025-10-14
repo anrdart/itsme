@@ -1,0 +1,85 @@
+/**
+ * CSS Bundle Loader - Optimized Loading Strategy
+ * This file coordinates the loading of all CSS modules
+ * Author: Haikal Akhalul Azhar
+ * Last Updated: 2025-10-14
+ */
+
+/* ==========================================================================
+   CRITICAL CSS - Loaded inline in HTML for instant render
+   ========================================================================== */
+
+/* Core imports loaded synchronously */
+@import url('./core/reset.css');
+@import url('./core/variables.css');
+@import url('./core/typography.css');
+
+/* Layout - Critical for initial render */
+@import url('./layout/header.css');
+@import url('./layout/grid.css');
+
+/* Hero section - Above the fold */
+@import url('./sections/hero.css');
+
+/* ==========================================================================
+   DEFERRED CSS - Loaded after initial paint
+   ========================================================================== */
+
+/* Components - Loaded with low priority */
+@import url('./components/buttons.css');
+@import url('./components/cards.css');
+@import url('./components/forms.css');
+@import url('./projects-grid.css');
+
+/* Additional sections - Below the fold */
+@import url('./sections/about.css');
+@import url('./sections/skills.css');
+@import url('./sections/contact.css');
+
+/* Layout footer - Low priority */
+@import url('./layout/footer.css');
+
+/* Theme system */
+@import url('./themes/dark.css');
+@import url('./themes/light.css');
+
+/* Utilities - Lowest priority */
+@import url('./utilities/animations.css');
+@import url('./utilities/helpers.css');
+
+/* Vendor styles */
+@import url('./about-modern.css');
+@import url('./modern-sidebar.css');
+@import url('./responsive.css');
+@import url('./spacing-fixes.css');
+
+/* ==========================================================================
+   LEGACY SUPPORT - Gradual migration
+   ========================================================================== */
+
+/* Keep existing critical files for backward compatibility */
+@import url('./style.css');
+
+/* Modern features */
+@import url('./cursor-animation.css');
+@import url('./card-consistency.css');
+@import url('./enhanced-responsive.css');
+@import url('./mobile-fixes.css');
+
+/* Print styles - Media specific */
+@media print {
+  @import url('./utilities/print.css');
+}
+
+/* ==========================================================================
+   OPTIMIZATION NOTES
+   ========================================================================== 
+   
+   Future improvements:
+   1. Split into critical.css (inline) and deferred.css (async)
+   2. Use CSS-in-JS for dynamic components
+   3. Implement CSS modules for better scoping
+   4. Tree-shake unused styles in production
+   5. Use PostCSS for autoprefixing and minification
+   
+   ========================================================================== */

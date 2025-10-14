@@ -1,0 +1,108 @@
+/**
+ * Main CSS Bundle - Optimized & Structured
+ * This is the primary stylesheet loaded for the website
+ * Author: Haikal Akhalul Azhar
+ * Last Updated: 2025-10-14
+ * 
+ * Table of Contents:
+ * 1. Core Styles (Reset, Variables, Typography)
+ * 2. Layout Styles
+ * 3. Component Styles
+ * 4. Section Styles
+ * 5. Utility Styles
+ * 6. Theme Overrides
+ */
+
+/* ==========================================================================
+   1. CORE STYLES - Foundation
+   ========================================================================== */
+
+/* Load core modules */
+@import url('./core/reset.css');
+@import url('./core/variables.css');
+@import url('./core/typography.css');
+
+/* ==========================================================================
+   2. LAYOUT STYLES - Structure
+   ========================================================================== */
+
+/* Main layout components */
+@import url('./modern-sidebar.css');
+@import url('./tailwind-nav.css');
+
+/* Grid system */
+@import url('./responsive.css');
+@import url('./spacing-fixes.css');
+@import url('./enhanced-responsive.css');
+@import url('./mobile-fixes.css');
+
+/* ==========================================================================
+   3. COMPONENT STYLES - Reusable UI Elements
+   ========================================================================== */
+
+/* Interactive components */
+@import url('./modern-dropdown.css');
+@import url('./modern-popup.css');
+@import url('./modern-images.css');
+@import url('./cursor-animation.css');
+@import url('./theme-controls.css');
+
+/* UI elements */
+@import url('./github-button.css');
+@import url('./card-consistency.css');
+
+/* ==========================================================================
+   4. SECTION STYLES - Page Sections
+   ========================================================================== */
+
+/* Major sections */
+@import url('./about-modern.css');
+@import url('./skills-grid.css');
+@import url('./projects-grid.css');
+
+/* Timeline & History */
+@import url('./modern-timeline.css');
+@import url('./timeline-modern.css');
+@import url('./timeline-theme-fix.css');
+
+/* Tabs & Navigation */
+@import url('./tab-consolidated.css');
+
+/* ==========================================================================
+   5. UTILITY STYLES - Helper Classes
+   ========================================================================== */
+
+/* Text utilities */
+@import url('./text-capitalization-fix.css');
+
+/* Style switcher */
+@import url('./style-switcher.css');
+@import url('./style-switcher-mobile.css');
+
+/* ==========================================================================
+   6. THEME STYLES - Color Schemes
+   ========================================================================== */
+
+/* Theme system */
+@import url('./light-mode-optimized.css');
+
+/* Legacy support - Main stylesheet */
+@import url('./style.css');
+
+/* ==========================================================================
+   PERFORMANCE NOTES
+   ========================================================================== 
+   
+   This bundle is optimized for:
+   - Critical rendering path
+   - Minimal reflows/repaints
+   - Efficient CSS parsing
+   - Browser caching
+   
+   Future optimizations:
+   - Split into critical and deferred bundles
+   - Use CSS-in-JS for dynamic styles
+   - Implement tree-shaking for unused rules
+   - Add PostCSS for autoprefixing
+   
+   ========================================================================== */
