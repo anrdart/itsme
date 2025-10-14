@@ -1,130 +1,96 @@
-# Advanced SEO and Performance Optimization
+# ekalliptus.id - Apache Configuration
+# This is the MAIN domain - DO NOT redirect to subdomain
 
-# Enable compression
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/xml
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE application/xml
-    AddOutputFilterByType DEFLATE application/xhtml+xml
-    AddOutputFilterByType DEFLATE application/rss+xml
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/x-javascript
-    AddOutputFilterByType DEFLATE image/svg+xml
-    AddOutputFilterByType DEFLATE application/json
-    AddOutputFilterByType DEFLATE application/ld+json
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Force HTTPS (SSL)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # Force non-WWW (redirect www.ekalliptus.id to ekalliptus.id)
+  RewriteCond %{HTTP_HOST} ^www\.ekalliptus\.id$ [NC]
+  RewriteRule ^(.*)$ https://ekalliptus.id/$1 [R=301,L]
+
+  # Remove trailing slash (optional)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [R=301,L]
+
+  # SPA/HTML Routing - Send non-file requests to index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
 </IfModule>
 
-# Leverage Browser Caching
+# Security Headers
+<IfModule mod_headers.c>
+  # Prevent MIME type sniffing
+  Header set X-Content-Type-Options "nosniff"
+  
+  # Prevent clickjacking
+  Header set X-Frame-Options "SAMEORIGIN"
+  
+  # XSS Protection
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # Referrer Policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Remove Server signature
+  Header unset Server
+  Header unset X-Powered-By
+  
+  # HSTS (HTTP Strict Transport Security)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  
+  # Permissions Policy
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Browser Caching
 <IfModule mod_expires.c>
-    ExpiresActive On
-    
-    # Images
-    ExpiresByType image/jpg "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType image/x-icon "access plus 1 year"
-    
-    # CSS and JavaScript
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType application/x-javascript "access plus 1 month"
-    
-    # Fonts
-    ExpiresByType font/woff "access plus 1 year"
-    ExpiresByType font/woff2 "access plus 1 year"
-    ExpiresByType application/font-woff "access plus 1 year"
-    ExpiresByType application/font-woff2 "access plus 1 year"
-    ExpiresByType font/ttf "access plus 1 year"
-    ExpiresByType font/otf "access plus 1 year"
-    
-    # HTML and XML
-    ExpiresByType text/html "access plus 1 hour"
-    ExpiresByType application/xml "access plus 1 hour"
-    ExpiresByType text/xml "access plus 1 hour"
-    
-    # JSON and manifests
-    ExpiresByType application/json "access plus 1 hour"
-    ExpiresByType application/ld+json "access plus 1 hour"
-    ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresActive On
+  
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  
+  # CSS and JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  
+  # Fonts
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  
+  # HTML - No caching
+  ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
-# Add Cache-Control headers with enhanced directives
-<IfModule mod_headers.c>
-    # Cache static assets for 1 year with immutable flag
-    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|css|js|woff|woff2|ttf|otf|ico)$">
-        Header set Cache-Control "max-age=31536000, public, immutable"
-        Header set Vary "Accept-Encoding"
-    </FilesMatch>
-    
-    # Cache HTML for 1 hour with revalidation
-    <FilesMatch "\.(html|htm)$">
-        Header set Cache-Control "max-age=3600, public, must-revalidate"
-    </FilesMatch>
-    
-    # Cache JSON and XML files
-    <FilesMatch "\.(json|xml)$">
-        Header set Cache-Control "max-age=3600, public"
-    </FilesMatch>
-    
-    # Cache manifests for 1 week
-    <FilesMatch "\.(webmanifest|manifest)$">
-        Header set Cache-Control "max-age=604800, public"
-    </FilesMatch>
+# GZIP Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
-# Canonical: redirect www to non-www and enforce HTTPS in one step
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{HTTP_HOST} ^www\.itsme\.ekalliptus\.id$ [OR]
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^ https://itsme.ekalliptus.id%{REQUEST_URI} [R=301,L]
-</IfModule>
+# Disable Directory Browsing
+Options -Indexes
 
-# Enhanced Security headers for SEO and security
-<IfModule mod_headers.c>
-    Header always set X-Content-Type-Options nosniff
-    Header always set X-Frame-Options DENY
-    Header always set X-XSS-Protection "1; mode=block"
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
-</IfModule>
+# Follow Symbolic Links
+Options +FollowSymLinks
 
-# SEO-friendly URL redirects
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    
-    # Remove trailing slashes for consistency
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{THE_REQUEST} /+[^?\s]*?/+[?\s]
-    RewriteRule ^(.*)/ /$1 [L,R=301]
-    
-    # Handle missing files gracefully (404 to homepage for SPA behavior)
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|otf|json|xml)$
-    RewriteRule . /index.html [L]
-</IfModule>
-
-# MIME types for better file recognition
-<IfModule mod_mime.c>
-    # Web fonts
-    AddType font/woff2 .woff2
-    AddType font/woff .woff
-    AddType font/ttf .ttf
-    AddType font/otf .otf
-    
-    # JSON and manifests
-    AddType application/json .json
-    AddType application/ld+json .jsonld
-    AddType application/manifest+json .webmanifest
-    
-    # Images
-    AddType image/webp .webp
-    AddType image/svg+xml .svg
-</IfModule>
+# UTF-8 Encoding
+AddDefaultCharset UTF-8
