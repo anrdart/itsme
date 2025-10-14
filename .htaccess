@@ -77,11 +77,12 @@
     </FilesMatch>
 </IfModule>
 
-# Redirect www to non-www
+# Canonical: redirect www to non-www and enforce HTTPS in one step
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteCond %{HTTP_HOST} ^www\.itsme\.ekalliptus\.id [NC]
-    RewriteRule ^(.*)$ https://itsme.ekalliptus.id/$1 [L,R=301]
+    RewriteCond %{HTTP_HOST} ^www\.itsme\.ekalliptus\.id$ [OR]
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://itsme.ekalliptus.id%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # Enhanced Security headers for SEO and security
@@ -97,14 +98,6 @@
 # SEO-friendly URL redirects
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    
-    # Redirect www to non-www for consistency
-    RewriteCond %{HTTP_HOST} ^www\.itsme\.ekalliptus\.id [NC]
-    RewriteRule ^(.*)$ https://itsme.ekalliptus.id/$1 [L,R=301]
-    
-    # Force HTTPS for security and SEO
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     
     # Remove trailing slashes for consistency
     RewriteCond %{REQUEST_FILENAME} !-d
