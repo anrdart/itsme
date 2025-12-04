@@ -22,13 +22,13 @@ export function initCursorAnimation() {
     if (hovered) {
       if (hovered.tagName === 'A' || hovered.classList.contains('btn')) {
           cursor.classList.add('hover-link')
-          follower.classList.add('hover-link')
+          cursorFollower.classList.add('hover-link')
         } else if (hovered.classList.contains('project-card')) {
           cursor.classList.add('hover-project')
-          follower.classList.add('hover-project')
+          cursorFollower.classList.add('hover-project')
         } else {
           cursor.classList.remove('hover-link', 'hover-project')
-          follower.classList.remove('hover-link', 'hover-project')
+          cursorFollower.classList.remove('hover-link', 'hover-project')
         }
     }
   })

@@ -704,6 +704,49 @@
     <div class="loading-spinner"></div>
   </div>
 
+  <!-- Fallback: Hide loading screen after timeout (in case JS fails) -->
+  <script>
+    (function() {
+      // Fallback timeout - hide loading screen after 5 seconds max
+      var fallbackTimeout = setTimeout(function() {
+        var loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen && loadingScreen.style.display !== 'none') {
+          loadingScreen.style.opacity = '0';
+          setTimeout(function() {
+            loadingScreen.style.display = 'none';
+          }, 500);
+          console.warn('Loading screen hidden by fallback timeout');
+        }
+      }, 5000);
+
+      // Also hide on window load as backup
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen && loadingScreen.style.display !== 'none') {
+            loadingScreen.style.opacity = '0';
+            setTimeout(function() {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }
+          clearTimeout(fallbackTimeout);
+        }, 2000);
+      });
+
+      // Catch any JS errors and still hide loading screen
+      window.addEventListener('error', function(e) {
+        console.error('JS Error:', e.message);
+        var loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen && loadingScreen.style.display !== 'none') {
+          loadingScreen.style.opacity = '0';
+          setTimeout(function() {
+            loadingScreen.style.display = 'none';
+          }, 500);
+        }
+      });
+    })();
+  </script>
+
   <!-- 3D Background Canvas -->
   <canvas id="background-canvas"></canvas>
 
