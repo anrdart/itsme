@@ -1,0 +1,24 @@
+{
+  "enabled": true,
+  "name": "Sync Documentation on Source Changes",
+  "description": "Watches HTML, CSS, and JavaScript source files for changes and prompts the agent to update the README.md or related documentation files accordingly.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.html",
+      "*.css",
+      "*.js",
+      "src/**/*.js",
+      "src/**/*.css",
+      "js/**/*.js",
+      "css/**/*.css",
+      "vite.config.js",
+      "package.json"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A source file has been modified. Please review the changes and determine if the README.md or any other documentation files (such as markdown files in the project root) need to be updated to reflect these changes. If documentation updates are needed, make the appropriate changes to keep the docs in sync with the codebase."
+  }
+}

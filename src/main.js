@@ -32,10 +32,9 @@ function initTypingAnimation() {
   if (!typingText) return
 
   const texts = [
-    'Full Stack Developer',
-    'UI/UX Designer',
-    'Creative Thinker',
-    'Problem Solver'
+    'Flutter Mobile Developer',
+    'Web Developer',
+    'IT Support Specialist'
   ]
   
   let textIndex = 0
