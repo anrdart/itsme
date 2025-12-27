@@ -136,23 +136,11 @@
         "@type": "Country",
         "name": "Indonesia"
       },
-      "estimatedSalary": {
-        "@type": "MonetaryAmountDistribution",
-        "name": "Competitive",
-        "currency": "IDR"
-      },
       "skills": "React, Next.js, Laravel, Flutter, Node.js, Python, JavaScript, TypeScript, PHP, Software Engineering"
     },
-    "award": "Certified Software Engineer",
     "alumniOf": {
       "@type": "EducationalOrganization",
       "name": "Bina Sarana Informatika University"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "ratingCount": "50"
     }
   }
   </script>
@@ -197,7 +185,6 @@
       "@type": "PostalAddress",
       "addressCountry": "Indonesia"
     },
-    "telephone": "+62-xxx-xxxx-xxxx",
     "areaServed": {
       "@type": "Country",
       "name": "Indonesia"
@@ -310,8 +297,8 @@
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+62-xxx-xxxx-xxxx",
       "contactType": "Customer Service",
+      "email": "contact@ekalliptus.id",
       "availableLanguage": ["English", "Indonesian"]
     }
   }
@@ -675,6 +662,7 @@
   <link rel="stylesheet" href="/css/responsive.css">
   <link rel="stylesheet" href="/css/spacing-fixes.css">
   <link rel="stylesheet" href="/css/projects-grid.css">
+  <link rel="stylesheet" href="/css/skills-sphere.css">
   
   <!-- Fallback untuk CSS individual jika optimized tidak tersedia -->
   <link rel="stylesheet" href="/css/about-modern.css" media="print" onload="this.media='all'; this.onload=null;">
@@ -884,7 +872,13 @@
     <section id="skills" class="section" aria-labelledby="skills-heading">
       <h2 id="skills-heading" class="section-title animate-on-scroll">Technical Skills & Technologies</h2>
       <p class="section-description animate-on-scroll">As a Flutter Mobile Developer and Web Developer, I specialize in building cross-platform mobile applications with clean architecture and smooth UI/UX. My tech stack includes modern web frameworks for frontend and backend development, along with essential tools for efficient development workflows.</p>
-      <ul class="skills-grid" role="list" aria-label="Technical skills and technologies">
+      
+      <!-- 3D Skills Sphere Container -->
+      <div id="skills-sphere-container" class="skills-sphere-container" aria-label="Interactive 3D skills visualization">
+        <canvas id="skills-sphere-canvas" aria-hidden="true"></canvas>
+        
+        <!-- Fallback Grid (shown when WebGL not available) -->
+        <ul class="skills-sphere-fallback skills-grid" role="list" aria-label="Technical skills and technologies" style="display: none;">
         <!-- Mobile Development -->
         <li class="skill-item glass-container animate-on-scroll">
           <img src="/img/skills/flutter.svg" alt="Flutter - Cross-platform mobile app development framework" class="skill-icon" width="80" height="80" loading="lazy">
@@ -975,7 +969,8 @@
           <img src="/img/skills/git.svg" alt="Git - Version control system" class="skill-icon" width="80" height="80" loading="lazy">
           <h3>Git</h3>
         </li>
-      </ul>
+        </ul>
+      </div>
     </section>
 
     <!-- Projects Section -->

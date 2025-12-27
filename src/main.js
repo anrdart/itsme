@@ -1,6 +1,10 @@
 import './style.css'
 import { init3DBackground, update3DTheme } from './3d-background.js'
 import { initCursorAnimation } from './cursor-animation.js'
+import { initSkillsSphere } from './skills-sphere.js'
+
+// Store skills sphere instance for theme updates
+let skillsSphereInstance = null
 
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursorAnimation()
   initTypingAnimation()
   initPortfolio()
+  
+  // Initialize 3D Skills Sphere
+  skillsSphereInstance = initSkillsSphere('skills-sphere-container', savedTheme)
 })
 
 function initTypingAnimation() {
@@ -104,6 +111,11 @@ function initPortfolio() {
     const newTheme = isLightMode ? 'light' : 'dark'
     localStorage.setItem('theme', newTheme)
     update3DTheme(newTheme)
+    
+    // Update skills sphere theme
+    if (skillsSphereInstance) {
+      skillsSphereInstance.updateTheme(newTheme)
+    }
     
     // Update all theme icons
     document.querySelectorAll('.theme-icon').forEach(icon => {

@@ -1,0 +1,104 @@
+/* Skills Sphere 3D Container Styling */
+
+/* Main container for the 3D sphere */
+.skills-sphere-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Canvas element for Three.js rendering */
+#skills-sphere-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+}
+
+#skills-sphere-canvas:active {
+  cursor: grabbing;
+}
+
+/* Fallback grid - inherits from skills-grid but hidden by default */
+.skills-sphere-fallback {
+  display: none;
+  width: 100%;
+}
+
+/* When fallback is shown, use grid layout */
+.skills-sphere-fallback.active,
+.skills-sphere-fallback[style*="display: grid"] {
+  display: grid !important;
+}
+
+/* Responsive adjustments for sphere container */
+@media screen and (max-width: 992px) {
+  .skills-sphere-container {
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skills-sphere-container {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skills-sphere-container {
+    height: 350px;
+  }
+}
+
+/* Loading state */
+.skills-sphere-container.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--bg-black-100);
+  border-top-color: var(--skin-color);
+  border-radius: 50%;
+  animation: sphere-loading-spin 1s linear infinite;
+}
+
+@keyframes sphere-loading-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Skill node tooltip (for hover state) */
+.skill-tooltip {
+  position: absolute;
+  background: var(--bg-black-50);
+  color: var(--text-black-700);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skill-tooltip.visible {
+  opacity: 1;
+}
+
+/* Dark mode adjustments */
+body.dark .skill-tooltip {
+  background: var(--bg-black-100);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
