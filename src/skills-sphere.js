@@ -464,7 +464,7 @@ export class SkillsSphere {
     try {
       await loadThreeJS();
       this.isInitialized = true;  // Set before initThree so animate() can run
-      this.initThree();
+      await this.initThree();
     } catch (error) {
       console.error('Failed to initialize skills sphere:', error);
       this.isInitialized = false;
@@ -476,7 +476,7 @@ export class SkillsSphere {
    * Initialize Three.js scene, camera, and renderer
    * @private
    */
-  initThree() {
+  async initThree() {
     const THREE = window.THREE;
     if (!THREE) return;
 
@@ -485,6 +485,9 @@ export class SkillsSphere {
       console.error('Skills sphere canvas not found');
       return;
     }
+
+    // Add loading class to container
+    this.container.classList.add('loading');
 
     const width = this.container.clientWidth;
     const height = this.container.clientHeight;
@@ -523,8 +526,14 @@ export class SkillsSphere {
       autoRotateSpeed: this.options.autoRotateSpeed
     });
 
-    // Create skill nodes
-    this.createNodes();
+    // Preload all textures first, then create nodes
+    const textureMap = await this.preloadTextures();
+    
+    // Create skill nodes with preloaded textures
+    this.createNodes(textureMap);
+
+    // Remove loading class
+    this.container.classList.remove('loading');
 
     // Setup event listeners
     this.setupEventListeners();
@@ -554,27 +563,64 @@ export class SkillsSphere {
   }
 
   /**
-   * Create skill nodes and position them on the sphere
-   * Uses distributeOnSphere for even distribution and creates Three.js Sprites
+   * Preload all skill icon textures
+   * @returns {Promise<Map<string, THREE.Texture>>} Map of icon path to texture
    * @private
    */
-  createNodes() {
+  async preloadTextures() {
+    const THREE = window.THREE;
+    if (!THREE) return new Map();
+
+    const textureLoader = new THREE.TextureLoader();
+    const textureMap = new Map();
+    
+    const loadPromises = this.skills.map(skill => {
+      return new Promise((resolve) => {
+        textureLoader.load(
+          skill.icon,
+          (texture) => {
+            texture.colorSpace = THREE.SRGBColorSpace;
+            textureMap.set(skill.icon, texture);
+            resolve();
+          },
+          undefined,
+          (error) => {
+            console.warn(`Failed to load texture: ${skill.icon}`, error);
+            textureMap.set(skill.icon, null); // Mark as failed
+            resolve(); // Don't reject, continue with other textures
+          }
+        );
+      });
+    });
+
+    await Promise.all(loadPromises);
+    return textureMap;
+  }
+
+  /**
+   * Create skill nodes and position them on the sphere
+   * Uses distributeOnSphere for even distribution and creates Three.js Sprites
+   * @param {Map<string, THREE.Texture>} textureMap - Preloaded textures
+   * @private
+   */
+  createNodes(textureMap = new Map()) {
     const THREE = window.THREE;
     if (!THREE || !this.sphereGroup) return;
 
     const radius = this.getResponsiveRadius();
     const positions = distributeOnSphere(this.skills.length, radius);
-    const textureLoader = new THREE.TextureLoader();
 
     // Node size - consistent for all nodes
     const nodeSize = radius * 0.25;
 
     this.skills.forEach((skill, index) => {
       const position = positions[index];
+      const texture = textureMap.get(skill.icon);
       
-      // Create sprite material with texture
+      // Create sprite material with preloaded texture
       const spriteMaterial = new THREE.SpriteMaterial({
-        color: 0xffffff,
+        map: texture || null,
+        color: texture ? 0xffffff : 0x888888, // Gray fallback if no texture
         transparent: true,
         opacity: 1,
         sizeAttenuation: true
@@ -591,23 +637,6 @@ export class SkillsSphere {
         baseScale: nodeSize,
         index: index
       };
-
-      // Load texture asynchronously
-      textureLoader.load(
-        skill.icon,
-        (texture) => {
-          // Success - apply texture
-          texture.colorSpace = THREE.SRGBColorSpace;
-          spriteMaterial.map = texture;
-          spriteMaterial.needsUpdate = true;
-        },
-        undefined,
-        (error) => {
-          // Error - log warning and use fallback color
-          console.warn(`Failed to load texture: ${skill.icon}`, error);
-          spriteMaterial.color.setHex(0x888888);
-        }
-      );
 
       // Add to sphere group and nodes array
       this.sphereGroup.add(sprite);
