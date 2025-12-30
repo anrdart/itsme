@@ -39,9 +39,9 @@ function initTypingAnimation() {
   if (!typingText) return
 
   const texts = [
-    'Flutter Mobile Developer',
-    'Web Developer',
-    'IT Support Specialist'
+    'Software Engineer',
+    'IT Specialist',
+    'Editor'
   ]
   
   let textIndex = 0
