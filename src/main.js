@@ -40,7 +40,7 @@ function initTypingAnimation() {
 
   const texts = [
     'Software Engineer',
-    'IT Specialist',
+    'IT Support Specialist',
     'Editor'
   ]
   
