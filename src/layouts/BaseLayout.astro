@@ -1,0 +1,119 @@
+---
+// src/layouts/BaseLayout.astro
+import { ViewTransitions } from 'astro:transitions';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = 'Haikal Akhalul Azhar — Software Engineer, IT Support Specialist, and Editor. Building innovative digital solutions with Flutter, React, Next.js, and Laravel.',
+  image = '/img/profile.png',
+} = Astro.props;
+
+const siteUrl = 'https://ekalliptus.id';
+const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
+const ogImage = `${siteUrl}${image}`;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="author" content="Haikal Akhalul Azhar" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Haikal Akhalul Azhar Portfolio" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@ekalliptus" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Icons & manifest -->
+  <link rel="icon" type="image/x-icon" href="/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#07070f" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- JSON-LD Person structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Haikal Akhalul Azhar",
+    "alternateName": "єкαℓℓιρтus",
+    "jobTitle": "Software Engineer | IT Support Specialist | Editor",
+    "url": "https://ekalliptus.id/",
+    "image": "https://ekalliptus.id/img/profile.png",
+    "sameAs": [
+      "https://github.com/anrdart",
+      "https://www.linkedin.com/in/alulanr/",
+      "https://twitter.com/ekalliptus"
+    ],
+    "worksFor": { "@type": "Organization", "name": "Media Pro" },
+    "alumniOf": { "@type": "EducationalOrganization", "name": "Bina Sarana Informatika University" },
+    "address": { "@type": "PostalAddress", "addressCountry": "Indonesia" },
+    "email": "mailto:contact@ekalliptus.id"
+  }
+  </script>
+
+  <ViewTransitions />
+</head>
+<body>
+  <Nav currentPath={Astro.url.pathname} />
+  <main id="main-content" role="main">
+    <slot />
+  </main>
+  <Footer />
+
+  <!-- Scroll reveal via IntersectionObserver -->
+  <script>
+    function initReveal() {
+      const els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      const obs = new IntersectionObserver(
+        (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+        { threshold: 0.1 }
+      );
+      els.forEach(el => obs.observe(el));
+    }
+    document.addEventListener('astro:page-load', initReveal);
+  </script>
+
+  <!-- Cursor animation (desktop only) -->
+  <script>
+    import { initCursorAnimation } from '../scripts/cursor-animation.js';
+    document.addEventListener('astro:page-load', () => {
+      if (window.matchMedia('(pointer: fine)').matches) {
+        initCursorAnimation();
+      }
+    });
+  </script>
+</body>
+</html>
