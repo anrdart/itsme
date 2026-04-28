@@ -1,22 +1,28 @@
 // src/data/skills.js
 export const SKILLS_DATA = [
+  // Mobile
   { name: "Flutter",     icon: "/img/skills/flutter.svg",    category: "mobile"   },
   { name: "Dart",        icon: "/img/skills/dart.svg",       category: "mobile"   },
   { name: "Android",     icon: "/img/skills/android.svg",    category: "mobile"   },
   { name: "iOS",         icon: "/img/skills/ios.svg",        category: "mobile"   },
+  // Frontend
   { name: "React.js",    icon: "/img/skills/reactjs.svg",    category: "frontend" },
   { name: "Next.js",     icon: "/img/skills/nextjs.svg",     category: "frontend" },
   { name: "NuxtJS",      icon: "/img/skills/nuxtjs.svg",     category: "frontend" },
   { name: "Vue.js",      icon: "/img/skills/vuejs.svg",      category: "frontend" },
+  // Backend
   { name: "Laravel",     icon: "/img/skills/laravel.svg",    category: "backend"  },
   { name: "Node.js",     icon: "/img/skills/nodejs.svg",     category: "backend"  },
   { name: "WordPress",   icon: "/img/skills/wordpress.svg",  category: "backend"  },
+  // Languages
   { name: "JavaScript",  icon: "/img/skills/javascript.svg", category: "language" },
   { name: "TypeScript",  icon: "/img/skills/typescript.svg", category: "language" },
   { name: "HTML5",       icon: "/img/skills/html5.svg",      category: "language" },
   { name: "CSS3",        icon: "/img/skills/css3.svg",       category: "language" },
+  // CSS / UI
   { name: "TailwindCSS", icon: "/img/skills/tailwindcss.svg",category: "css"      },
   { name: "Shadcn",      icon: "/img/skills/shadcn.svg",     category: "css"      },
+  // Tools
   { name: "Linux",       icon: "/img/skills/linux.svg",      category: "tools"    },
   { name: "Windows",     icon: "/img/skills/windows.svg",    category: "tools"    },
   { name: "Docker",      icon: "/img/skills/docker.svg",     category: "tools"    },
