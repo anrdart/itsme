@@ -1,0 +1,38 @@
+---
+// src/pages/projects.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { PROJECTS } from '../data/projects.js';
+---
+<BaseLayout
+  title="Projects — Haikal Akhalul Azhar"
+  description="Portfolio of professional software engineering projects: web development with React, Next.js, Laravel, and mobile apps with Flutter."
+>
+  <div class="container section">
+    <p class="section-label reveal">// FEATURED_WORK</p>
+    <h1 class="section-title reveal">Projects</h1>
+    <p class="section-desc reveal">
+      A collection of professional projects showcasing modern web and mobile development.
+    </p>
+
+    <div class="projects-grid">
+      {PROJECTS.map(project => (
+        <ProjectCard
+          icon={project.icon}
+          name={project.name}
+          description={project.description}
+          tags={project.tags}
+          liveUrl={project.liveUrl}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+</style>

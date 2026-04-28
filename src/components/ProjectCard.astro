@@ -1,0 +1,78 @@
+---
+// src/components/ProjectCard.astro
+interface Props {
+  icon: string;
+  name: string;
+  description: string;
+  tags: string[];
+  liveUrl: string;
+}
+
+const { icon, name, description, tags, liveUrl } = Astro.props;
+---
+<article class="project-card card reveal">
+  <header class="proj-header">
+    <span class="proj-icon" aria-hidden="true">{icon}</span>
+    <h3 class="proj-name">{name}</h3>
+  </header>
+  <p class="proj-desc">{description}</p>
+  <div class="proj-tags">
+    {tags.map((tag, i) => (
+      <span class:list={['tag', { 'tag-cyan': i % 2 === 0 }]}>{tag}</span>
+    ))}
+  </div>
+  <footer class="proj-footer">
+    <a
+      href={liveUrl}
+      class="btn btn-primary"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`View ${name} live`}
+    >
+      Live ↗
+    </a>
+  </footer>
+</article>
+
+<style>
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.proj-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.proj-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.proj-name {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.proj-desc {
+  font-size: 13px;
+  color: var(--text-sec);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.proj-footer {
+  margin-top: auto;
+  padding-top: 4px;
+}
+</style>
