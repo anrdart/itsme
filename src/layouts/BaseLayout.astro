@@ -1,6 +1,6 @@
 ---
 // src/layouts/BaseLayout.astro
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -79,11 +79,11 @@ const ogImage = `${siteUrl}${image}`;
     "worksFor": { "@type": "Organization", "name": "Media Pro" },
     "alumniOf": { "@type": "EducationalOrganization", "name": "Bina Sarana Informatika University" },
     "address": { "@type": "PostalAddress", "addressCountry": "Indonesia" },
-    "email": "mailto:contact@ekalliptus.id"
+    "email": "contact@ekalliptus.id"
   }
   </script>
 
-  <ViewTransitions />
+  <ClientRouter />
 </head>
 <body>
   <Nav currentPath={Astro.url.pathname} />
@@ -98,7 +98,12 @@ const ogImage = `${siteUrl}${image}`;
       const els = document.querySelectorAll('.reveal');
       if (!els.length) return;
       const obs = new IntersectionObserver(
-        (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+        (entries) => entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        }),
         { threshold: 0.1 }
       );
       els.forEach(el => obs.observe(el));

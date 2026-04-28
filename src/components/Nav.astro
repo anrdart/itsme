@@ -33,10 +33,11 @@ function isActive(href: string) {
     ))}
   </nav>
 
-  <button class="nav-mob-btn" id="nav-mob-btn" aria-label="Toggle menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
 </header>
+
+<button class="nav-mob-btn" id="nav-mob-btn" aria-label="Toggle menu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
 
 <div class="nav-mob-overlay" id="nav-mob-overlay" role="dialog" aria-modal="true" aria-label="Mobile navigation">
   <button class="nav-mob-close" id="nav-mob-close" aria-label="Close menu">✕</button>
@@ -135,7 +136,7 @@ header {
   position: fixed;
   inset: 0;
   background: rgba(7, 7, 15, 0.97);
-  z-index: 1000;
+  z-index: 1002;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -187,11 +188,16 @@ header {
     const btn = document.getElementById('nav-mob-btn');
     const overlay = document.getElementById('nav-mob-overlay');
     const closeBtn = document.getElementById('nav-mob-close');
+    const ac = new AbortController();
+    const { signal } = ac;
+
+    document.addEventListener('astro:before-swap', () => ac.abort(), { once: true });
 
     function openMenu() {
       overlay?.classList.add('open');
       btn?.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      closeBtn?.focus();
     }
 
     function closeMenu() {
@@ -200,14 +206,10 @@ header {
       document.body.style.overflow = '';
     }
 
-    btn?.addEventListener('click', openMenu);
-    closeBtn?.addEventListener('click', closeMenu);
-    overlay?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
-    });
+    btn?.addEventListener('click', openMenu, { signal });
+    closeBtn?.addEventListener('click', closeMenu, { signal });
+    overlay?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu, { signal }));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); }, { signal });
   }
 
   document.addEventListener('astro:page-load', initNav);
