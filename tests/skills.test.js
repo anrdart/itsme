@@ -1,84 +1,46 @@
 /**
- * Property-Based Tests for Skills Section
- * Feature: portfolio-sync-update
- * 
- * Tests validate that all skill items have proper SVG icons
+ * Tests for Skills Data
+ * Validates SKILLS_DATA integrity and icon file existence
  */
-
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
-import { JSDOM } from 'jsdom';
-import { readFileSync, existsSync } from 'fs';
+import { existsSync } from 'fs';
 import { join } from 'path';
+import { SKILLS_DATA } from '../src/data/skills.js';
 
-// Load the HTML file
-let document;
-let skillItems;
+describe('Skills Data', () => {
+  it('SKILLS_DATA has at least one entry', () => {
+    expect(SKILLS_DATA.length).toBeGreaterThan(0);
+  });
 
-beforeAll(() => {
-  const html = readFileSync(join(process.cwd(), 'index.html'), 'utf-8');
-  const dom = new JSDOM(html);
-  document = dom.window.document;
-  skillItems = document.querySelectorAll('.skill-item');
-});
-
-describe('Skills Section', () => {
-  /**
-   * Property 1: All Skill Items Have SVG Icons
-   * *For any* skill item displayed in the Skills Section, there SHALL be 
-   * an associated <img> element with a src attribute pointing to an SVG file.
-   * 
-   * **Validates: Requirements 3.5**
-   */
-  it('Property 1: All Skill Items Have SVG Icons', () => {
-    // Get all skill items from the DOM
-    const skillItemsArray = Array.from(skillItems);
-    
-    expect(skillItemsArray.length).toBeGreaterThan(0);
-    
-    // Property test: for any skill item index, the skill item should have an SVG icon
+  it('every skill has required fields: name, icon, category', () => {
     fc.assert(
       fc.property(
-        fc.integer({ min: 0, max: skillItemsArray.length - 1 }),
+        fc.integer({ min: 0, max: SKILLS_DATA.length - 1 }),
         (index) => {
-          const skillItem = skillItemsArray[index];
-          const img = skillItem.querySelector('img');
-          
-          // Must have an img element
-          expect(img).not.toBeNull();
-          
-          // Must have a src attribute
-          const src = img?.getAttribute('src');
-          expect(src).toBeTruthy();
-          
-          // src must point to an SVG file
-          expect(src).toMatch(/\.svg$/);
-          
-          // src must be in the skills folder
-          expect(src).toContain('/img/skills/');
-          
-          return true;
+          const skill = SKILLS_DATA[index];
+          expect(typeof skill.name).toBe('string');
+          expect(skill.name.length).toBeGreaterThan(0);
+          expect(typeof skill.icon).toBe('string');
+          expect(skill.icon).toMatch(/^\/img\/skills\/.+\.svg$/);
+          expect(typeof skill.category).toBe('string');
         }
       ),
-      { numRuns: 20 }
+      { numRuns: SKILLS_DATA.length }
     );
   });
 
-  /**
-   * Additional verification: All SVG files referenced actually exist
-   */
-  it('All referenced SVG files exist on disk', () => {
-    const skillItemsArray = Array.from(skillItems);
-    
-    skillItemsArray.forEach((skillItem) => {
-      const img = skillItem.querySelector('img');
-      const src = img?.getAttribute('src');
-      
-      if (src) {
-        // Convert URL path to file system path
-        const filePath = join(process.cwd(), src.replace(/^\//, ''));
-        expect(existsSync(filePath), `SVG file should exist: ${filePath}`).toBe(true);
-      }
-    });
+  it('every skill icon file exists in public/img/skills/', () => {
+    fc.assert(
+      fc.property(
+        fc.integer({ min: 0, max: SKILLS_DATA.length - 1 }),
+        (index) => {
+          const skill = SKILLS_DATA[index];
+          const filePath = join(process.cwd(), 'public', skill.icon);
+          expect(existsSync(filePath)).toBe(true);
+        }
+      ),
+      { numRuns: SKILLS_DATA.length }
+    );
   });
 });

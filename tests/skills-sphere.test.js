@@ -7,7 +7,8 @@
 
 import { describe, it, expect, beforeEach } from 'vitest';
 import * as fc from 'fast-check';
-import { distributeOnSphere, SKILLS_DATA, SphereController, calculateHoverScale, isBillboardFacingCamera, calculateResponsiveRadius, shouldPauseRendering, THEME_COLORS, getThemeColors } from '../src/skills-sphere.js';
+import { distributeOnSphere, SphereController, calculateHoverScale, isBillboardFacingCamera, calculateResponsiveRadius, shouldPauseRendering, THEME_COLORS, getThemeColors } from '../src/scripts/skills-sphere.js';
+import { SKILLS_DATA } from '../src/data/skills.js';
 
 describe('3D Skills Sphere', () => {
   /**
