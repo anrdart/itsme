@@ -1,0 +1,64 @@
+---
+// src/pages/skills.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SkillsSphere from '../components/SkillsSphere.astro';
+
+const categories = [
+  { label: 'Mobile',    color: 'var(--violet-light)' },
+  { label: 'Frontend',  color: 'var(--cyan)' },
+  { label: 'Backend',   color: 'var(--violet-light)' },
+  { label: 'Languages', color: 'var(--cyan)' },
+  { label: 'CSS / UI',  color: 'var(--violet-light)' },
+  { label: 'Tools',     color: 'var(--cyan)' },
+];
+---
+<BaseLayout
+  title="Skills — Haikal Akhalul Azhar"
+  description="Technical skills and technologies: Flutter, React, Next.js, Laravel, Node.js, TypeScript, Docker, and more."
+>
+  <div class="container section">
+    <p class="section-label reveal">// TECH_STACK</p>
+    <h1 class="section-title reveal">Technical Skills</h1>
+    <p class="section-desc reveal">
+      Drag the sphere to explore. Each node represents a technology in my stack.
+    </p>
+
+    <SkillsSphere />
+
+    <div class="legend reveal">
+      {categories.map(cat => (
+        <span class="legend-item">
+          <span class="legend-dot" style={`background: ${cat.color}`}></span>
+          {cat.label}
+        </span>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-sec);
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+</style>

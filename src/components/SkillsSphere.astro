@@ -1,0 +1,84 @@
+---
+// src/components/SkillsSphere.astro
+import { SKILLS_DATA } from '../data/skills.js';
+---
+<div id="skills-sphere-container" class="skills-sphere-container" aria-label="Interactive 3D skills visualization">
+  <canvas id="skills-sphere-canvas" aria-hidden="true"></canvas>
+
+  <!-- Fallback grid if WebGL not available -->
+  <ul class="skills-fallback" id="skills-fallback" role="list" aria-label="Technical skills" style="display:none">
+    {SKILLS_DATA.map(skill => (
+      <li class="skill-item card">
+        <img
+          src={skill.icon}
+          alt={skill.name}
+          width="52"
+          height="52"
+          loading="lazy"
+        />
+        <span class="skill-name">{skill.name}</span>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+.skills-sphere-container {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 400px;
+}
+
+#skills-sphere-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.skills-fallback {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.skill-name {
+  font-size: 12px;
+  color: var(--text-sec);
+  font-weight: 500;
+}
+</style>
+
+<script>
+  import { initSkillsSphere } from '../scripts/skills-sphere.js';
+
+  function init() {
+    const container = document.getElementById('skills-sphere-container');
+    if (!container) return;
+
+    // Check WebGL support
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) {
+      document.getElementById('skills-sphere-canvas')?.remove();
+      const fallback = document.getElementById('skills-fallback');
+      if (fallback) fallback.style.display = 'grid';
+      return;
+    }
+
+    initSkillsSphere('skills-sphere-container', 'dark');
+  }
+
+  document.addEventListener('astro:page-load', init);
+</script>
