@@ -1,4 +1,185 @@
 ---
-// src/pages/index.astro (placeholder — akan diganti nanti)
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<html><body><h1>Coming soon</h1></body></html>
+<BaseLayout
+  title="Haikal Akhalul Azhar — Software Engineer | IT Support Specialist | Editor"
+  description="Software Engineer, IT Support Specialist, and Editor based in Indonesia. Specializing in Flutter, React, Next.js, and Laravel development."
+>
+  <section class="hero container">
+    <div class="hero-left reveal">
+      <p class="section-label">// SOFTWARE_ENGINEER.EXE</p>
+      <h1 class="hero-heading">
+        Haikal<br>
+        <span class="accent">Akhalul Azhar</span>
+      </h1>
+      <p class="hero-sub">
+        <span id="typing-text" aria-live="polite" aria-label="Role"></span>
+        <span class="typing-cursor" aria-hidden="true">|</span>
+      </p>
+      <p class="hero-desc">Software Engineer 💻 · IT Support Specialist 🛠️ · Editor 🎬</p>
+      <div class="hero-cta">
+        <a href="/projects" class="btn btn-primary">View Projects</a>
+        <a href="/contact" class="btn btn-outline">Hire Me</a>
+      </div>
+    </div>
+
+    <div class="hero-right reveal">
+      <div class="stats-grid">
+        <div class="stat-card card">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">YEARS EXP</span>
+        </div>
+        <div class="stat-card card cyan-card">
+          <span class="stat-num">50+</span>
+          <span class="stat-label">PROJECTS</span>
+        </div>
+        <div class="stat-card card cyan-card">
+          <span class="stat-num">3</span>
+          <span class="stat-label">ROLES</span>
+        </div>
+        <div class="stat-card card">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">COFFEE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-heading {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin: 12px 0 16px;
+}
+
+.hero-sub {
+  font-size: 1.2rem;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  min-height: 2rem;
+  margin-bottom: 12px;
+}
+
+.typing-cursor {
+  animation: blink 1s step-end infinite;
+  color: var(--violet-light);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--text-sec);
+  margin-bottom: 28px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-right {
+  flex-shrink: 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 260px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  text-align: center;
+  gap: 6px;
+}
+
+.stat-num {
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--violet-light);
+  line-height: 1;
+}
+
+.cyan-card .stat-num {
+  color: var(--cyan);
+}
+
+.stat-label {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: auto;
+    padding-top: 32px;
+  }
+
+  .hero-right {
+    width: 100%;
+  }
+
+  .stats-grid {
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+  function initTyping() {
+    const el = document.getElementById('typing-text');
+    if (!el) return;
+
+    const texts = ['Software Engineer', 'IT Support Specialist', 'Editor'];
+    let ti = 0, ci = 0, del = false;
+
+    function tick() {
+      if (!el) return;
+      const cur = texts[ti];
+      el.textContent = del ? cur.slice(0, ci - 1) : cur.slice(0, ci + 1);
+      del ? ci-- : ci++;
+      let spd = del ? 80 : 150;
+      if (!del && ci === cur.length) { spd = 2000; del = true; }
+      else if (del && ci === 0) { del = false; ti = (ti + 1) % texts.length; }
+      setTimeout(tick, spd);
+    }
+
+    tick();
+  }
+
+  document.addEventListener('astro:page-load', initTyping);
+</script>
