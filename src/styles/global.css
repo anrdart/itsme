@@ -1,0 +1,282 @@
+/* src/styles/global.css */
+
+/* === DESIGN TOKENS === */
+:root {
+  --bg:              #07070f;
+  --bg-card:         rgba(255, 255, 255, 0.04);
+  --border-violet:   rgba(124, 58, 237, 0.30);
+  --border-violet-h: rgba(124, 58, 237, 0.65);
+  --border-cyan:     rgba(34, 211, 238, 0.35);
+  --violet:          #7c3aed;
+  --violet-light:    #a78bfa;
+  --cyan:            #22d3ee;
+  --text:            #ffffff;
+  --text-sec:        rgba(255, 255, 255, 0.45);
+  --text-muted:      rgba(255, 255, 255, 0.22);
+  --font-body:       'Inter', system-ui, sans-serif;
+  --font-mono:       'Courier New', ui-monospace, monospace;
+  --radius:          12px;
+  --radius-lg:       20px;
+  --radius-pill:     999px;
+  --transition:      200ms ease;
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+button { cursor: pointer; font: inherit; }
+
+/* === BASE === */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dot-grid background pattern (bukan gradasi — ini background-image titik) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  padding-top: 80px;
+}
+
+/* === LAYOUT === */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+/* === TYPOGRAPHY === */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.section-title .accent {
+  color: var(--violet-light);
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: var(--text-sec);
+  line-height: 1.75;
+  max-width: 620px;
+  margin-bottom: 48px;
+}
+
+/* === CARD === */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-violet);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.card:hover {
+  border-color: var(--border-violet-h);
+  transform: translateY(-4px);
+}
+
+.card.cyan-card {
+  border-color: var(--border-cyan);
+}
+
+.card.cyan-card:hover {
+  border-color: rgba(34, 211, 238, 0.70);
+}
+
+/* === BUTTONS === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  border: none;
+  transition: filter var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--violet);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border-cyan);
+  color: var(--cyan);
+}
+
+.btn-outline:hover {
+  background: rgba(34, 211, 238, 0.08);
+}
+
+/* === TAGS === */
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid var(--border-violet);
+  color: var(--violet-light);
+}
+
+.tag.tag-cyan {
+  background: rgba(34, 211, 238, 0.10);
+  border-color: var(--border-cyan);
+  color: var(--cyan);
+}
+
+/* === SCROLL REVEAL === */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === CUSTOM CURSOR (dari cursor-animation.js) === */
+.custom-cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--violet-light);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background 0.2s;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease;
+}
+
+.custom-cursor.hover-link,
+.cursor-follower.hover-link {
+  background: var(--cyan);
+  border-color: var(--cyan);
+}
+
+/* === ACCESSIBILITY === */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* === FORM INPUTS === */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sec);
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--bg-card);
+  border: 1px solid var(--border-violet);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: border-color var(--transition);
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--violet);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* === MOBILE BASE === */
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 0;
+  }
+
+  main {
+    padding-top: 70px;
+  }
+}
