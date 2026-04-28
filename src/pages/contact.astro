@@ -1,0 +1,187 @@
+---
+// src/pages/contact.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const socials = [
+  { label: 'GitHub',   href: 'https://github.com/anrdart',               icon: '⌥' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/alulanr/',     icon: '◈' },
+  { label: 'Twitter',  href: 'https://twitter.com/ekalliptus',           icon: '◉' },
+];
+---
+<BaseLayout
+  title="Contact — Haikal Akhalul Azhar"
+  description="Get in touch with Haikal Akhalul Azhar. Available for freelance projects, full-time opportunities, and consulting."
+>
+  <div class="container section">
+    <p class="section-label reveal">// GET_IN_TOUCH</p>
+    <h1 class="section-title reveal">Contact Me</h1>
+    <p class="section-desc reveal">
+      Available for freelance projects, full-time opportunities, and consulting. Let's build something great together.
+    </p>
+
+    <div class="contact-layout">
+      <div class="contact-form-wrap card reveal">
+        <form
+          action="https://formsubmit.co/haikalalul@gmail.com"
+          method="POST"
+          id="contact-form"
+        >
+          <input type="hidden" name="_subject" value="Portfolio Contact Form" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://ekalliptus.id/contact?sent=true" />
+
+          <div class="form-group">
+            <label for="name">Name <span aria-label="required">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="Your name" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email <span aria-label="required">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject <span aria-label="required">*</span></label>
+            <input type="text" id="subject" name="subject" required placeholder="Project inquiry" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message <span aria-label="required">*</span></label>
+            <textarea id="message" name="message" required rows="5" placeholder="Tell me about your project..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn">
+            Send Message →
+          </button>
+        </form>
+      </div>
+
+      <div class="contact-side reveal">
+        <div class="card social-card">
+          <h3 class="social-heading">Find Me Online</h3>
+          <div class="social-links">
+            {socials.map(s => (
+              <a
+                href={s.href}
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+              >
+                <span class="social-icon" aria-hidden="true">{s.icon}</span>
+                <span class="social-label">{s.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="card email-card">
+          <p class="email-label section-label" style="margin-bottom:6px">// EMAIL</p>
+          <a href="mailto:contact@ekalliptus.id" class="email-addr">
+            contact@ekalliptus.id
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  align-items: start;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 4px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.social-card {
+  margin-bottom: 16px;
+}
+
+.social-heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-sec);
+  margin-bottom: 16px;
+  font-family: var(--font-mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.social-link:hover {
+  background: rgba(124, 58, 237, 0.10);
+  border-color: var(--border-violet);
+}
+
+.social-icon {
+  font-size: 1.2rem;
+  color: var(--violet-light);
+  width: 24px;
+  text-align: center;
+}
+
+.social-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.email-addr {
+  font-size: 14px;
+  color: var(--cyan);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+
+.email-addr:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    if (window.location.search.includes('sent=true')) {
+      const form = document.getElementById('contact-form');
+      if (form) {
+        form.innerHTML = `
+          <div style="text-align:center; padding: 40px 0; color: var(--cyan);">
+            <p style="font-size:2rem; margin-bottom: 12px;">✓</p>
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:8px">Message Sent!</h3>
+            <p style="color: var(--text-sec); font-size:14px">I'll get back to you soon.</p>
+          </div>
+        `;
+      }
+    }
+  });
+</script>
