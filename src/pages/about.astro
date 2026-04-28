@@ -1,0 +1,246 @@
+---
+// src/pages/about.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const expertise = [
+  {
+    icon: '📱',
+    title: 'Flutter Mobile Development',
+    desc: 'Building cross-platform mobile applications with Flutter and Dart, focusing on clean architecture, smooth UI/UX, and native performance. Expertise in state management with Riverpod.',
+  },
+  {
+    icon: '🌐',
+    title: 'Web Development',
+    desc: 'Creating modern web applications using React.js, Next.js, NuxtJS, and Vue.js for frontend, with Laravel and Node.js for backend solutions.',
+  },
+  {
+    icon: '🛠️',
+    title: 'IT Support & Infrastructure',
+    desc: 'Reliable IT Support Specialist with expertise in Linux and Windows systems, networking, Docker containerization, and Git version control.',
+  },
+  {
+    icon: '📚',
+    title: 'Continuous Learning',
+    desc: 'Always expanding knowledge in advanced Flutter, GoLang, serverless architectures, and cybersecurity. Passionate about emerging technologies.',
+  },
+];
+---
+<BaseLayout
+  title="About — Haikal Akhalul Azhar"
+  description="Software Engineer, IT Support Specialist, and Editor based in Indonesia with 5+ years of experience building cross-platform mobile and web solutions."
+>
+  <div class="container section">
+    <p class="section-label reveal">// ABOUT_ME</p>
+    <h1 class="section-title reveal">Who I Am</h1>
+
+    <div class="about-grid">
+      <!-- Profile card -->
+      <div class="profile-card card reveal">
+        <div class="profile-img-wrap">
+          <img
+            src="/img/profile.png"
+            alt="Haikal Akhalul Azhar"
+            class="profile-img"
+            width="280"
+            height="280"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="profile-info">
+          <h2 class="profile-name">Haikal Akhalul Azhar</h2>
+          <p class="profile-title">Software Engineer · IT Support · Editor</p>
+          <span class="status-badge">
+            <span class="status-dot" aria-hidden="true"></span>
+            Available for Hire
+          </span>
+        </div>
+      </div>
+
+      <!-- Bio + expertise -->
+      <div class="about-content">
+        <div class="card bio-card reveal">
+          <p class="bio-text">
+            I'm a passionate <strong>Software Engineer</strong> focused on building cross-platform mobile applications and web solutions with clean architecture and smooth UI/UX. I also work as an IT Support Specialist and Editor.
+          </p>
+          <p class="bio-text">
+            Beyond mobile development, I work with <strong>React.js, Next.js, NuxtJS, Laravel, and WordPress</strong> to create full-stack applications. Currently diving deeper into advanced Flutter concepts, GoLang, and serverless architectures.
+          </p>
+          <p class="bio-text">
+            I'm passionate about cybersecurity best practices and always eager to collaborate on open-source projects and innovative web applications.
+          </p>
+        </div>
+
+        <div class="expertise-grid">
+          {expertise.map(item => (
+            <div class="expertise-card card reveal">
+              <span class="expertise-icon">{item.icon}</span>
+              <h3 class="expertise-title">{item.title}</h3>
+              <p class="expertise-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="cv-card card reveal">
+          <h3 class="cv-title">Download My Resume</h3>
+          <p class="cv-desc">5+ years of expertise in React, Next.js, Laravel, Flutter development, and successful project delivery for clients worldwide.</p>
+          <a
+            href="https://anrdart-my.sharepoint.com/:f:/g/personal/haikalalul_anrdart_onmicrosoft_com/ErSqO6JANTFOk84_42HDtegBYw-s6vBYJWkE7ApPsgtiMQ?e=vdMyUN"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download CV ↓
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+.about-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.profile-card {
+  position: sticky;
+  top: 100px;
+  text-align: center;
+  padding: 28px;
+}
+
+.profile-img-wrap {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(124, 58, 237, 0.50);
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.profile-title {
+  font-size: 12px;
+  color: var(--text-sec);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--cyan);
+  background: rgba(34, 211, 238, 0.10);
+  border: 1px solid var(--border-cyan);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.bio-card {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bio-text {
+  font-size: 0.95rem;
+  color: var(--text-sec);
+  line-height: 1.75;
+}
+
+.bio-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.expertise-card {
+  padding: 20px;
+}
+
+.expertise-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.expertise-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--violet-light);
+}
+
+.expertise-desc {
+  font-size: 12px;
+  color: var(--text-sec);
+  line-height: 1.65;
+}
+
+.cv-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cv-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.cv-desc {
+  font-size: 13px;
+  color: var(--text-sec);
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    position: static;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
