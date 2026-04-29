@@ -1126,7 +1126,7 @@ export class SkillsSphere {
    * @private
    */
   showFallback() {
-    const fallbackGrid = this.container.querySelector('.skills-sphere-fallback');
+    const fallbackGrid = this.container.querySelector('#skills-fallback');
     const canvas = this.container.querySelector('#skills-sphere-canvas');
 
     if (fallbackGrid) {

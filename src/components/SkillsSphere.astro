@@ -2,7 +2,7 @@
 // src/components/SkillsSphere.astro
 import { SKILLS_DATA } from '../data/skills.js';
 ---
-<div id="skills-sphere-container" class="skills-sphere-container" aria-label="Interactive 3D skills visualization">
+<div id="skills-sphere-container" class="skills-sphere-container" role="img" aria-label="Interactive 3D skills visualization">
   <canvas id="skills-sphere-canvas" aria-hidden="true"></canvas>
 
   <!-- Fallback grid if WebGL not available -->
@@ -63,11 +63,19 @@ import { SKILLS_DATA } from '../data/skills.js';
 <script>
   import { initSkillsSphere } from '../scripts/skills-sphere.js';
 
+  let sphere: ReturnType<typeof initSkillsSphere> = null;
+
+  document.addEventListener('astro:before-swap', () => {
+    if (sphere) {
+      sphere.dispose();
+      sphere = null;
+    }
+  });
+
   function init() {
     const container = document.getElementById('skills-sphere-container');
     if (!container) return;
 
-    // Check WebGL support
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
     if (!gl) {
@@ -77,7 +85,7 @@ import { SKILLS_DATA } from '../data/skills.js';
       return;
     }
 
-    initSkillsSphere('skills-sphere-container', 'dark');
+    sphere = initSkillsSphere('skills-sphere-container', 'dark');
   }
 
   document.addEventListener('astro:page-load', init);

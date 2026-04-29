@@ -160,6 +160,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </style>
 
 <script>
+  let typingTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  document.addEventListener('astro:before-swap', () => {
+    if (typingTimeout !== null) clearTimeout(typingTimeout);
+    typingTimeout = null;
+  });
+
   function initTyping() {
     const el = document.getElementById('typing-text');
     if (!el) return;
@@ -175,7 +182,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       let spd = del ? 80 : 150;
       if (!del && ci === cur.length) { spd = 2000; del = true; }
       else if (del && ci === 0) { del = false; ti = (ti + 1) % texts.length; }
-      setTimeout(tick, spd);
+      typingTimeout = setTimeout(tick, spd);
     }
 
     tick();
