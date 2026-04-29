@@ -9,28 +9,122 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  pageSchema?: object; // page-specific JSON-LD, injected by each page
 }
 
 const {
   title,
-  description = 'Haikal Akhalul Azhar — Software Engineer, IT Support Specialist, and Editor. Building innovative digital solutions with Flutter, React, Next.js, and Laravel.',
-  image = '/img/profile.png',
+  description = 'Haikal Akhalul Azhar — Software Engineer, IT Support Specialist, and Editor based in Jakarta, Indonesia. Specializing in Flutter, React, Next.js, and Laravel development.',
+  image = '/img/ekal.png',
+  pageSchema,
 } = Astro.props;
 
-const siteUrl = 'https://ekalliptus.id';
-const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
-const ogImage = `${siteUrl}${image}`;
+const SITE = 'https://ekalliptus.id';
+const canonicalUrl = `${SITE}${Astro.url.pathname}`;
+const ogImage = `${SITE}${image}`;
+
+// Dynamic BreadcrumbList — skipped on home page (no segments)
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbSchema = segments.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+    ...segments.map((seg, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: seg.charAt(0).toUpperCase() + seg.slice(1),
+      item: `${SITE}/${segments.slice(0, i + 1).join('/')}/`,
+    })),
+  ],
+} : null;
+
+// Sitewide schemas
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Haikal Akhalul Azhar',
+  alternateName: 'єкαℓℓιρтus',
+  jobTitle: 'Software Engineer',
+  description: 'Software Engineer, IT Support Specialist, and Editor based in Jakarta, Indonesia with 5+ years of experience in Flutter, React, Next.js, and Laravel.',
+  url: `${SITE}/`,
+  image: `${SITE}/img/ekal.png`,
+  email: 'contact@ekalliptus.id',
+  nationality: 'Indonesian',
+  knowsLanguage: ['en', 'id'],
+  sameAs: [
+    'https://github.com/anrdart',
+    'https://www.linkedin.com/in/alulanr/',
+    'https://twitter.com/ekalliptus',
+  ],
+  worksFor: { '@type': 'Organization', name: 'Media Pro' },
+  alumniOf: { '@type': 'EducationalOrganization', name: 'Bina Sarana Informatika University' },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Jakarta',
+    addressRegion: 'DKI Jakarta',
+    addressCountry: 'ID',
+  },
+  knowsAbout: [
+    'Flutter', 'Dart', 'Android', 'iOS', 'React.js', 'Next.js', 'NuxtJS', 'Vue.js',
+    'Laravel', 'Node.js', 'WordPress', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3',
+    'TailwindCSS', 'Docker', 'Git', 'Linux', 'Mobile Development', 'Web Development',
+    'IT Support', 'Clean Architecture', 'UI/UX Design', 'Software Engineering',
+  ],
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Software Engineer',
+    occupationLocation: { '@type': 'Country', name: 'Indonesia' },
+    skills: 'Flutter, Dart, React.js, Next.js, Laravel, Node.js, TypeScript, Mobile Development',
+  },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Haikal Akhalul Azhar',
+  alternateName: 'єкαℓℓιρтus Portfolio',
+  url: `${SITE}/`,
+  description: 'Portfolio of Haikal Akhalul Azhar — Software Engineer based in Indonesia.',
+  inLanguage: 'en-US',
+  author: { '@type': 'Person', name: 'Haikal Akhalul Azhar' },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: `${SITE}/projects?q={search_term_string}` },
+    'query-input': 'required name=search_term_string',
+  },
+};
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Author & indexing -->
   <meta name="author" content="Haikal Akhalul Azhar" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="rating" content="general" />
+  <meta name="revisit-after" content="7 days" />
+
+  <!-- Language & locale -->
+  <meta http-equiv="content-language" content="en-US" />
+  <link rel="alternate" href={canonicalUrl} hreflang="en" />
+  <link rel="alternate" href={canonicalUrl} hreflang="id" />
+  <link rel="alternate" href={canonicalUrl} hreflang="x-default" />
+
+  <!-- Geographic (GEO) -->
+  <meta name="geo.region" content="ID-JK" />
+  <meta name="geo.placename" content="Jakarta, Indonesia" />
+  <meta name="geo.position" content="-6.2088;106.8456" />
+  <meta name="ICBM" content="-6.2088, 106.8456" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -38,50 +132,57 @@ const ogImage = `${siteUrl}${image}`;
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
-  <meta property="og:site_name" content="Haikal Akhalul Azhar Portfolio" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="800" />
+  <meta property="og:image:alt" content={title} />
+  <meta property="og:site_name" content="Haikal Akhalul Azhar" />
+  <meta property="og:locale" content="en_US" />
 
-  <!-- Twitter -->
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@ekalliptus" />
   <meta name="twitter:creator" content="@ekalliptus" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content={title} />
+  <meta name="twitter:domain" content="ekalliptus.id" />
 
-  <!-- Icons & manifest -->
+  <!-- Favicon & manifest -->
   <link rel="icon" type="image/x-icon" href="/img/favicon/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#07070f" />
+  <meta name="msapplication-TileColor" content="#07070f" />
+
+  <!-- PWA / Mobile -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Haikal Dev" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- JSON-LD Person structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Haikal Akhalul Azhar",
-    "alternateName": "єкαℓℓιρтus",
-    "jobTitle": "Software Engineer | IT Support Specialist | Editor",
-    "url": "https://ekalliptus.id/",
-    "image": "https://ekalliptus.id/img/profile.png",
-    "sameAs": [
-      "https://github.com/anrdart",
-      "https://www.linkedin.com/in/alulanr/",
-      "https://twitter.com/ekalliptus"
-    ],
-    "worksFor": { "@type": "Organization", "name": "Media Pro" },
-    "alumniOf": { "@type": "EducationalOrganization", "name": "Bina Sarana Informatika University" },
-    "address": { "@type": "PostalAddress", "addressCountry": "Indonesia" },
-    "email": "contact@ekalliptus.id"
-  }
-  </script>
+  <!-- JSON-LD: Person -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+  <!-- JSON-LD: WebSite -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+  <!-- JSON-LD: BreadcrumbList (dynamic per route) -->
+  {breadcrumbSchema && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  )}
+
+  <!-- JSON-LD: page-specific (injected by individual pages) -->
+  {pageSchema && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+  )}
 
   <ClientRouter />
 </head>
@@ -92,7 +193,7 @@ const ogImage = `${siteUrl}${image}`;
   </main>
   <Footer />
 
-  <!-- Scroll reveal via IntersectionObserver -->
+  <!-- Scroll reveal -->
   <script>
     function initReveal() {
       const els = document.querySelectorAll('.reveal');

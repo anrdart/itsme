@@ -1,7 +1,7 @@
 {
-  "name": "Haikal Akhalul Azhar - Software Engineer Portfolio",
-  "short_name": "єкαℓℓιρтus",
-  "description": "Professional Software Engineer specializing in React, Next.js, Laravel & Flutter development. 5+ years experience building modern web applications.",
+  "name": "Haikal Akhalul Azhar — Software Engineer",
+  "short_name": "Haikal Dev",
+  "description": "Portfolio of Haikal Akhalul Azhar, Software Engineer based in Jakarta, Indonesia. Specializing in Flutter, React, Next.js, and Laravel.",
   "icons": [
     {
       "src": "/img/favicon/android-chrome-192x192.png",
@@ -16,14 +16,14 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/img/profile.png",
-      "sizes": "400x400",
+      "src": "/img/ekal.png",
+      "sizes": "any",
       "type": "image/png",
       "purpose": "any"
     }
   ],
   "theme_color": "#07070f",
-  "background_color": "#0f0f23",
+  "background_color": "#07070f",
   "display": "standalone",
   "orientation": "portrait-primary",
   "scope": "/",

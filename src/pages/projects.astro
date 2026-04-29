@@ -3,10 +3,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { PROJECTS } from '../data/projects.js';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Projects — Haikal Akhalul Azhar',
+  url: 'https://ekalliptus.id/projects',
+  description: 'Portfolio of professional software engineering projects by Haikal Akhalul Azhar.',
+  author: { '@type': 'Person', name: 'Haikal Akhalul Azhar' },
+  hasPart: PROJECTS.map(p => ({
+    '@type': 'WebSite',
+    name: p.name,
+    description: p.description,
+    url: p.liveUrl,
+  })),
+};
 ---
 <BaseLayout
   title="Projects — Haikal Akhalul Azhar"
   description="Portfolio of professional software engineering projects: web development with React, Next.js, Laravel, and mobile apps with Flutter."
+  pageSchema={pageSchema}
 >
   <div class="container section">
     <p class="section-label reveal">// FEATURED_WORK</p>

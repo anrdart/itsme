@@ -2,6 +2,26 @@
 // src/pages/contact.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Haikal Akhalul Azhar',
+  url: 'https://ekalliptus.id/contact',
+  description: 'Get in touch with Haikal Akhalul Azhar for freelance projects, full-time opportunities, and consulting.',
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Haikal Akhalul Azhar',
+    email: 'contact@ekalliptus.id',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'contact@ekalliptus.id',
+      availableLanguage: ['English', 'Indonesian'],
+      areaServed: 'ID',
+    },
+  },
+};
+
 const socials = [
   { label: 'GitHub',   href: 'https://github.com/anrdart',               icon: '⌥' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/alulanr/',     icon: '◈' },
@@ -11,6 +31,7 @@ const socials = [
 <BaseLayout
   title="Contact — Haikal Akhalul Azhar"
   description="Get in touch with Haikal Akhalul Azhar. Available for freelance projects, full-time opportunities, and consulting."
+  pageSchema={pageSchema}
 >
   <div class="container section">
     <p class="section-label reveal">// GET_IN_TOUCH</p>

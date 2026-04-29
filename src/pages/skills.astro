@@ -2,19 +2,31 @@
 // src/pages/skills.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SkillsSphere from '../components/SkillsSphere.astro';
+import { SKILLS_DATA } from '../data/skills.js';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Technical Skills — Haikal Akhalul Azhar',
+  url: 'https://ekalliptus.id/skills',
+  description: 'Technical skills and technologies mastered by Haikal Akhalul Azhar: Flutter, React, Next.js, Laravel, and more.',
+  about: SKILLS_DATA.map(s => ({ '@type': 'Thing', name: s.name })),
+};
 
 const categories = [
   { label: 'Mobile',    color: 'var(--violet-light)' },
   { label: 'Frontend',  color: 'var(--cyan)' },
   { label: 'Backend',   color: 'var(--violet-light)' },
-  { label: 'Languages', color: 'var(--cyan)' },
-  { label: 'CSS / UI',  color: 'var(--violet-light)' },
-  { label: 'Tools',     color: 'var(--cyan)' },
+  { label: 'Database',  color: 'var(--cyan)' },
+  { label: 'Languages', color: 'var(--violet-light)' },
+  { label: 'CSS / UI',  color: 'var(--cyan)' },
+  { label: 'Tools',     color: 'var(--violet-light)' },
 ];
 ---
 <BaseLayout
   title="Skills — Haikal Akhalul Azhar"
   description="Technical skills and technologies: Flutter, React, Next.js, Laravel, Node.js, TypeScript, Docker, and more."
+  pageSchema={pageSchema}
 >
   <div class="container section">
     <p class="section-label reveal">// TECH_STACK</p>

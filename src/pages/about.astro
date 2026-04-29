@@ -2,6 +2,38 @@
 // src/pages/about.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About Haikal Akhalul Azhar',
+  url: 'https://ekalliptus.id/about',
+  description: 'Software Engineer, IT Support Specialist, and Editor based in Jakarta, Indonesia with 5+ years of experience.',
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Haikal Akhalul Azhar',
+    jobTitle: 'Software Engineer',
+    description: 'Passionate Software Engineer focused on Flutter mobile apps and full-stack web development using React, Next.js, and Laravel.',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Jakarta',
+      addressCountry: 'ID',
+    },
+    hasOccupation: [
+      { '@type': 'Occupation', name: 'Software Engineer' },
+      { '@type': 'Occupation', name: 'IT Support Specialist' },
+      { '@type': 'Occupation', name: 'Editor' },
+    ],
+    offers: {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Software Engineering Services',
+        description: 'Custom web and mobile application development using Flutter, React, Next.js, and Laravel.',
+      },
+    },
+  },
+};
+
 const expertise = [
   {
     icon: '📱',
@@ -27,7 +59,8 @@ const expertise = [
 ---
 <BaseLayout
   title="About — Haikal Akhalul Azhar"
-  description="Software Engineer, IT Support Specialist, and Editor based in Indonesia with 5+ years of experience building cross-platform mobile and web solutions."
+  description="Software Engineer, IT Support Specialist, and Editor based in Jakarta, Indonesia with 5+ years of experience building cross-platform mobile and web solutions."
+  pageSchema={pageSchema}
 >
   <div class="container section">
     <p class="section-label reveal">// ABOUT_ME</p>
@@ -38,7 +71,7 @@ const expertise = [
       <div class="profile-card card reveal">
         <div class="profile-img-wrap">
           <img
-            src="/img/profile.png"
+            src="/img/ekal.png"
             alt="Haikal Akhalul Azhar"
             class="profile-img"
             width="280"
@@ -85,7 +118,7 @@ const expertise = [
           <h3 class="cv-title">Download My Resume</h3>
           <p class="cv-desc">5+ years of expertise in React, Next.js, Laravel, Flutter development, and successful project delivery for clients worldwide.</p>
           <a
-            href="https://anrdart-my.sharepoint.com/:f:/g/personal/haikalalul_anrdart_onmicrosoft_com/ErSqO6JANTFOk84_42HDtegBYw-s6vBYJWkE7ApPsgtiMQ?e=vdMyUN"
+            href="https://anrdart-my.sharepoint.com/:f:/g/personal/haikalalul_ekalliptus_com/IgC0qjuiQDUxTpPOP-Nhw7XoAWMPrOrwWCVpBOwKT7ILYjE?e=xOrezY"
             class="btn btn-primary"
             target="_blank"
             rel="noopener noreferrer"
