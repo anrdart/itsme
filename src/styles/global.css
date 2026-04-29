@@ -210,13 +210,18 @@ main {
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: transform 0.08s ease;
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
-.custom-cursor.hover-link,
-.cursor-follower.hover-link {
+.custom-cursor.hover-link {
   background: var(--cyan);
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.cursor-follower.hover-link {
   border-color: var(--cyan);
+  transform: translate(-50%, -50%) scale(0.5);
+  background: transparent;
 }
 
 /* === ACCESSIBILITY === */

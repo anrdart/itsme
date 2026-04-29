@@ -6,11 +6,35 @@ interface Props {
   description: string;
   tags: string[];
   liveUrl: string;
+  previewImage?: string | null;
 }
 
-const { icon, name, description, tags, liveUrl } = Astro.props;
+const { icon, name, description, tags, liveUrl, previewImage } = Astro.props;
 ---
 <article class="project-card card reveal">
+
+  <!-- Preview image / placeholder -->
+  <a href={liveUrl} class="proj-preview-link" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+    <div class="proj-preview">
+      <!-- Fake browser chrome -->
+      <div class="browser-bar">
+        <span class="browser-dot" style="background:#ff5f57"></span>
+        <span class="browser-dot" style="background:#febc2e"></span>
+        <span class="browser-dot" style="background:#28c840"></span>
+        <span class="browser-url">{liveUrl.replace('https://', '')}</span>
+      </div>
+
+      {previewImage
+        ? <img src={previewImage} alt={`${name} preview`} class="proj-screenshot" loading="lazy" />
+        : <div class="proj-placeholder">
+            <span class="placeholder-icon" aria-hidden="true">{icon}</span>
+            <span class="placeholder-label">Preview coming soon</span>
+          </div>
+      }
+    </div>
+  </a>
+
+  <!-- Card content -->
   <header class="proj-header">
     <span class="proj-icon" aria-hidden="true">{icon}</span>
     <h3 class="proj-name">{name}</h3>
@@ -39,21 +63,102 @@ const { icon, name, description, tags, liveUrl } = Astro.props;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  padding: 0;
+  overflow: hidden;
 }
 
+/* Preview area */
+.proj-preview-link {
+  display: block;
+  text-decoration: none;
+}
+
+.proj-preview {
+  background: #0d0d1a;
+  border-bottom: 1px solid var(--border-violet);
+  overflow: hidden;
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.browser-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.browser-url {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: rgba(255, 255, 255, 0.25);
+  margin-left: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.proj-screenshot {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 400ms ease;
+}
+
+.proj-preview-link:hover .proj-screenshot {
+  transform: scale(1.03);
+}
+
+/* Placeholder when no real screenshot */
+.proj-placeholder {
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.placeholder-icon {
+  font-size: 2.8rem;
+  opacity: 0.6;
+}
+
+.placeholder-label {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 2px;
+  color: rgba(124, 58, 237, 0.5);
+  text-transform: uppercase;
+}
+
+/* Card content padding */
 .proj-header {
   display: flex;
   align-items: center;
   gap: 12px;
+  padding: 16px 20px 0;
 }
 
 .proj-icon {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   flex-shrink: 0;
 }
 
 .proj-name {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.3;
 }
@@ -63,16 +168,18 @@ const { icon, name, description, tags, liveUrl } = Astro.props;
   color: var(--text-sec);
   line-height: 1.7;
   flex: 1;
+  padding: 0 20px;
 }
 
 .proj-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  padding: 0 20px;
 }
 
 .proj-footer {
   margin-top: auto;
-  padding-top: 4px;
+  padding: 4px 20px 20px;
 }
 </style>
