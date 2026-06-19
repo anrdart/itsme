@@ -14,13 +14,7 @@ const pageSchema = {
 };
 
 const categories = [
-  { label: 'Mobile',    color: 'var(--violet-light)' },
-  { label: 'Frontend',  color: 'var(--cyan)' },
-  { label: 'Backend',   color: 'var(--violet-light)' },
-  { label: 'Database',  color: 'var(--cyan)' },
-  { label: 'Languages', color: 'var(--violet-light)' },
-  { label: 'CSS / UI',  color: 'var(--cyan)' },
-  { label: 'Tools',     color: 'var(--violet-light)' },
+  'Mobile', 'Frontend', 'Backend', 'Database', 'Languages', 'CSS / UI', 'Tools',
 ];
 ---
 <BaseLayout
@@ -29,10 +23,11 @@ const categories = [
   pageSchema={pageSchema}
 >
   <div class="container section">
-    <p class="section-label reveal">// TECH_STACK</p>
-    <h1 class="section-title reveal">Technical Skills</h1>
+    <p class="section-label reveal">How I Work</p>
+    <h1 class="section-title reveal">The stack behind<br><span class="accent">the work.</span></h1>
     <p class="section-desc reveal">
-      Drag the sphere to explore. Each node represents a technology in my stack.
+      Drag the sphere to explore — every node is a tool I reach for. Chosen so the
+      result loads fast, stays maintainable, and runs on any device.
     </p>
 
     <SkillsSphere />
@@ -40,8 +35,8 @@ const categories = [
     <div class="legend reveal">
       {categories.map(cat => (
         <span class="legend-item">
-          <span class="legend-dot" style={`background: ${cat.color}`}></span>
-          {cat.label}
+          <span class="legend-dot"></span>
+          {cat}
         </span>
       ))}
     </div>
@@ -68,9 +63,10 @@ const categories = [
 }
 
 .legend-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
+  background: var(--accent);
   flex-shrink: 0;
 }
 </style>

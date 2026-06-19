@@ -74,8 +74,8 @@ const { icon, name, description, tags, liveUrl, previewImage } = Astro.props;
 }
 
 .proj-preview {
-  background: #0d0d1a;
-  border-bottom: 1px solid var(--border-violet);
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
   overflow: hidden;
 }
 
@@ -140,7 +140,7 @@ const { icon, name, description, tags, liveUrl, previewImage } = Astro.props;
   font-size: 10px;
   font-family: var(--font-mono);
   letter-spacing: 2px;
-  color: rgba(124, 58, 237, 0.5);
+  color: var(--text-faint);
   text-transform: uppercase;
 }
 

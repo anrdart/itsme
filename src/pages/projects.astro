@@ -25,10 +25,11 @@ const pageSchema = {
   pageSchema={pageSchema}
 >
   <div class="container section">
-    <p class="section-label reveal">// FEATURED_WORK</p>
-    <h1 class="section-title reveal">Projects</h1>
+    <p class="section-label reveal">My Work</p>
+    <h1 class="section-title reveal">Selected<br><span class="accent">work.</span></h1>
     <p class="section-desc reveal">
-      {PROJECTS.length} projects delivered — web platforms, Islamic digital services, e-commerce, and more.
+      {PROJECTS.length} products shipped to production — web platforms, Islamic digital
+      services, e-commerce, and public-facing tools for clients across Indonesia.
     </p>
 
     <!-- Category filter tabs -->
@@ -98,9 +99,9 @@ const pageSchema = {
 }
 
 .filter-btn.active {
-  background: rgba(124, 58, 237, 0.22);
-  border-color: rgba(124, 58, 237, 0.55);
-  color: var(--violet-light);
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+  color: var(--accent);
 }
 
 .filter-count {
@@ -112,7 +113,7 @@ const pageSchema = {
 }
 
 .filter-btn.active .filter-count {
-  background: rgba(124, 58, 237, 0.25);
+  background: var(--accent-soft);
 }
 
 .projects-grid {

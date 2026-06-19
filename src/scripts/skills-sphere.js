@@ -16,18 +16,18 @@ import { SKILLS_DATA } from '../data/skills.js';
  */
 export const THEME_COLORS = {
   dark: {
-    background: 0x000000,      // Dark background (transparent in actual use)
+    background: 0x111111,      // Dark background (transparent in actual use)
     nodeColor: 0xffffff,       // Light/white icons for dark mode
     textColor: 0xffffff,       // Light text for dark mode
-    glowColor: 0x7c3aed,       // Purple glow effect
-    hoverGlow: 0x7c3aed        // Hover glow color
+    glowColor: 0x8395f2,       // Periwinkle accent glow
+    hoverGlow: 0x8395f2        // Hover glow color
   },
   light: {
     background: 0xffffff,      // Light background (transparent in actual use)
     nodeColor: 0x333333,       // Dark icons for light mode
     textColor: 0x333333,       // Dark text for light mode
-    glowColor: 0x7c3aed,       // Purple glow effect
-    hoverGlow: 0x7c3aed        // Hover glow color
+    glowColor: 0x8395f2,       // Periwinkle accent glow
+    hoverGlow: 0x8395f2        // Hover glow color
   }
 };
 
