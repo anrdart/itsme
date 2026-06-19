@@ -29,8 +29,8 @@ const VERTEX_SHADER = /* glsl */ `
 
     // Gaussian ripple following the cursor
     float d = distance(pos.xz, uMouse);
-    float ripple = exp(-d * d * 0.012) * uMouseStrength;
-    w += ripple * 2.6;
+    float ripple = exp(-d * d * 0.009) * uMouseStrength;
+    w += ripple * 4.6;
 
     pos.y += w;
 
