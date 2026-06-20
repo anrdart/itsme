@@ -264,7 +264,11 @@ const pillars = [
 }
 
 /* ── PILLARS ── */
-.pillars { padding: 40px 0 80px; }
+.pillars {
+  padding: 40px 0 80px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1400px;
+}
 
 .pillar {
   display: grid;
@@ -369,23 +373,41 @@ const pillars = [
   document.addEventListener('astro:page-load', initTyping);
 
   // ── 3D hero field ──
-  import { initHeroField } from '../scripts/hero-field.js';
+  // Three.js (~469 KB) is heavy, so we DEFER it off the critical path:
+  // the hero text paints first, then the field loads when the browser is idle.
+  let heroField: { dispose: () => void } | null = null;
+  let fieldLoading = false;
 
-  let heroField: ReturnType<typeof initHeroField> = null;
-
-  function initField() {
+  function loadField() {
+    if (heroField || fieldLoading) return;
     const canvas = document.getElementById('hero-field') as HTMLCanvasElement | null;
     if (!canvas) return;
-    heroField = initHeroField(canvas);
-    if (heroField) {
-      requestAnimationFrame(() => canvas.classList.add('ready'));
-    }
+    // Skip the cost entirely for users who prefer reduced motion on slow links
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        (navigator as any).connection?.saveData) return;
+
+    fieldLoading = true;
+    import('../scripts/hero-field.js').then(({ initHeroField }) => {
+      const c = document.getElementById('hero-field') as HTMLCanvasElement | null;
+      if (!c) { fieldLoading = false; return; }
+      heroField = initHeroField(c);
+      if (heroField) requestAnimationFrame(() => c.classList.add('ready'));
+      fieldLoading = false;
+    });
+  }
+
+  function scheduleField() {
+    const ric = (window as any).requestIdleCallback as
+      | ((cb: () => void, opts?: { timeout: number }) => number)
+      | undefined;
+    if (ric) ric(loadField, { timeout: 2000 });
+    else setTimeout(loadField, 600);
   }
 
   function disposeField() {
     if (heroField) { heroField.dispose(); heroField = null; }
   }
 
-  document.addEventListener('astro:page-load', initField);
+  document.addEventListener('astro:page-load', scheduleField);
   document.addEventListener('astro:before-swap', disposeField);
 </script>

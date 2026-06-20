@@ -1,6 +1,7 @@
 ---
 // src/pages/about.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LazyImage from '../components/LazyImage.astro';
 
 const pageSchema = {
   '@context': 'https://schema.org',
@@ -70,14 +71,14 @@ const expertise = [
       <!-- Profile card -->
       <div class="profile-card card reveal">
         <div class="profile-img-wrap">
-          <img
+          <LazyImage
             src="/img/ekal.png"
             alt="Haikal Akhalul Azhar"
-            class="profile-img"
-            width="280"
-            height="280"
+            width={280}
+            height={280}
             loading="eager"
             fetchpriority="high"
+            radius="50%"
           />
         </div>
         <div class="profile-info">

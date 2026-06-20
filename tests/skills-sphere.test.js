@@ -91,8 +91,10 @@ describe('3D Skills Sphere', () => {
    * Verify SKILLS_DATA is properly configured
    */
   describe('SKILLS_DATA configuration', () => {
-    it('contains all 21 skills', () => {
-      expect(SKILLS_DATA.length).toBe(21);
+    it('contains a full stack of skills with no duplicates', () => {
+      expect(SKILLS_DATA.length).toBeGreaterThanOrEqual(30);
+      const names = SKILLS_DATA.map(s => s.name);
+      expect(new Set(names).size).toBe(names.length);
     });
 
     it('all skills have required properties', () => {

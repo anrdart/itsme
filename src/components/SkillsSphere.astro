@@ -3,6 +3,11 @@
 import { SKILLS_DATA } from '../data/skills.js';
 ---
 <div id="skills-sphere-container" class="skills-sphere-container" role="img" aria-label="Interactive 3D skills visualization">
+  <!-- Shimmer loader until the WebGL scene + textures are ready -->
+  <div id="sphere-loader" class="sphere-loader" aria-hidden="true">
+    <span class="skeleton sphere-skeleton"></span>
+    <span class="sphere-loader-label">Loading stack…</span>
+  </div>
   <canvas id="skills-sphere-canvas" aria-hidden="true"></canvas>
 
   <!-- Fallback grid if WebGL not available -->
@@ -28,12 +33,46 @@ import { SKILLS_DATA } from '../data/skills.js';
   width: 100%;
   height: 70vh;
   min-height: 400px;
+  content-visibility: auto;
+  contain-intrinsic-size: 70vh;
 }
 
 #skills-sphere-canvas {
   width: 100%;
   height: 100%;
   display: block;
+  opacity: 0;
+  transition: opacity 700ms var(--ease);
+}
+.skills-sphere-container.is-ready #skills-sphere-canvas { opacity: 1; }
+
+/* Shimmer loader */
+.sphere-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 2;
+  transition: opacity 500ms var(--ease);
+}
+.skills-sphere-container.is-ready .sphere-loader {
+  opacity: 0;
+  pointer-events: none;
+}
+.sphere-skeleton {
+  width: min(260px, 60vw);
+  height: min(260px, 60vw);
+  border-radius: 50%;
+}
+.sphere-loader-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mut);
 }
 
 .skills-fallback {
@@ -76,16 +115,23 @@ import { SKILLS_DATA } from '../data/skills.js';
     const container = document.getElementById('skills-sphere-container');
     if (!container) return;
 
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    const probe = document.createElement('canvas');
+    const gl = probe.getContext('webgl') || probe.getContext('experimental-webgl');
     if (!gl) {
+      // No WebGL → drop canvas + loader, show the grid fallback
       document.getElementById('skills-sphere-canvas')?.remove();
+      document.getElementById('sphere-loader')?.remove();
       const fallback = document.getElementById('skills-fallback');
       if (fallback) fallback.style.display = 'grid';
       return;
     }
 
     sphere = initSkillsSphere('skills-sphere-container', 'dark');
+
+    // Reveal once textures have had a moment to load; rAF keeps it smooth.
+    requestAnimationFrame(() => {
+      setTimeout(() => container.classList.add('is-ready'), 220);
+    });
   }
 
   document.addEventListener('astro:page-load', init);

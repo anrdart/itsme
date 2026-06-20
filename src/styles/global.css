@@ -1,5 +1,8 @@
 /* src/styles/global.css */
 
+/* Self-hosted Montserrat (variable) — no render-blocking 3rd-party request */
+@import '@fontsource-variable/montserrat';
+
 /* === DESIGN TOKENS — monochrome editorial (OHZI-inspired) === */
 :root {
   /* Surfaces */
@@ -25,7 +28,7 @@
   --text-faint:      rgba(255, 255, 255, 0.22);
 
   /* Type */
-  --font-body:       'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-body:       'Montserrat Variable', 'Montserrat', system-ui, -apple-system, sans-serif;
   --font-mono:       ui-monospace, 'SF Mono', 'Courier New', monospace;
 
   /* Shape */
@@ -256,6 +259,45 @@ main {
 .cursor-follower.hover-link {
   border-color: var(--accent);
   transform: translate(-50%, -50%) scale(0.55);
+}
+
+/* === SKELETON SHIMMER (lazy media) === */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(131, 149, 242, 0.08) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    transparent 100%
+  );
+  animation: shimmer 1.6s var(--ease) infinite;
+}
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* Lazy <img>: fade in once loaded, skeleton sits underneath until then */
+.lazy-img {
+  opacity: 0;
+  transition: opacity 600ms var(--ease);
+}
+.lazy-img.is-loaded { opacity: 1; }
+.lazy-img.is-loaded + .skeleton,
+.lazy-media.is-loaded .skeleton { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after { animation: none; }
+  .lazy-img { opacity: 1; transition: none; }
 }
 
 /* === ACCESSIBILITY === */

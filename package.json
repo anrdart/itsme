@@ -15,8 +15,10 @@
     "vitest": "^4.0.16"
   },
   "dependencies": {
-    "@astrojs/sitemap": "latest",
-    "astro": "latest",
+    "@astrojs/sitemap": "^3.7.2",
+    "@fontsource-variable/montserrat": "^5.2.8",
+    "astro": "^6.1.10",
     "three": "^0.179.1"
-  }
+  },
+  "packageManager": "bun@1.3.10"
 }

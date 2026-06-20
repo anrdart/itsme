@@ -1,0 +1,80 @@
+---
+// src/components/LazyImage.astro
+// <img> with a skeleton-shimmer placeholder that fades the image in on load.
+// Width/height are required to reserve space (prevents CLS).
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  radius?: string;
+}
+const {
+  src,
+  alt,
+  width,
+  height,
+  class: className = '',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  radius = '0',
+} = Astro.props;
+---
+<div
+  class:list={['lazy-media', className]}
+  style={`--lm-radius:${radius}; aspect-ratio:${width} / ${height};`}
+>
+  <span class="skeleton" aria-hidden="true"></span>
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+    class="lazy-img"
+    onload="this.classList.add('is-loaded');this.closest('.lazy-media')?.classList.add('is-loaded')"
+  />
+</div>
+
+<style>
+.lazy-media {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--lm-radius);
+  background: var(--bg-soft);
+}
+.lazy-media .skeleton {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.lazy-media .lazy-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+</style>
+
+<script>
+  // Fallback: images served from cache may fire `load` before the inline
+  // handler attaches. Sweep on page-load and mark any already-complete imgs.
+  function settleLazyImages() {
+    document.querySelectorAll<HTMLImageElement>('img.lazy-img').forEach((img) => {
+      if (img.complete && img.naturalWidth > 0) {
+        img.classList.add('is-loaded');
+        img.closest('.lazy-media')?.classList.add('is-loaded');
+      }
+    });
+  }
+  document.addEventListener('astro:page-load', settleLazyImages);
+</script>
