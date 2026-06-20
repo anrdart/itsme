@@ -1,0 +1,208 @@
+---
+// src/components/Preloader.astro
+// Original intro preloader — a counter + slat mask-reveal.
+// Shows ONLY on the genuine first load of a session. Never on SPA nav
+// (gated by the `html.pl-first` class set by an inline head-of-body script).
+const SLATS = 6;
+---
+<!-- Runs before the rest of <body> paints: decide if the intro should show.
+     Gating here (not in the deferred module) avoids a flash of the overlay
+     on SPA navigations, where this markup re-renders but must stay hidden. -->
+<script is:inline>
+  (function () {
+    try {
+      var seen = sessionStorage.getItem('pl-seen') === '1';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!seen && !reduce) document.documentElement.classList.add('pl-first');
+    } catch (e) { /* sessionStorage blocked → just skip the intro */ }
+  })();
+</script>
+
+<div id="preloader" class="preloader" aria-hidden="true" data-state="idle">
+  <!-- Slat curtain that sweeps away on reveal -->
+  <div class="pl-slats">
+    {Array.from({ length: SLATS }).map((_, i) => (
+      <span class="pl-slat" style={`--i:${i}`}></span>
+    ))}
+  </div>
+
+  <!-- Center content sits above the slats while counting -->
+  <div class="pl-core">
+    <span class="pl-mark">єкαℓℓιρтuѕ</span>
+    <div class="pl-meter">
+      <span class="pl-count"><span id="pl-num">000</span><span class="pl-pct">%</span></span>
+      <span class="pl-bar"><span class="pl-bar-fill" id="pl-fill"></span></span>
+    </div>
+    <span class="pl-tag">Loading experience</span>
+  </div>
+</div>
+
+<style>
+  /* Hidden by default — only the first load of a session opts in. */
+  .preloader { display: none; }
+  :global(html.pl-first) .preloader {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: var(--bg);
+  }
+  /* Once revealed, take it out of the layout entirely */
+  .preloader[data-state="done"] { display: none !important; }
+
+  /* lock scroll while the intro plays */
+  :global(html.pl-lock),
+  :global(html.pl-lock body) { overflow: hidden; height: 100%; }
+
+  /* ── Slat curtain ── */
+  .pl-slats {
+    position: absolute;
+    inset: 0;
+    display: flex;
+  }
+  .pl-slat {
+    flex: 1;
+    background: var(--bg);
+    border-right: 1px solid rgba(255, 255, 255, 0.02);
+    transform: translateY(0);
+    will-change: transform;
+  }
+  .pl-slat:last-child { border-right: 0; }
+
+  /* Reveal: slats sweep upward, staggered left→right */
+  .preloader[data-state="reveal"] .pl-slat {
+    transform: translateY(-101%);
+    transition: transform 900ms cubic-bezier(0.76, 0, 0.24, 1);
+    transition-delay: calc(var(--i) * 70ms);
+  }
+
+  /* ── Center core ── */
+  .pl-core {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    transition: opacity 400ms var(--ease), transform 600ms var(--ease);
+  }
+  .preloader[data-state="reveal"] .pl-core {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+
+  .pl-mark {
+    font-family: serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    opacity: 0;
+    animation: pl-fade-in 700ms var(--ease) 120ms forwards;
+  }
+
+  .pl-meter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: min(280px, 64vw);
+  }
+  .pl-count {
+    display: flex;
+    align-items: flex-start;
+    font-family: var(--font-mono);
+    font-size: clamp(2.4rem, 8vw, 4rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .pl-pct {
+    font-size: 0.34em;
+    color: var(--accent);
+    margin-top: 0.35em;
+    margin-left: 0.15em;
+  }
+
+  .pl-bar {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: var(--line);
+    overflow: hidden;
+  }
+  .pl-bar-fill {
+    position: absolute;
+    inset: 0 100% 0 0;          /* right inset animates the fill */
+    background: var(--accent);
+    transition: right 200ms var(--ease);
+  }
+
+  .pl-tag {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-mut);
+    opacity: 0;
+    animation: pl-fade-in 700ms var(--ease) 300ms forwards;
+  }
+
+  @keyframes pl-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  const SESSION_KEY = 'pl-seen';
+
+  function runPreloader() {
+    const html = document.documentElement;
+    const pl = document.getElementById('preloader');
+
+    // Only proceed when the inline gate opted us in (genuine first load).
+    if (!pl || !html.classList.contains('pl-first')) return;
+
+    sessionStorage.setItem(SESSION_KEY, '1');
+
+    const numEl = document.getElementById('pl-num');
+    const fillEl = document.getElementById('pl-fill');
+
+    html.classList.add('pl-lock');
+    pl.dataset.state = 'counting';
+
+    const start = performance.now();
+    const DURATION = 1500;
+
+    function frame(now: number) {
+      const t = Math.min((now - start) / DURATION, 1);
+      const eased = 1 - Math.pow(1 - t, 3);   // easeOutCubic
+      const pct = Math.round(eased * 100);
+
+      if (numEl) numEl.textContent = String(pct).padStart(3, '0');
+      if (fillEl) fillEl.style.right = `${100 - pct}%`;
+
+      if (t < 1) requestAnimationFrame(frame);
+      else setTimeout(reveal, 260);
+    }
+
+    function reveal() {
+      pl.dataset.state = 'reveal';
+      html.classList.remove('pl-lock');
+      // last slat delay (5 * 70ms) + 900ms sweep ≈ 1250ms
+      setTimeout(() => {
+        pl.dataset.state = 'done';
+        html.classList.remove('pl-first');
+      }, 1400);
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  document.addEventListener('astro:page-load', runPreloader, { once: true });
+</script>
