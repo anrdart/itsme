@@ -16,9 +16,9 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/img/ekal.png",
-      "sizes": "any",
-      "type": "image/png",
+      "src": "/img/ekal-og.webp",
+      "sizes": "1200x1200",
+      "type": "image/webp",
       "purpose": "any"
     }
   ],

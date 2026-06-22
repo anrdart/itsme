@@ -16,8 +16,8 @@ export const PROJECTS = [
   {
     icon: '🏢',
     name: 'Ekalliptus Digital Agency',
-    description: 'Full-service digital agency website offering web development, mobile app development, and digital marketing solutions.',
-    tags: ['NuxtJS', 'TailwindCSS', 'Shadcn'],
+    description: 'Full-service digital agency website offering web development, mobile app development, and digital marketing solutions. Rebuilt from WordPress to a fast Astro + React stack on Cloudflare with a Supabase backend.',
+    tags: ['Astro', 'React', 'Supabase', 'Cloudflare'],
     liveUrl: 'https://ekalliptus.com',
     category: 'agency',
     previewImage: null,
@@ -27,8 +27,8 @@ export const PROJECTS = [
   {
     icon: '🕌',
     name: 'Yayasan Al Hidayah',
-    description: 'Website resmi Yayasan Al Hidayah — lembaga Islam yang bergerak di bidang pendidikan, sosial, dan dakwah di Indonesia.',
-    tags: ['WordPress', 'PHP', 'JavaScript'],
+    description: 'Website resmi Yayasan Al Hidayah — lembaga Islam yang bergerak di bidang pendidikan, sosial, dan dakwah di Indonesia. Dibangun ulang dari WordPress ke Astro di Cloudflare untuk loading lebih cepat.',
+    tags: ['Astro', 'TypeScript', 'Cloudflare'],
     liveUrl: 'https://yayasanalhidayah.com',
     category: 'education',
     previewImage: null,
@@ -215,6 +215,15 @@ export const PROJECTS = [
     category: 'finance',
     previewImage: null,
   },
+  {
+    icon: '💧',
+    name: 'Sedekah Air Minum',
+    description: 'Gerakan wakaf air bersih untuk masjid, pesantren, dan lembaga pendidikan Islam di seluruh Indonesia — platform donasi dengan Astro + React dan backend Supabase.',
+    tags: ['Astro', 'React', 'Supabase', 'TailwindCSS'],
+    liveUrl: 'https://sedekahairminum.com',
+    category: 'finance',
+    previewImage: null,
+  },
 
   // ── Community ────────────────────────────────────────────────────────────
   {
@@ -336,6 +345,15 @@ export const PROJECTS = [
     category: 'commerce',
     previewImage: null,
   },
+  {
+    icon: '🍫',
+    name: 'Miemie Brownie',
+    description: 'Website Miemie Brownie dengan sistem absensi pegawai dan manajemen toko — dibangun dengan PHP sebagai proyek aplikasi bisnis.',
+    tags: ['PHP', 'MySQL', 'JavaScript'],
+    liveUrl: 'https://miemiebrownie.com',
+    category: 'commerce',
+    previewImage: null,
+  },
 
   // ── Services ─────────────────────────────────────────────────────────────
   {
@@ -359,8 +377,8 @@ export const PROJECTS = [
   {
     icon: '🔗',
     name: 'Linknyamana',
-    description: 'Smart link-in-bio tool untuk kreator konten dan bisnis Indonesia — satu link untuk semua platform, dengan analytics dan kustomisasi tampilan.',
-    tags: ['HTML', 'TailwindCSS', 'JavaScript'],
+    description: 'Smart link-in-bio tool untuk kreator konten dan bisnis Indonesia — satu link untuk semua platform, dengan analytics dan kustomisasi tampilan. Dibangun dengan Astro + React di Cloudflare dengan database Neon.',
+    tags: ['Astro', 'React', 'TailwindCSS', 'Cloudflare'],
     liveUrl: 'https://linknyamana.web.id',
     category: 'services',
     previewImage: null,
@@ -368,9 +386,36 @@ export const PROJECTS = [
   {
     icon: '👨‍💻',
     name: 'Jagoanzaidev',
-    description: 'Portfolio dan personal brand website Zaidan — showcasing skills, projects, dan layanan pengembangan web.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
+    description: 'Portfolio dan personal brand website Zaidan — showcasing skills, projects, dan layanan pengembangan web. Dibangun ulang dengan Astro + React + Tailwind di Cloudflare.',
+    tags: ['Astro', 'React', 'TailwindCSS', 'Cloudflare'],
     liveUrl: 'https://jagoanzaidev.web.id',
+    category: 'services',
+    previewImage: null,
+  },
+  {
+    icon: '💬',
+    name: 'Tenta',
+    description: 'Platform omnichannel customer service — menyatukan chat pelanggan dari berbagai channel dan mengotomatiskan balasan dengan AI Agent. Dibangun dengan Astro + TypeScript.',
+    tags: ['Astro', 'TypeScript', 'AI', 'TailwindCSS'],
+    liveUrl: 'https://tenta.id',
+    category: 'services',
+    previewImage: null,
+  },
+  {
+    icon: '📦',
+    name: 'Wuzz Express',
+    description: 'Layanan pengiriman barang antar kota, provinsi, dan pulau — platform pemesanan dengan tracking dan manajemen pengiriman. Dibangun dengan Next.js dan Postgres.',
+    tags: ['Next.js', 'React', 'PostgreSQL', 'TypeScript'],
+    liveUrl: 'https://wuzz-express.vercel.app',
+    category: 'services',
+    previewImage: null,
+  },
+  {
+    icon: '🐄',
+    name: 'Ahzelan',
+    description: 'Website konsultan peternakan Ahzelan — layanan konsultasi dan pendampingan peternakan di era digital. Dibangun dengan Astro + React di Cloudflare.',
+    tags: ['Astro', 'React', 'TailwindCSS', 'Cloudflare'],
+    liveUrl: 'https://ahzelan.com',
     category: 'services',
     previewImage: null,
   },

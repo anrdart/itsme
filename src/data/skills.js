@@ -23,6 +23,7 @@ export const SKILLS_DATA = [
   { name: "Go",          icon: "/img/skills/go.svg",          category: "backend"  },
   { name: "WordPress",   icon: "/img/skills/wordpress.svg",   category: "backend"  },
   { name: "Supabase",    icon: "/img/skills/supabase.svg",    category: "backend"  },
+  { name: "Prisma",      icon: "/img/skills/prisma.svg",      category: "backend"  },
   // Database
   { name: "MySQL",       icon: "/img/skills/mysql.svg",       category: "database" },
   { name: "PostgreSQL",  icon: "/img/skills/postgresql.svg",  category: "database" },
@@ -42,6 +43,9 @@ export const SKILLS_DATA = [
   { name: "Git",         icon: "/img/skills/git.svg",         category: "tools"    },
   { name: "Docker",      icon: "/img/skills/docker.svg",      category: "tools"    },
   { name: "Bash",        icon: "/img/skills/bash.svg",        category: "tools"    },
+  { name: "Cloudflare",  icon: "/img/skills/cloudflare.svg",  category: "tools"    },
+  { name: "Vercel",      icon: "/img/skills/vercel.svg",      category: "tools"    },
+  { name: "Vitest",      icon: "/img/skills/vitest.svg",      category: "tools"    },
   { name: "Linux",       icon: "/img/skills/linux.svg",       category: "tools"    },
   { name: "Windows",     icon: "/img/skills/windows.svg",     category: "tools"    },
 ];
