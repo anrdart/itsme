@@ -3,7 +3,6 @@
 // Original intro preloader — a counter + slat mask-reveal.
 // Shows ONLY on the genuine first load of a session. Never on SPA nav
 // (gated by the `html.pl-first` class set by an inline head-of-body script).
-const SLATS = 6;
 ---
 <!-- Runs before the rest of <body> paints: decide if the intro should show.
      Gating here (not in the deferred module) avoids a flash of the overlay
@@ -19,14 +18,7 @@ const SLATS = 6;
 </script>
 
 <div id="preloader" class="preloader" aria-hidden="true" data-state="idle">
-  <!-- Slat curtain that sweeps away on reveal -->
-  <div class="pl-slats">
-    {Array.from({ length: SLATS }).map((_, i) => (
-      <span class="pl-slat" style={`--i:${i}`}></span>
-    ))}
-  </div>
-
-  <!-- Center content sits above the slats while counting -->
+  <!-- Center content; the whole overlay fades out on reveal -->
   <div class="pl-core">
     <span class="pl-mark">єкαℓℓιρтuѕ</span>
     <div class="pl-meter">
@@ -46,6 +38,13 @@ const SLATS = 6;
     inset: 0;
     z-index: 10000;
     background: var(--bg);
+    opacity: 1;
+    transition: opacity 850ms var(--ease);
+  }
+  /* Reveal: fade the whole overlay out smoothly */
+  .preloader[data-state="reveal"] {
+    opacity: 0;
+    pointer-events: none;
   }
   /* Once revealed, take it out of the layout entirely */
   .preloader[data-state="done"] { display: none !important; }
@@ -53,28 +52,6 @@ const SLATS = 6;
   /* lock scroll while the intro plays */
   :global(html.pl-lock),
   :global(html.pl-lock body) { overflow: hidden; height: 100%; }
-
-  /* ── Slat curtain ── */
-  .pl-slats {
-    position: absolute;
-    inset: 0;
-    display: flex;
-  }
-  .pl-slat {
-    flex: 1;
-    background: var(--bg);
-    border-right: 1px solid rgba(255, 255, 255, 0.02);
-    transform: translateY(0);
-    will-change: transform;
-  }
-  .pl-slat:last-child { border-right: 0; }
-
-  /* Reveal: slats sweep upward, staggered left→right */
-  .preloader[data-state="reveal"] .pl-slat {
-    transform: translateY(-101%);
-    transition: transform 900ms cubic-bezier(0.76, 0, 0.24, 1);
-    transition-delay: calc(var(--i) * 70ms);
-  }
 
   /* ── Center core ── */
   .pl-core {
@@ -86,11 +63,12 @@ const SLATS = 6;
     align-items: center;
     justify-content: center;
     gap: 26px;
-    transition: opacity 400ms var(--ease), transform 600ms var(--ease);
+    transition: opacity 500ms var(--ease), transform 700ms var(--ease);
   }
+  /* Core eases out slightly ahead of the overlay for a layered fade */
   .preloader[data-state="reveal"] .pl-core {
     opacity: 0;
-    transform: translateY(-14px);
+    transform: scale(0.97);
   }
 
   .pl-mark {
@@ -192,13 +170,12 @@ const SLATS = 6;
     }
 
     function reveal() {
-      pl.dataset.state = 'reveal';
+      pl.dataset.state = 'reveal';      // triggers the 850ms opacity fade
       html.classList.remove('pl-lock');
-      // last slat delay (5 * 70ms) + 900ms sweep ≈ 1250ms
       setTimeout(() => {
         pl.dataset.state = 'done';
         html.classList.remove('pl-first');
-      }, 1400);
+      }, 900);
     }
 
     requestAnimationFrame(frame);
