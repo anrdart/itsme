@@ -26,18 +26,20 @@
   <span class="pl-panel pl-panel-bottom"></span>
 
   <div class="pl-stage">
-    <span class="pl-mark">єкαℓℓιρтuѕ</span>
+    <span class="pl-kicker">Portfolio of</span>
 
-    <!-- giant counter -->
-    <div class="pl-count" aria-hidden="true">
-      <span id="pl-num" class="pl-num">0</span>
-      <span class="pl-pct">%</span>
+    <!-- kinetic word ticker: words rise through a mask, finishing on the name -->
+    <div class="pl-words" id="pl-words" aria-hidden="true">
+      <span class="pl-word" data-word="0">CRAFT</span>
+      <span class="pl-word" data-word="1">BUILD</span>
+      <span class="pl-word" data-word="2">SHIP</span>
+      <span class="pl-word pl-word-brand" data-word="3">єкαℓℓιρтuѕ</span>
     </div>
 
-    <!-- thin progress rule that fills with the accent -->
+    <!-- accent line that grows across the load -->
     <span class="pl-rule"><span class="pl-rule-fill" id="pl-fill"></span></span>
 
-    <span class="pl-tag">Loading the experience</span>
+    <span class="pl-tag">Software Engineer</span>
   </div>
 </div>
 
@@ -98,41 +100,51 @@
     transition-duration: 380ms;
   }
 
-  .pl-mark {
-    font-family: serif;
-    font-size: clamp(1.3rem, 3.4vw, 1.9rem);
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--text);
+  .pl-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--text-mut);
     opacity: 0;
-    transform: translateY(12px);
-    animation: pl-in 800ms var(--ease) 100ms forwards;
+    transform: translateY(10px);
+    animation: pl-in 700ms var(--ease) 80ms forwards;
   }
 
-  /* Giant counter */
-  .pl-count {
+  /* ── Kinetic word ticker (opacity + slide cross-fade) ── */
+  .pl-words {
+    position: relative;
+    width: min(90vw, 900px);
+    height: 1.15em;
+    font-family: var(--font-body);
+    font-size: clamp(2.6rem, 9vw, 6.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+  .pl-word {
+    position: absolute;
+    inset: 0;
     display: flex;
-    align-items: flex-start;
-    line-height: 0.82;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
     color: var(--text);
-    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transform: translateY(26px);
+    will-change: opacity, transform;
   }
-  .pl-num {
-    font-family: var(--font-mono);
-    font-size: clamp(7rem, 26vw, 20rem);
-    font-weight: 600;
-    letter-spacing: -0.04em;
-    display: inline-block;
-    min-width: 2ch;
-    text-align: right;
+  /* current word visible + centered; outgoing word fades up and out */
+  .pl-word.is-in  { opacity: 1; transform: translateY(0); }
+  .pl-word.is-out { opacity: 0; transform: translateY(-26px); }
+  .pl-words.animate .pl-word {
+    transition: opacity 420ms var(--ease), transform 520ms cubic-bezier(0.76, 0, 0.24, 1);
   }
-  .pl-pct {
-    font-family: var(--font-mono);
-    font-size: clamp(1.4rem, 4vw, 3rem);
-    font-weight: 500;
+  .pl-word-brand {
+    font-family: serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
     color: var(--accent);
-    margin-top: 0.4em;
-    margin-left: 0.1em;
   }
 
   /* Progress rule */
@@ -176,27 +188,38 @@
 
     sessionStorage.setItem(SESSION_KEY, '1');
 
-    const numEl = document.getElementById('pl-num');
+    const wordsWrap = document.getElementById('pl-words');
     const fillEl = document.getElementById('pl-fill');
+    const words = wordsWrap ? Array.from(wordsWrap.querySelectorAll('.pl-word')) : [];
 
     html.classList.add('pl-lock');
     pl.dataset.state = 'counting';
 
-    const start = performance.now();
-    const DURATION = 2200;            // slower, more deliberate count
+    const STEP = 760;                         // ms per word (480ms slide + ~280ms hold)
+    const total = words.length * STEP;        // full ticker duration
+    const timers: ReturnType<typeof setTimeout>[] = [];
 
-    function frame(now: number) {
-      const t = Math.min((now - start) / DURATION, 1);
-      // easeInOutCubic — slow start, confident middle, settle at the top
-      const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      const pct = Math.round(eased * 100);
+    // First word in immediately (no transition flash), then enable transitions.
+    if (words[0]) words[0].classList.add('is-in');
+    requestAnimationFrame(() => wordsWrap?.classList.add('animate'));
 
-      if (numEl) numEl.textContent = String(pct);
-      if (fillEl) fillEl.style.right = `${100 - pct}%`;
-
-      if (t < 1) requestAnimationFrame(frame);
-      else setTimeout(reveal, 420);   // longer beat at 100%
+    // Grow the accent rule across the whole sequence.
+    if (fillEl) {
+      fillEl.style.transition = `right ${total}ms cubic-bezier(0.4,0,0.2,1)`;
+      requestAnimationFrame(() => { fillEl.style.right = '0%'; });
     }
+
+    // Sequence the words: each step lifts the current out and brings the next in.
+    for (let i = 1; i < words.length; i++) {
+      timers.push(setTimeout(() => {
+        words[i - 1].classList.remove('is-in');
+        words[i - 1].classList.add('is-out');
+        words[i].classList.add('is-in');
+      }, i * STEP));
+    }
+
+    // After the last word (the brand) has held, reveal the site.
+    timers.push(setTimeout(reveal, total + 360));
 
     function reveal() {
       pl.dataset.state = 'reveal';     // panels split + stage fades
@@ -205,13 +228,11 @@
       html.classList.remove('pl-intro');
       html.classList.add('pl-opening');
       // panels: 180ms delay + 1100ms travel ≈ 1280ms
-      setTimeout(() => {
+      timers.push(setTimeout(() => {
         pl.dataset.state = 'done';
         html.classList.remove('pl-first', 'pl-opening');
-      }, 1500);
+      }, 1500));
     }
-
-    requestAnimationFrame(frame);
   }
 
   document.addEventListener('astro:page-load', runPreloader, { once: true });
