@@ -12,7 +12,11 @@
     try {
       var seen = sessionStorage.getItem('pl-seen') === '1';
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!seen && !reduce) document.documentElement.classList.add('pl-first');
+      if (!seen && !reduce) {
+        // pl-first: shows the overlay. pl-intro: holds hero content hidden
+        // (set before the hero paints) so it can rise in as the overlay fades.
+        document.documentElement.classList.add('pl-first', 'pl-intro');
+      }
     } catch (e) { /* sessionStorage blocked → just skip the intro */ }
   })();
 </script>
@@ -170,12 +174,16 @@
     }
 
     function reveal() {
-      pl.dataset.state = 'reveal';      // triggers the 850ms opacity fade
+      pl.dataset.state = 'reveal';      // triggers the 850ms overlay fade
       html.classList.remove('pl-lock');
+      // Hand off to the opening animation: release the held hero content
+      // (pl-intro) and let it rise in (pl-opening) as the overlay fades.
+      html.classList.remove('pl-intro');
+      html.classList.add('pl-opening');
       setTimeout(() => {
         pl.dataset.state = 'done';
-        html.classList.remove('pl-first');
-      }, 900);
+        html.classList.remove('pl-first', 'pl-opening');
+      }, 1300);
     }
 
     requestAnimationFrame(frame);
