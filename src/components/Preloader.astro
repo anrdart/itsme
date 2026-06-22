@@ -1,35 +1,43 @@
 ---
 // src/components/Preloader.astro
-// Original intro preloader — a counter + slat mask-reveal.
-// Shows ONLY on the genuine first load of a session. Never on SPA nav
-// (gated by the `html.pl-first` class set by an inline head-of-body script).
+// Bold kinetic intro — original work, studio-style energy (RESN-ish), not a copy.
+// A giant full-bleed counter sweeps 0->100 behind an accent progress sheet,
+// then the overlay lifts with a clip-path wipe while the hero rises in.
+// Shows ONLY on the genuine first load of a session (gated by html.pl-first).
 ---
 <!-- Runs before the rest of <body> paints: decide if the intro should show.
-     Gating here (not in the deferred module) avoids a flash of the overlay
-     on SPA navigations, where this markup re-renders but must stay hidden. -->
+     Gating here (not the deferred module) avoids a flash of the overlay on
+     SPA navigations, where this markup re-renders but must stay hidden. -->
 <script is:inline>
   (function () {
     try {
       var seen = sessionStorage.getItem('pl-seen') === '1';
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!seen && !reduce) {
-        // pl-first: shows the overlay. pl-intro: holds hero content hidden
-        // (set before the hero paints) so it can rise in as the overlay fades.
         document.documentElement.classList.add('pl-first', 'pl-intro');
       }
-    } catch (e) { /* sessionStorage blocked → just skip the intro */ }
+    } catch (e) { /* sessionStorage blocked → skip the intro */ }
   })();
 </script>
 
 <div id="preloader" class="preloader" aria-hidden="true" data-state="idle">
-  <!-- Center content; the whole overlay fades out on reveal -->
-  <div class="pl-core">
+  <!-- top + bottom panels lift apart on reveal -->
+  <span class="pl-panel pl-panel-top"></span>
+  <span class="pl-panel pl-panel-bottom"></span>
+
+  <div class="pl-stage">
     <span class="pl-mark">єкαℓℓιρтuѕ</span>
-    <div class="pl-meter">
-      <span class="pl-count"><span id="pl-num">000</span><span class="pl-pct">%</span></span>
-      <span class="pl-bar"><span class="pl-bar-fill" id="pl-fill"></span></span>
+
+    <!-- giant counter -->
+    <div class="pl-count" aria-hidden="true">
+      <span id="pl-num" class="pl-num">0</span>
+      <span class="pl-pct">%</span>
     </div>
-    <span class="pl-tag">Loading experience</span>
+
+    <!-- thin progress rule that fills with the accent -->
+    <span class="pl-rule"><span class="pl-rule-fill" id="pl-fill"></span></span>
+
+    <span class="pl-tag">Loading the experience</span>
   </div>
 </div>
 
@@ -41,102 +49,120 @@
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background: var(--bg);
-    opacity: 1;
-    transition: opacity 850ms var(--ease);
+    overflow: hidden;
   }
-  /* Reveal: fade the whole overlay out smoothly */
-  .preloader[data-state="reveal"] {
-    opacity: 0;
-    pointer-events: none;
-  }
-  /* Once revealed, take it out of the layout entirely */
   .preloader[data-state="done"] { display: none !important; }
 
   /* lock scroll while the intro plays */
   :global(html.pl-lock),
   :global(html.pl-lock body) { overflow: hidden; height: 100%; }
 
-  /* ── Center core ── */
-  .pl-core {
+  /* ── Splitting panels (the curtain) ── */
+  .pl-panel {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50.5%;
+    background: var(--bg);
+    z-index: 1;
+    will-change: transform;
+  }
+  .pl-panel-top { top: 0; }
+  .pl-panel-bottom { bottom: 0; }
+
+  /* Reveal: panels slide apart, weighty easing */
+  .preloader[data-state="reveal"] .pl-panel-top {
+    transform: translateY(-100%);
+    transition: transform 1100ms cubic-bezier(0.85, 0, 0.15, 1) 180ms;
+  }
+  .preloader[data-state="reveal"] .pl-panel-bottom {
+    transform: translateY(100%);
+    transition: transform 1100ms cubic-bezier(0.85, 0, 0.15, 1) 180ms;
+  }
+
+  /* ── Stage (counter cluster) ── */
+  .pl-stage {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 26px;
-    transition: opacity 500ms var(--ease), transform 700ms var(--ease);
+    gap: 28px;
+    transition: opacity 460ms var(--ease), transform 700ms var(--ease);
   }
-  /* Core eases out slightly ahead of the overlay for a layered fade */
-  .preloader[data-state="reveal"] .pl-core {
+  .preloader[data-state="reveal"] .pl-stage {
     opacity: 0;
-    transform: scale(0.97);
+    transform: scale(0.96);
+    transition-duration: 380ms;
   }
 
   .pl-mark {
     font-family: serif;
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-size: clamp(1.3rem, 3.4vw, 1.9rem);
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     color: var(--text);
     opacity: 0;
-    animation: pl-fade-in 700ms var(--ease) 120ms forwards;
+    transform: translateY(12px);
+    animation: pl-in 800ms var(--ease) 100ms forwards;
   }
 
-  .pl-meter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    width: min(280px, 64vw);
-  }
+  /* Giant counter */
   .pl-count {
     display: flex;
     align-items: flex-start;
-    font-family: var(--font-mono);
-    font-size: clamp(2.4rem, 8vw, 4rem);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.02em;
+    line-height: 0.82;
     color: var(--text);
     font-variant-numeric: tabular-nums;
   }
+  .pl-num {
+    font-family: var(--font-mono);
+    font-size: clamp(7rem, 26vw, 20rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    display: inline-block;
+    min-width: 2ch;
+    text-align: right;
+  }
   .pl-pct {
-    font-size: 0.34em;
+    font-family: var(--font-mono);
+    font-size: clamp(1.4rem, 4vw, 3rem);
+    font-weight: 500;
     color: var(--accent);
-    margin-top: 0.35em;
-    margin-left: 0.15em;
+    margin-top: 0.4em;
+    margin-left: 0.1em;
   }
 
-  .pl-bar {
+  /* Progress rule */
+  .pl-rule {
     position: relative;
-    width: 100%;
+    width: min(360px, 70vw);
     height: 2px;
     background: var(--line);
     overflow: hidden;
   }
-  .pl-bar-fill {
+  .pl-rule-fill {
     position: absolute;
     inset: 0 100% 0 0;          /* right inset animates the fill */
     background: var(--accent);
-    transition: right 200ms var(--ease);
+    transition: right 140ms linear;
   }
 
   .pl-tag {
     font-family: var(--font-mono);
     font-size: 0.625rem;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--text-mut);
     opacity: 0;
-    animation: pl-fade-in 700ms var(--ease) 300ms forwards;
+    transform: translateY(12px);
+    animation: pl-in 800ms var(--ease) 260ms forwards;
   }
 
-  @keyframes pl-fade-in {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
+  @keyframes pl-in {
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 
@@ -146,8 +172,6 @@
   function runPreloader() {
     const html = document.documentElement;
     const pl = document.getElementById('preloader');
-
-    // Only proceed when the inline gate opted us in (genuine first load).
     if (!pl || !html.classList.contains('pl-first')) return;
 
     sessionStorage.setItem(SESSION_KEY, '1');
@@ -159,31 +183,32 @@
     pl.dataset.state = 'counting';
 
     const start = performance.now();
-    const DURATION = 1500;
+    const DURATION = 2200;            // slower, more deliberate count
 
     function frame(now: number) {
       const t = Math.min((now - start) / DURATION, 1);
-      const eased = 1 - Math.pow(1 - t, 3);   // easeOutCubic
+      // easeInOutCubic — slow start, confident middle, settle at the top
+      const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
       const pct = Math.round(eased * 100);
 
-      if (numEl) numEl.textContent = String(pct).padStart(3, '0');
+      if (numEl) numEl.textContent = String(pct);
       if (fillEl) fillEl.style.right = `${100 - pct}%`;
 
       if (t < 1) requestAnimationFrame(frame);
-      else setTimeout(reveal, 260);
+      else setTimeout(reveal, 420);   // longer beat at 100%
     }
 
     function reveal() {
-      pl.dataset.state = 'reveal';      // triggers the 850ms overlay fade
+      pl.dataset.state = 'reveal';     // panels split + stage fades
       html.classList.remove('pl-lock');
-      // Hand off to the opening animation: release the held hero content
-      // (pl-intro) and let it rise in (pl-opening) as the overlay fades.
+      // Hand off to the hero opening as the panels lift.
       html.classList.remove('pl-intro');
       html.classList.add('pl-opening');
+      // panels: 180ms delay + 1100ms travel ≈ 1280ms
       setTimeout(() => {
         pl.dataset.state = 'done';
         html.classList.remove('pl-first', 'pl-opening');
-      }, 1300);
+      }, 1500);
     }
 
     requestAnimationFrame(frame);

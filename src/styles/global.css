@@ -234,21 +234,22 @@ main {
    animate in together with the overlay fade — not settle behind it. */
 html.pl-intro .reveal { opacity: 0 !important; transform: translateY(34px) !important; }
 
-/* Released: rise every in-view element up into place as the overlay fades. */
+/* Released: rise every in-view element up into place as the panels lift.
+   Slower + softer than the scroll reveal so the hero unveils, not snaps. */
 html.pl-opening .reveal.visible {
-  animation: intro-rise 900ms var(--ease) backwards;
+  animation: intro-rise 1300ms var(--ease) backwards;
 }
 /* Staggered choreography for the hero's first row (class-based, so it works
-   regardless of element type). */
-html.pl-opening .hero-eyebrow.visible { animation-delay: 60ms; }
-html.pl-opening .hero-heading.visible { animation-delay: 140ms; }
-html.pl-opening .hero-sub.visible     { animation-delay: 230ms; }
-html.pl-opening .hero-desc.visible    { animation-delay: 320ms; }
-html.pl-opening .hero-cta.visible     { animation-delay: 410ms; }
-html.pl-opening .hero-stats.visible   { animation-delay: 500ms; }
+   regardless of element type). Delays start after the panels begin to part. */
+html.pl-opening .hero-eyebrow.visible { animation-delay: 480ms; }
+html.pl-opening .hero-heading.visible { animation-delay: 600ms; }
+html.pl-opening .hero-sub.visible     { animation-delay: 740ms; }
+html.pl-opening .hero-desc.visible    { animation-delay: 860ms; }
+html.pl-opening .hero-cta.visible     { animation-delay: 980ms; }
+html.pl-opening .hero-stats.visible   { animation-delay: 1100ms; }
 
 @keyframes intro-rise {
-  from { opacity: 0; transform: translateY(34px); }
+  from { opacity: 0; transform: translateY(40px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
