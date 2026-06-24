@@ -3,15 +3,7 @@
 import { SKILLS_DATA } from '../data/skills.js';
 ---
 <div id="skills-sphere-container" class="skills-sphere-container" role="img" aria-label="Interactive 3D skills visualization">
-  <!-- Tap-to-start: the 3D scene only boots on user intent, not on load -->
-  <button id="sphere-start" class="sphere-start" type="button" aria-label="Start the interactive 3D skills sphere">
-    <span class="sphere-start-ring" aria-hidden="true">
-      <span class="sphere-start-tri" aria-hidden="true"></span>
-    </span>
-    <span class="sphere-start-label">Tap to explore</span>
-  </button>
-
-  <!-- Shimmer loader while the WebGL scene + textures boot (after tap) -->
+  <!-- Shimmer loader while the WebGL scene + textures boot -->
   <div id="sphere-loader" class="sphere-loader" aria-hidden="true" hidden>
     <span class="skeleton sphere-skeleton"></span>
     <span class="sphere-loader-label">Loading stack…</span>
@@ -53,57 +45,6 @@ import { SKILLS_DATA } from '../data/skills.js';
   transition: opacity 700ms var(--ease);
 }
 .skills-sphere-container.is-ready #skills-sphere-canvas { opacity: 1; }
-
-/* Tap-to-start overlay */
-.sphere-start {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  transition: opacity 400ms var(--ease);
-}
-.sphere-start.is-hidden { opacity: 0; pointer-events: none; }
-.sphere-start-ring {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  border: 1px solid var(--line-strong);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color var(--transition-fast), transform var(--transition-fast), background var(--transition-fast);
-}
-.sphere-start:hover .sphere-start-ring {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-  transform: scale(1.06);
-}
-.sphere-start-tri {
-  width: 0;
-  height: 0;
-  margin-left: 5px;
-  border-top: 11px solid transparent;
-  border-bottom: 11px solid transparent;
-  border-left: 18px solid var(--text);
-  transition: border-left-color var(--transition-fast);
-}
-.sphere-start:hover .sphere-start-tri { border-left-color: var(--accent); }
-.sphere-start-label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--text-mut);
-  transition: color var(--transition-fast);
-}
-.sphere-start:hover .sphere-start-label { color: var(--text); }
 
 /* Shimmer loader */
 .sphere-loader {
@@ -189,26 +130,19 @@ import { SKILLS_DATA } from '../data/skills.js';
     const container = document.getElementById('skills-sphere-container');
     if (!container) return;
 
-    const startBtn = document.getElementById('sphere-start');
-
     // No WebGL → skip the 3D entirely, show the grid fallback.
     const probe = document.createElement('canvas');
     const gl = probe.getContext('webgl') || probe.getContext('experimental-webgl');
     if (!gl) {
       document.getElementById('skills-sphere-canvas')?.remove();
       document.getElementById('sphere-loader')?.remove();
-      startBtn?.remove();
       const fallback = document.getElementById('skills-fallback');
       if (fallback) fallback.style.display = 'grid';
       return;
     }
 
-    // Wait for an explicit tap before booting the 3D scene.
-    startBtn?.addEventListener('click', () => {
-      startBtn.classList.add('is-hidden');
-      setTimeout(() => startBtn.remove(), 400);
-      boot();
-    }, { once: true });
+    // Boot the 3D scene automatically on load.
+    boot();
   }
 
   document.addEventListener('astro:page-load', init);

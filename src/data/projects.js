@@ -20,7 +20,7 @@ export const PROJECTS = [
     tags: ['Astro', 'React', 'Supabase', 'Cloudflare'],
     liveUrl: 'https://ekalliptus.com',
     category: 'agency',
-    previewImage: null,
+    previewImage: '/img/projects/ekalliptus-com.png',
   },
 
   // ── Education ────────────────────────────────────────────────────────────
@@ -31,7 +31,7 @@ export const PROJECTS = [
     tags: ['Astro', 'TypeScript', 'Cloudflare'],
     liveUrl: 'https://yayasanalhidayah.com',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/yayasanalhidayah-com.png',
   },
   {
     icon: '🕌',
@@ -40,7 +40,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://yayasanalhidayah.id',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/yayasanalhidayah-id.png',
   },
   {
     icon: '🎓',
@@ -49,7 +49,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
     liveUrl: 'https://alhidayahschool.sch.id',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/alhidayahschool-sch-id.png',
   },
   {
     icon: '📋',
@@ -58,7 +58,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://spmb.alhidayahschool.sch.id',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/spmb-alhidayahschool-sch-id.png',
   },
   {
     icon: '📖',
@@ -67,7 +67,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://alfatihah.id',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/alfatihah-id.png',
   },
   {
     icon: '📖',
@@ -76,7 +76,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://rumahquranalfatihah.com',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/rumahquranalfatihah-com.png',
   },
   {
     icon: '📖',
@@ -85,7 +85,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://rumahtahfidzalfatihah.com',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/rumahtahfidzalfatihah-com.png',
   },
   {
     icon: '🏫',
@@ -94,7 +94,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://pesantrenalfatihah.com',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/pesantrenalfatihah-com.png',
   },
   {
     icon: '🏠',
@@ -103,7 +103,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://alfatihahhomeschooling.com',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/alfatihahhomeschooling-com.png',
   },
   {
     icon: '📚',
@@ -112,7 +112,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
     liveUrl: 'https://pkbm.alfatihahhomeschooling.com',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/pkbm-alfatihahhomeschooling-com.png',
   },
   {
     icon: '🎓',
@@ -121,7 +121,7 @@ export const PROJECTS = [
     tags: ['Laravel', 'PHP', 'MySQL', 'JavaScript'],
     liveUrl: 'https://feb.daftarunissula.com',
     category: 'education',
-    previewImage: null,
+    previewImage: '/img/projects/feb-daftarunissula-com.png',
   },
 
   // ── Finance ──────────────────────────────────────────────────────────────
@@ -132,7 +132,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://wakafsumur.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/wakafsumur-com.png',
   },
   {
     icon: '💧',
@@ -141,7 +141,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://wakafsumur.org',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/wakafsumur-org.png',
   },
   {
     icon: '💳',
@@ -150,7 +150,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://donasi.wakafsumur.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/donasi-wakafsumur-com.png',
   },
   {
     icon: '🕋',
@@ -159,7 +159,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://bayarkafarat.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/bayarkafarat-com.png',
   },
   {
     icon: '🕋',
@@ -168,7 +168,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://bayarfidyah.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/bayarfidyah-com.png',
   },
   {
     icon: '🕋',
@@ -177,7 +177,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://bayarzakat.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/bayarzakat-com.png',
   },
   {
     icon: '🌙',
@@ -186,7 +186,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://zakatfitrah.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/zakatfitrah-com.png',
   },
   {
     icon: '🕌',
@@ -195,7 +195,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://badalumroh.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/badalumroh-com.png',
   },
   {
     icon: '📄',
@@ -204,7 +204,7 @@ export const PROJECTS = [
     tags: ['HTML', 'TailwindCSS', 'JavaScript'],
     liveUrl: 'https://lp.badalumroh.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/lp-badalumroh-com.png',
   },
   {
     icon: '🐄',
@@ -213,7 +213,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'WooCommerce', 'PHP', 'JavaScript'],
     liveUrl: 'https://jualqurban.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/jualqurban-com.png',
   },
   {
     icon: '💧',
@@ -222,7 +222,7 @@ export const PROJECTS = [
     tags: ['Astro', 'React', 'Supabase', 'TailwindCSS'],
     liveUrl: 'https://sedekahairminum.com',
     category: 'finance',
-    previewImage: null,
+    previewImage: '/img/projects/sedekahairminum-com.png',
   },
 
   // ── Community ────────────────────────────────────────────────────────────
@@ -233,7 +233,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://komunitassedekahsubuh.org',
     category: 'community',
-    previewImage: null,
+    previewImage: '/img/projects/komunitassedekahsubuh-org.png',
   },
   {
     icon: '📖',
@@ -242,7 +242,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://tebarquran.com',
     category: 'community',
-    previewImage: null,
+    previewImage: '/img/projects/tebarquran-com.png',
   },
   {
     icon: '🤝',
@@ -251,7 +251,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://sahabatquran.com',
     category: 'community',
-    previewImage: null,
+    previewImage: '/img/projects/sahabatquran-com.png',
   },
   {
     icon: '🌿',
@@ -260,7 +260,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://pesantrenpeternakan.com',
     category: 'community',
-    previewImage: null,
+    previewImage: '/img/projects/pesantrenpeternakan-com.png',
   },
   {
     icon: '⛺',
@@ -269,7 +269,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://pesantrenkarantina.com',
     category: 'community',
-    previewImage: null,
+    previewImage: '/img/projects/pesantrenkarantina-com.png',
   },
   {
     icon: '🌄',
@@ -278,7 +278,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://kajiansubuh.com',
     category: 'community',
-    previewImage: null,
+    previewImage: '/img/projects/kajiansubuh-com.png',
   },
   {
     icon: '🤲',
@@ -287,7 +287,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://doayatim.com',
     category: 'community',
-    previewImage: null,
+    previewImage: '/img/projects/doayatim-com.png',
   },
   {
     icon: '🕋',
@@ -296,7 +296,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://doabaitullah.com',
     category: 'community',
-    previewImage: null,
+    previewImage: '/img/projects/doabaitullah-com.png',
   },
   {
     icon: '👼',
@@ -305,7 +305,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://rumahanaksurga.com',
     category: 'community',
-    previewImage: null,
+    previewImage: '/img/projects/rumahanaksurga-com.png',
   },
 
   // ── Commerce ─────────────────────────────────────────────────────────────
@@ -316,7 +316,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'WooCommerce', 'PHP', 'JavaScript'],
     liveUrl: 'https://jualbeliantam.com',
     category: 'commerce',
-    previewImage: null,
+    previewImage: '/img/projects/jualbeliantam-com.png',
   },
   {
     icon: '🥇',
@@ -325,7 +325,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'WooCommerce', 'PHP', 'JavaScript'],
     liveUrl: 'https://antamsemarang.com',
     category: 'commerce',
-    previewImage: null,
+    previewImage: '/img/projects/antamsemarang-com.png',
   },
   {
     icon: '🛵',
@@ -334,7 +334,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://jogjaride.com',
     category: 'commerce',
-    previewImage: null,
+    previewImage: '/img/projects/jogjaride-com.png',
   },
   {
     icon: '🛵',
@@ -343,7 +343,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://rentalmotor99.com',
     category: 'commerce',
-    previewImage: null,
+    previewImage: '/img/projects/rentalmotor99-com.png',
   },
   {
     icon: '🍫',
@@ -352,7 +352,7 @@ export const PROJECTS = [
     tags: ['PHP', 'MySQL', 'JavaScript'],
     liveUrl: 'https://miemiebrownie.com',
     category: 'commerce',
-    previewImage: null,
+    previewImage: '/img/projects/miemiebrownie-com.png',
   },
 
   // ── Services ─────────────────────────────────────────────────────────────
@@ -363,7 +363,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
     liveUrl: 'https://ambulancejenazahpremium.com',
     category: 'services',
-    previewImage: null,
+    previewImage: '/img/projects/ambulancejenazahpremium-com.png',
   },
   {
     icon: '⚖️',
@@ -372,7 +372,7 @@ export const PROJECTS = [
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://birohukum.org',
     category: 'services',
-    previewImage: null,
+    previewImage: '/img/projects/birohukum-org.png',
   },
   {
     icon: '🔗',
@@ -381,7 +381,7 @@ export const PROJECTS = [
     tags: ['Astro', 'React', 'TailwindCSS', 'Cloudflare'],
     liveUrl: 'https://linknyamana.web.id',
     category: 'services',
-    previewImage: null,
+    previewImage: '/img/projects/linknyamana-web-id.png',
   },
   {
     icon: '👨‍💻',
@@ -390,7 +390,7 @@ export const PROJECTS = [
     tags: ['Astro', 'React', 'TailwindCSS', 'Cloudflare'],
     liveUrl: 'https://jagoanzaidev.web.id',
     category: 'services',
-    previewImage: null,
+    previewImage: '/img/projects/jagoanzaidev-web-id.png',
   },
   {
     icon: '💬',
@@ -399,7 +399,7 @@ export const PROJECTS = [
     tags: ['Astro', 'TypeScript', 'AI', 'TailwindCSS'],
     liveUrl: 'https://tenta.id',
     category: 'services',
-    previewImage: null,
+    previewImage: '/img/projects/tenta-id.png',
   },
   {
     icon: '📦',
@@ -408,7 +408,7 @@ export const PROJECTS = [
     tags: ['Next.js', 'React', 'PostgreSQL', 'TypeScript'],
     liveUrl: 'https://wuzz-express.vercel.app',
     category: 'services',
-    previewImage: null,
+    previewImage: '/img/projects/wuzz-express-vercel-app.png',
   },
   {
     icon: '🐄',
@@ -417,6 +417,6 @@ export const PROJECTS = [
     tags: ['Astro', 'React', 'TailwindCSS', 'Cloudflare'],
     liveUrl: 'https://ahzelan.com',
     category: 'services',
-    previewImage: null,
+    previewImage: '/img/projects/ahzelan-com.png',
   },
 ];

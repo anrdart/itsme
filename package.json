@@ -7,11 +7,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "screenshots": "node scripts/screenshot-projects.mjs",
     "test": "vitest --run"
   },
   "devDependencies": {
     "fast-check": "^4.5.2",
     "jsdom": "^27.3.0",
+    "playwright": "^1.61.1",
     "vitest": "^4.0.16"
   },
   "dependencies": {

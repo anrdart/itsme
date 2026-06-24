@@ -22,11 +22,17 @@ export const SKILLS_DATA = [
   { name: "Laravel",     icon: "/img/skills/laravel.svg",     category: "backend"  },
   { name: "Go",          icon: "/img/skills/go.svg",          category: "backend"  },
   { name: "WordPress",   icon: "/img/skills/wordpress.svg",   category: "backend"  },
+  { name: "WooCommerce", icon: "/img/skills/woocommerce.svg",  category: "backend"  },
   { name: "Supabase",    icon: "/img/skills/supabase.svg",    category: "backend"  },
   { name: "Prisma",      icon: "/img/skills/prisma.svg",      category: "backend"  },
+  { name: "Redis",       icon: "/img/skills/redis.svg",        category: "backend"  },
+  { name: "REST API",    icon: "/img/skills/rest.svg",         category: "backend"  },
+  { name: "GraphQL",     icon: "/img/skills/graphql.svg",      category: "backend"  },
+  { name: "WhatsApp API",icon: "/img/skills/whatsapp.svg",     category: "backend"  },
   // Database
   { name: "MySQL",       icon: "/img/skills/mysql.svg",       category: "database" },
   { name: "PostgreSQL",  icon: "/img/skills/postgresql.svg",  category: "database" },
+  { name: "Neon",        icon: "/img/skills/neon.svg",         category: "database" },
   // Languages
   { name: "TypeScript",  icon: "/img/skills/typescript.svg",  category: "language" },
   { name: "JavaScript",  icon: "/img/skills/javascript.svg",  category: "language" },
@@ -41,11 +47,14 @@ export const SKILLS_DATA = [
   { name: "Figma",       icon: "/img/skills/figma.svg",       category: "css"      },
   // Tools
   { name: "Git",         icon: "/img/skills/git.svg",         category: "tools"    },
+  { name: "GitHub",      icon: "/img/skills/github.svg",       category: "tools"    },
   { name: "Docker",      icon: "/img/skills/docker.svg",      category: "tools"    },
   { name: "Bash",        icon: "/img/skills/bash.svg",        category: "tools"    },
+  { name: "Bun",         icon: "/img/skills/bun.svg",          category: "tools"    },
   { name: "Cloudflare",  icon: "/img/skills/cloudflare.svg",  category: "tools"    },
   { name: "Vercel",      icon: "/img/skills/vercel.svg",      category: "tools"    },
   { name: "Vitest",      icon: "/img/skills/vitest.svg",      category: "tools"    },
   { name: "Linux",       icon: "/img/skills/linux.svg",       category: "tools"    },
   { name: "Windows",     icon: "/img/skills/windows.svg",     category: "tools"    },
+  { name: "OpenAI",      icon: "/img/skills/openai.svg",       category: "tools"    },
 ];
