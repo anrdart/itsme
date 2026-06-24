@@ -65,10 +65,14 @@ const categories = [
 }
 
 .legend-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
+  /* Optical alignment: centering on the full line box makes a small dot sit
+     too high relative to the lowercase glyphs. Nudge it down to the text's
+     optical centre (its x-height), not the line-box centre. */
+  transform: translateY(1px);
 }
 </style>
