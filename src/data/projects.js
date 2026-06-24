@@ -22,6 +22,15 @@ export const PROJECTS = [
     category: 'agency',
     previewImage: '/img/projects/ekalliptus-com.png',
   },
+  {
+    icon: '🌐',
+    name: 'Media Pro',
+    description: 'Premium global digital marketing agency - web development, Google Ads, Meta Ads, SEO, and consulting. Trusted by 25,000-plus brands across 40-plus countries with over 10 years of experience.',
+    tags: ['WordPress', 'PHP', 'JavaScript', 'SEO'],
+    liveUrl: 'https://mediapro.work',
+    category: 'agency',
+    previewImage: '/img/projects/mediapro-work.png',
+  },
 
   // ── Education ────────────────────────────────────────────────────────────
   {
@@ -243,6 +252,15 @@ export const PROJECTS = [
     liveUrl: 'https://sahabatquran.com',
     category: 'community',
     previewImage: '/img/projects/sahabatquran-com.png',
+  },
+  {
+    icon: '💚',
+    name: 'Yayasan Niat Baik',
+    description: 'Yayasan Niat Baik - menggerakkan kepedulian, memberdayakan masyarakat, dan membangun generasi berakhlak melalui program pendidikan, sosial, Quran, dan kemanusiaan.',
+    tags: ['WordPress', 'PHP', 'JavaScript'],
+    liveUrl: 'https://niatbaik.org',
+    category: 'community',
+    previewImage: '/img/projects/niatbaik-org.png',
   },
   {
     icon: '🌿',
