@@ -1,5 +1,5 @@
 // src/data/projects.js
-// previewImage: path ke screenshot di public/img/projects/ — null sampai screenshot ditambahkan
+// previewImage: path ke screenshot di public/img/projects/ - null sampai screenshot ditambahkan
 
 export const PROJECT_CATEGORIES = [
   { id: 'all',       label: 'All'        },
@@ -27,20 +27,11 @@ export const PROJECTS = [
   {
     icon: '🕌',
     name: 'Yayasan Al Hidayah',
-    description: 'Website resmi Yayasan Al Hidayah — lembaga Islam yang bergerak di bidang pendidikan, sosial, dan dakwah di Indonesia. Dibangun ulang dari WordPress ke Astro di Cloudflare untuk loading lebih cepat.',
+    description: 'Website resmi Yayasan Al Hidayah - lembaga Islam yang bergerak di bidang pendidikan, sosial, dan dakwah di Indonesia. Dibangun ulang dari WordPress ke Astro di Cloudflare untuk loading lebih cepat.',
     tags: ['Astro', 'TypeScript', 'Cloudflare'],
     liveUrl: 'https://yayasanalhidayah.com',
     category: 'education',
     previewImage: '/img/projects/yayasanalhidayah-com.png',
-  },
-  {
-    icon: '🕌',
-    name: 'Yayasan Al Hidayah (.id)',
-    description: 'Domain .id resmi Yayasan Al Hidayah untuk memperkuat identitas digital lembaga di Indonesia.',
-    tags: ['WordPress', 'PHP', 'JavaScript'],
-    liveUrl: 'https://yayasanalhidayah.id',
-    category: 'education',
-    previewImage: '/img/projects/yayasanalhidayah-id.png',
   },
   {
     icon: '🎓',
@@ -54,7 +45,7 @@ export const PROJECTS = [
   {
     icon: '📋',
     name: 'SPMB Al Hidayah School',
-    description: 'Portal penerimaan peserta didik baru (SPMB) online untuk Al Hidayah Islamic School — pendaftaran, seleksi, dan pengumuman digital.',
+    description: 'Portal penerimaan peserta didik baru (SPMB) online untuk Al Hidayah Islamic School - pendaftaran, seleksi, dan pengumuman digital.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://spmb.alhidayahschool.sch.id',
     category: 'education',
@@ -63,7 +54,7 @@ export const PROJECTS = [
   {
     icon: '📖',
     name: 'Al Fatihah',
-    description: 'Kehadiran digital resmi lembaga Al Fatihah — mencakup program pendidikan Quran, pesantren, dan kegiatan komunitas Islam.',
+    description: 'Kehadiran digital resmi lembaga Al Fatihah - mencakup program pendidikan Quran, pesantren, dan kegiatan komunitas Islam.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://alfatihah.id',
     category: 'education',
@@ -72,7 +63,7 @@ export const PROJECTS = [
   {
     icon: '📖',
     name: 'Rumah Quran Al Fatihah',
-    description: 'Platform Rumah Quran Al Fatihah — pusat belajar Quran dengan sistem pendaftaran program, jadwal, dan progress tracking santri.',
+    description: 'Platform Rumah Quran Al Fatihah - pusat belajar Quran dengan sistem pendaftaran program, jadwal, dan progress tracking santri.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://rumahquranalfatihah.com',
     category: 'education',
@@ -81,7 +72,7 @@ export const PROJECTS = [
   {
     icon: '📖',
     name: 'Rumah Tahfidz Al Fatihah',
-    description: 'Platform Rumah Tahfidz Al Fatihah — asrama penghafal Quran dengan sistem registrasi dan monitoring hafalan santri.',
+    description: 'Platform Rumah Tahfidz Al Fatihah - asrama penghafal Quran dengan sistem registrasi dan monitoring hafalan santri.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://rumahtahfidzalfatihah.com',
     category: 'education',
@@ -90,7 +81,7 @@ export const PROJECTS = [
   {
     icon: '🏫',
     name: 'Pesantren Al Fatihah',
-    description: 'Website pesantren Al Fatihah — boarding school Islam dengan manajemen kurikulum, santri, dan kegiatan pondok pesantren.',
+    description: 'Website pesantren Al Fatihah - boarding school Islam dengan manajemen kurikulum, santri, dan kegiatan pondok pesantren.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://pesantrenalfatihah.com',
     category: 'education',
@@ -116,8 +107,8 @@ export const PROJECTS = [
   },
   {
     icon: '🎓',
-    name: 'FEB UNISSULA — Pendaftaran',
-    description: 'Sistem pendaftaran online Fakultas Ekonomi dan Bisnis (FEB) Universitas Islam Sultan Agung (UNISSULA) — formulir dan alur penerimaan mahasiswa baru.',
+    name: 'FEB UNISSULA - Pendaftaran',
+    description: 'Sistem pendaftaran online Fakultas Ekonomi dan Bisnis (FEB) Universitas Islam Sultan Agung (UNISSULA) - formulir dan alur penerimaan mahasiswa baru.',
     tags: ['Laravel', 'PHP', 'MySQL', 'JavaScript'],
     liveUrl: 'https://feb.daftarunissula.com',
     category: 'education',
@@ -128,7 +119,7 @@ export const PROJECTS = [
   {
     icon: '💧',
     name: 'Wakaf Sumur',
-    description: 'Platform wakaf pengeboran sumur — menghubungkan donatur dengan program sumur air bersih untuk mendukung santri penghafal Quran.',
+    description: 'Platform wakaf pengeboran sumur - menghubungkan donatur dengan program sumur air bersih untuk mendukung santri penghafal Quran.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://wakafsumur.com',
     category: 'finance',
@@ -137,7 +128,7 @@ export const PROJECTS = [
   {
     icon: '💧',
     name: 'Wakaf Sumur (.org)',
-    description: 'Domain internasional Wakaf Sumur untuk program endowment pengeboran sumur — menjangkau donatur global untuk komunitas Islam.',
+    description: 'Domain internasional Wakaf Sumur untuk program endowment pengeboran sumur - menjangkau donatur global untuk komunitas Islam.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://wakafsumur.org',
     category: 'finance',
@@ -146,7 +137,7 @@ export const PROJECTS = [
   {
     icon: '💳',
     name: 'Donasi Wakaf Sumur',
-    description: 'Portal donasi dedicated Wakaf Sumur — antarmuka yang dioptimalkan untuk pengalaman donasi yang mudah, transparan, dan terpercaya.',
+    description: 'Portal donasi dedicated Wakaf Sumur - antarmuka yang dioptimalkan untuk pengalaman donasi yang mudah, transparan, dan terpercaya.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://donasi.wakafsumur.com',
     category: 'finance',
@@ -164,7 +155,7 @@ export const PROJECTS = [
   {
     icon: '🕋',
     name: 'Bayar Fidyah',
-    description: 'Platform pembayaran fidyah (ganti rugi puasa yang ditinggalkan) secara online — terverifikasi ulama dan distribusi ke fakir miskin.',
+    description: 'Platform pembayaran fidyah (ganti rugi puasa yang ditinggalkan) secara online - terverifikasi ulama dan distribusi ke fakir miskin.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://bayarfidyah.com',
     category: 'finance',
@@ -182,7 +173,7 @@ export const PROJECTS = [
   {
     icon: '🌙',
     name: 'Zakat Fitrah',
-    description: 'Platform pembayaran zakat fitrah online menjelang Idul Fitri — cepat, mudah, dan terdistribusi kepada mustahik sebelum shalat Id.',
+    description: 'Platform pembayaran zakat fitrah online menjelang Idul Fitri - cepat, mudah, dan terdistribusi kepada mustahik sebelum shalat Id.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://zakatfitrah.com',
     category: 'finance',
@@ -191,7 +182,7 @@ export const PROJECTS = [
   {
     icon: '🕌',
     name: 'Badal Umroh',
-    description: 'Layanan badal umroh terpercaya — platform untuk memesan pelaksanaan ibadah umroh atas nama orang tua atau keluarga yang telah wafat.',
+    description: 'Layanan badal umroh terpercaya - platform untuk memesan pelaksanaan ibadah umroh atas nama orang tua atau keluarga yang telah wafat.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://badalumroh.com',
     category: 'finance',
@@ -199,8 +190,8 @@ export const PROJECTS = [
   },
   {
     icon: '📄',
-    name: 'Badal Umroh — Landing Page',
-    description: 'High-conversion landing page layanan badal umroh — dioptimalkan untuk konversi dengan struktur persuasif dan call-to-action yang jelas.',
+    name: 'Badal Umroh - Landing Page',
+    description: 'High-conversion landing page layanan badal umroh - dioptimalkan untuk konversi dengan struktur persuasif dan call-to-action yang jelas.',
     tags: ['HTML', 'TailwindCSS', 'JavaScript'],
     liveUrl: 'https://lp.badalumroh.com',
     category: 'finance',
@@ -209,7 +200,7 @@ export const PROJECTS = [
   {
     icon: '🐄',
     name: 'Jual Qurban',
-    description: 'Platform pemesanan dan penyaluran hewan qurban online untuk Idul Adha — pemilihan hewan, pembayaran, dan distribusi daging ke penerima manfaat.',
+    description: 'Platform pemesanan dan penyaluran hewan qurban online untuk Idul Adha - pemilihan hewan, pembayaran, dan distribusi daging ke penerima manfaat.',
     tags: ['WordPress', 'WooCommerce', 'PHP', 'JavaScript'],
     liveUrl: 'https://jualqurban.com',
     category: 'finance',
@@ -218,7 +209,7 @@ export const PROJECTS = [
   {
     icon: '💧',
     name: 'Sedekah Air Minum',
-    description: 'Gerakan wakaf air bersih untuk masjid, pesantren, dan lembaga pendidikan Islam di seluruh Indonesia — platform donasi dengan Astro + React dan backend Supabase.',
+    description: 'Gerakan wakaf air bersih untuk masjid, pesantren, dan lembaga pendidikan Islam di seluruh Indonesia - platform donasi dengan Astro + React dan backend Supabase.',
     tags: ['Astro', 'React', 'Supabase', 'TailwindCSS'],
     liveUrl: 'https://sedekahairminum.com',
     category: 'finance',
@@ -229,7 +220,7 @@ export const PROJECTS = [
   {
     icon: '🌅',
     name: 'Komunitas Sedekah Subuh',
-    description: 'Platform komunitas Sedekah Subuh — gerakan donasi rutin sebelum fajar yang menghubungkan donatur dengan program sosial keislaman.',
+    description: 'Platform komunitas Sedekah Subuh - gerakan donasi rutin sebelum fajar yang menghubungkan donatur dengan program sosial keislaman.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://komunitassedekahsubuh.org',
     category: 'community',
@@ -238,7 +229,7 @@ export const PROJECTS = [
   {
     icon: '📖',
     name: 'Tebar Quran',
-    description: 'Platform penyebaran mushaf Quran fisik ke daerah terpencil dan masyarakat yang membutuhkan — donasi, pencatatan, dan laporan distribusi.',
+    description: 'Platform penyebaran mushaf Quran fisik ke daerah terpencil dan masyarakat yang membutuhkan - donasi, pencatatan, dan laporan distribusi.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://tebarquran.com',
     category: 'community',
@@ -247,7 +238,7 @@ export const PROJECTS = [
   {
     icon: '🤝',
     name: 'Sahabat Quran',
-    description: 'Platform komunitas Sahabat Quran — menghubungkan pengajar, santri, dan program tahsin/tahfidz Quran di seluruh Indonesia.',
+    description: 'Platform komunitas Sahabat Quran - menghubungkan pengajar, santri, dan program tahsin/tahfidz Quran di seluruh Indonesia.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://sahabatquran.com',
     category: 'community',
@@ -256,7 +247,7 @@ export const PROJECTS = [
   {
     icon: '🌿',
     name: 'Pesantren Peternakan',
-    description: 'Pesantren berbasis peternakan halal — website pondok pesantren yang mengintegrasikan pendidikan Islam dengan program agribisnis dan peternakan.',
+    description: 'Pesantren berbasis peternakan halal - website pondok pesantren yang mengintegrasikan pendidikan Islam dengan program agribisnis dan peternakan.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://pesantrenpeternakan.com',
     category: 'community',
@@ -265,7 +256,7 @@ export const PROJECTS = [
   {
     icon: '⛺',
     name: 'Pesantren Karantina',
-    description: 'Program pesantren karantina intensif untuk menghafal Quran dalam waktu singkat — pendaftaran, jadwal, dan informasi program immersive learning.',
+    description: 'Program pesantren karantina intensif untuk menghafal Quran dalam waktu singkat - pendaftaran, jadwal, dan informasi program immersive learning.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://pesantrenkarantina.com',
     category: 'community',
@@ -274,7 +265,7 @@ export const PROJECTS = [
   {
     icon: '🌄',
     name: 'Kajian Subuh',
-    description: 'Platform komunitas kajian Islam sebelum subuh — jadwal kajian, live streaming, dan arsip materi dakwah oleh ustadz terpercaya.',
+    description: 'Platform komunitas kajian Islam sebelum subuh - jadwal kajian, live streaming, dan arsip materi dakwah oleh ustadz terpercaya.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://kajiansubuh.com',
     category: 'community',
@@ -283,7 +274,7 @@ export const PROJECTS = [
   {
     icon: '🤲',
     name: 'Doa Yatim',
-    description: 'Platform penghubung donatur dengan anak yatim — program doa, santunan, dan pendampingan kesejahteraan anak yatim piatu.',
+    description: 'Platform penghubung donatur dengan anak yatim - program doa, santunan, dan pendampingan kesejahteraan anak yatim piatu.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://doayatim.com',
     category: 'community',
@@ -292,7 +283,7 @@ export const PROJECTS = [
   {
     icon: '🕋',
     name: 'Doa Baitullah',
-    description: 'Platform titip doa ke Baitullah — layanan penitipan doa khusus bagi jamaah yang sedang menunaikan ibadah Haji dan Umroh.',
+    description: 'Platform titip doa ke Baitullah - layanan penitipan doa khusus bagi jamaah yang sedang menunaikan ibadah Haji dan Umroh.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://doabaitullah.com',
     category: 'community',
@@ -301,7 +292,7 @@ export const PROJECTS = [
   {
     icon: '👼',
     name: 'Rumah Anak Surga',
-    description: 'Yayasan Rumah Anak Surga — platform penggalangan dana dan program kesejahteraan untuk anak yatim, dhuafa, dan anak berkebutuhan khusus.',
+    description: 'Yayasan Rumah Anak Surga - platform penggalangan dana dan program kesejahteraan untuk anak yatim, dhuafa, dan anak berkebutuhan khusus.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://rumahanaksurga.com',
     category: 'community',
@@ -312,7 +303,7 @@ export const PROJECTS = [
   {
     icon: '🥇',
     name: 'Jual Beli Antam',
-    description: 'Marketplace jual beli emas Antam bersertifikat — platform terpercaya dengan verifikasi keaslian, harga transparan, dan sistem escrow aman.',
+    description: 'Marketplace jual beli emas Antam bersertifikat - platform terpercaya dengan verifikasi keaslian, harga transparan, dan sistem escrow aman.',
     tags: ['WordPress', 'WooCommerce', 'PHP', 'JavaScript'],
     liveUrl: 'https://jualbeliantam.com',
     category: 'commerce',
@@ -321,7 +312,7 @@ export const PROJECTS = [
   {
     icon: '🥇',
     name: 'Antam Semarang',
-    description: 'Platform regional perdagangan emas Antam di Semarang — menghubungkan penjual dan pembeli emas terpercaya di area Jawa Tengah.',
+    description: 'Platform regional perdagangan emas Antam di Semarang - menghubungkan penjual dan pembeli emas terpercaya di area Jawa Tengah.',
     tags: ['WordPress', 'WooCommerce', 'PHP', 'JavaScript'],
     liveUrl: 'https://antamsemarang.com',
     category: 'commerce',
@@ -330,7 +321,7 @@ export const PROJECTS = [
   {
     icon: '🛵',
     name: 'Jogja Ride',
-    description: 'Platform rental kendaraan bermotor di Yogyakarta — pemesanan online mudah untuk wisatawan dan warga lokal yang butuh transportasi fleksibel.',
+    description: 'Platform rental kendaraan bermotor di Yogyakarta - pemesanan online mudah untuk wisatawan dan warga lokal yang butuh transportasi fleksibel.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://jogjaride.com',
     category: 'commerce',
@@ -339,7 +330,7 @@ export const PROJECTS = [
   {
     icon: '🛵',
     name: 'Rental Motor 99',
-    description: 'Layanan rental motor terjangkau dengan sistem pemesanan online — armada terawat, harga transparan, dan proses booking yang cepat.',
+    description: 'Layanan rental motor terjangkau dengan sistem pemesanan online - armada terawat, harga transparan, dan proses booking yang cepat.',
     tags: ['WordPress', 'PHP', 'JavaScript'],
     liveUrl: 'https://rentalmotor99.com',
     category: 'commerce',
@@ -348,7 +339,7 @@ export const PROJECTS = [
   {
     icon: '🍫',
     name: 'Miemie Brownie',
-    description: 'Website Miemie Brownie dengan sistem absensi pegawai dan manajemen toko — dibangun dengan PHP sebagai proyek aplikasi bisnis.',
+    description: 'Website Miemie Brownie dengan sistem absensi pegawai dan manajemen toko - dibangun dengan PHP sebagai proyek aplikasi bisnis.',
     tags: ['PHP', 'MySQL', 'JavaScript'],
     liveUrl: 'https://miemiebrownie.com',
     category: 'commerce',
@@ -366,18 +357,9 @@ export const PROJECTS = [
     previewImage: '/img/projects/ambulancejenazahpremium-com.png',
   },
   {
-    icon: '⚖️',
-    name: 'Biro Hukum',
-    description: 'Platform konsultasi dan layanan hukum online — mendekatkan masyarakat dengan bantuan hukum profesional yang terjangkau dan terpercaya.',
-    tags: ['WordPress', 'PHP', 'JavaScript'],
-    liveUrl: 'https://birohukum.org',
-    category: 'services',
-    previewImage: '/img/projects/birohukum-org.png',
-  },
-  {
     icon: '🔗',
     name: 'Linknyamana',
-    description: 'Smart link-in-bio tool untuk kreator konten dan bisnis Indonesia — satu link untuk semua platform, dengan analytics dan kustomisasi tampilan. Dibangun dengan Astro + React di Cloudflare dengan database Neon.',
+    description: 'Smart link-in-bio tool untuk kreator konten dan bisnis Indonesia - satu link untuk semua platform, dengan analytics dan kustomisasi tampilan. Dibangun dengan Astro + React di Cloudflare dengan database Neon.',
     tags: ['Astro', 'React', 'TailwindCSS', 'Cloudflare'],
     liveUrl: 'https://linknyamana.web.id',
     category: 'services',
@@ -386,7 +368,7 @@ export const PROJECTS = [
   {
     icon: '👨‍💻',
     name: 'Jagoanzaidev',
-    description: 'Portfolio dan personal brand website Zaidan — showcasing skills, projects, dan layanan pengembangan web. Dibangun ulang dengan Astro + React + Tailwind di Cloudflare.',
+    description: 'Portfolio dan personal brand website Zaidan - showcasing skills, projects, dan layanan pengembangan web. Dibangun ulang dengan Astro + React + Tailwind di Cloudflare.',
     tags: ['Astro', 'React', 'TailwindCSS', 'Cloudflare'],
     liveUrl: 'https://jagoanzaidev.web.id',
     category: 'services',
@@ -395,7 +377,7 @@ export const PROJECTS = [
   {
     icon: '💬',
     name: 'Tenta',
-    description: 'Platform omnichannel customer service — menyatukan chat pelanggan dari berbagai channel dan mengotomatiskan balasan dengan AI Agent. Dibangun dengan Astro + TypeScript.',
+    description: 'Platform omnichannel customer service - menyatukan chat pelanggan dari berbagai channel dan mengotomatiskan balasan dengan AI Agent. Dibangun dengan Astro + TypeScript.',
     tags: ['Astro', 'TypeScript', 'AI', 'TailwindCSS'],
     liveUrl: 'https://tenta.id',
     category: 'services',
@@ -404,7 +386,7 @@ export const PROJECTS = [
   {
     icon: '📦',
     name: 'Wuzz Express',
-    description: 'Layanan pengiriman barang antar kota, provinsi, dan pulau — platform pemesanan dengan tracking dan manajemen pengiriman. Dibangun dengan Next.js dan Postgres.',
+    description: 'Layanan pengiriman barang antar kota, provinsi, dan pulau - platform pemesanan dengan tracking dan manajemen pengiriman. Dibangun dengan Next.js dan Postgres.',
     tags: ['Next.js', 'React', 'PostgreSQL', 'TypeScript'],
     liveUrl: 'https://wuzz-express.vercel.app',
     category: 'services',
@@ -413,7 +395,7 @@ export const PROJECTS = [
   {
     icon: '🐄',
     name: 'Ahzelan',
-    description: 'Website konsultan peternakan Ahzelan — layanan konsultasi dan pendampingan peternakan di era digital. Dibangun dengan Astro + React di Cloudflare.',
+    description: 'Website konsultan peternakan Ahzelan - layanan konsultasi dan pendampingan peternakan di era digital. Dibangun dengan Astro + React di Cloudflare.',
     tags: ['Astro', 'React', 'TailwindCSS', 'Cloudflare'],
     liveUrl: 'https://ahzelan.com',
     category: 'services',

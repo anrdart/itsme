@@ -1,4 +1,4 @@
-# robots.txt — https://ekalliptus.id/
+# robots.txt - https://ekalliptus.id/
 
 User-agent: *
 Allow: /

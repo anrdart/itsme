@@ -88,7 +88,7 @@ async function capture(browser, project) {
     await page.waitForTimeout(SETTLE_MS);
     await page.screenshot({
       path: outPath,
-      fullPage: false,           // above-the-fold viewport only — fits the card
+      fullPage: false,           // above-the-fold viewport only - fits the card
       type: 'png',
     });
     return { status: 'ok', slug, outPath, ms: Date.now() - t0 };
@@ -132,7 +132,7 @@ async function main() {
   console.log(`\n  Done. ${ok} captured · ${skip} skipped · ${fail} failed.\n`);
 
   if (results.length > 0 && ok === 0 && skip === 0) {
-    // Every site failed — surface a non-zero exit so CI can catch it.
+    // Every site failed - surface a non-zero exit so CI can catch it.
     console.error('  All captures failed. Check connectivity or timeouts.');
     process.exit(1);
   }

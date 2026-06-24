@@ -8,9 +8,9 @@ const projectCount = PROJECTS.length;
 const pageSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
-  name: 'Haikal Akhalul Azhar — Software Engineer Portfolio',
+  name: 'Haikal Akhalul Azhar - Software Engineer Portfolio',
   url: 'https://ekalliptus.id/',
-  description: 'Portfolio of Haikal Akhalul Azhar, Software Engineer based in Jakarta, Indonesia.',
+  description: 'Portfolio of Haikal Akhalul Azhar, Software Engineer based in Tegal, Indonesia.',
   dateModified: new Date().toISOString().split('T')[0],
   mainEntity: {
     '@type': 'Person',
@@ -20,14 +20,14 @@ const pageSchema = {
   },
 };
 
-// Four pillars — my own structure, OHZI's editorial rhythm
+// Four pillars - my own structure, OHZI's editorial rhythm
 const pillars = [
   {
     no: '01',
     label: 'WHO I AM',
     href: '/about',
     title: 'A software engineer who ships products people actually use.',
-    desc: 'Five years building cross-platform mobile apps and full-stack web — clean architecture, smooth UI, and an eye for the details that make software feel finished.',
+    desc: 'Five years building cross-platform mobile apps and full-stack web - clean architecture, smooth UI, and an eye for the details that make software feel finished.',
     cta: 'About me',
   },
   {
@@ -43,7 +43,7 @@ const pillars = [
     label: 'MY WORK',
     href: '/projects',
     title: `${projectCount}+ products delivered for clients across Indonesia.`,
-    desc: 'Digital agencies, Islamic platforms, e-commerce, donation systems, and public services — real websites running in production for real organizations.',
+    desc: 'Digital agencies, Islamic platforms, e-commerce, donation systems, and public services - real websites running in production for real organizations.',
     cta: 'See the work',
   },
   {
@@ -57,8 +57,8 @@ const pillars = [
 ];
 ---
 <BaseLayout
-  title="Haikal Akhalul Azhar — Software Engineer | IT Support Specialist | Editor"
-  description="Software Engineer, IT Support Specialist, and Editor based in Jakarta, Indonesia. Specializing in Flutter, React, Next.js, and Laravel development."
+  title="Haikal Akhalul Azhar - Software Engineer | IT Support Specialist | Editor"
+  description="Software Engineer, IT Support Specialist, and Editor based in Tegal, Indonesia. Specializing in Flutter, React, Next.js, and Laravel development."
   pageSchema={pageSchema}
 >
   <!-- ── HERO ─────────────────────────────────────────────── -->
@@ -83,7 +83,7 @@ const pillars = [
       </p>
 
       <p class="hero-desc reveal">
-        Haikal Akhalul Azhar — a software engineer in Jakarta building cross-platform
+        Haikal Akhalul Azhar - a software engineer building cross-platform
         mobile apps and full-stack web products with Flutter, React, Next.js, and
         Laravel. Clean architecture, smooth UI, and details that make it feel finished.
       </p>
@@ -149,7 +149,7 @@ const pillars = [
   isolation: isolate;
 }
 
-/* 3D particle field — sits behind hero content */
+/* 3D particle field - sits behind hero content */
 .hero-field {
   position: absolute;
   inset: 0;

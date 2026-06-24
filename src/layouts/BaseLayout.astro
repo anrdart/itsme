@@ -15,7 +15,7 @@ interface Props {
 
 const {
   title,
-  description = 'Haikal Akhalul Azhar — Software Engineer, IT Support Specialist, and Editor based in Jakarta, Indonesia. Specializing in Flutter, React, Next.js, and Laravel development.',
+  description = 'Haikal Akhalul Azhar - Software Engineer, IT Support Specialist, and Editor based in Tegal, Indonesia. Specializing in Flutter, React, Next.js, and Laravel development.',
   image = '/img/ekal-og.webp',
   pageSchema,
 } = Astro.props;
@@ -24,7 +24,7 @@ const SITE = 'https://ekalliptus.id';
 const canonicalUrl = `${SITE}${Astro.url.pathname}`;
 const ogImage = `${SITE}${image}`;
 
-// Dynamic BreadcrumbList — skipped on home page (no segments)
+// Dynamic BreadcrumbList - skipped on home page (no segments)
 const segments = Astro.url.pathname.split('/').filter(Boolean);
 const breadcrumbSchema = segments.length > 0 ? {
   '@context': 'https://schema.org',
@@ -47,10 +47,10 @@ const personSchema = {
   name: 'Haikal Akhalul Azhar',
   alternateName: 'єкαℓℓιρтus',
   jobTitle: 'Software Engineer',
-  description: 'Software Engineer, IT Support Specialist, and Editor based in Jakarta, Indonesia with 5+ years of experience in Flutter, React, Next.js, and Laravel.',
+  description: 'Software Engineer, IT Support Specialist, and Editor based in Tegal, Indonesia with 5+ years of experience in Flutter, React, Next.js, and Laravel.',
   url: `${SITE}/`,
   image: `${SITE}/img/ekal-og.webp`,
-  email: 'contact@ekalliptus.id',
+  email: 'support@ekalliptus.com',
   nationality: 'Indonesian',
   knowsLanguage: ['en', 'id'],
   sameAs: [
@@ -62,8 +62,8 @@ const personSchema = {
   alumniOf: { '@type': 'EducationalOrganization', name: 'Bina Sarana Informatika University' },
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Jakarta',
-    addressRegion: 'DKI Jakarta',
+    addressLocality: 'Tegal',
+    addressRegion: 'Jawa Tengah',
     addressCountry: 'ID',
   },
   knowsAbout: [
@@ -86,7 +86,7 @@ const websiteSchema = {
   name: 'Haikal Akhalul Azhar',
   alternateName: 'єкαℓℓιρтus Portfolio',
   url: `${SITE}/`,
-  description: 'Portfolio of Haikal Akhalul Azhar — Software Engineer based in Indonesia.',
+  description: 'Portfolio of Haikal Akhalul Azhar - Software Engineer based in Indonesia.',
   inLanguage: 'en-US',
   author: { '@type': 'Person', name: 'Haikal Akhalul Azhar' },
   potentialAction: {
@@ -122,10 +122,10 @@ const websiteSchema = {
   <link rel="alternate" href={canonicalUrl} hreflang="x-default" />
 
   <!-- Geographic (GEO) -->
-  <meta name="geo.region" content="ID-JK" />
-  <meta name="geo.placename" content="Jakarta, Indonesia" />
-  <meta name="geo.position" content="-6.2088;106.8456" />
-  <meta name="ICBM" content="-6.2088, 106.8456" />
+  <meta name="geo.region" content="ID-JT" />
+  <meta name="geo.placename" content="Tegal, Indonesia" />
+  <meta name="geo.position" content="-6.8694;109.1402" />
+  <meta name="ICBM" content="-6.8694, 109.1402" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />

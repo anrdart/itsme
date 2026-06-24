@@ -1,9 +1,9 @@
 /* src/styles/global.css */
 
-/* Self-hosted Montserrat (variable) — no render-blocking 3rd-party request */
+/* Self-hosted Montserrat (variable) - no render-blocking 3rd-party request */
 @import '@fontsource-variable/montserrat';
 
-/* === DESIGN TOKENS — monochrome editorial (OHZI-inspired) === */
+/* === DESIGN TOKENS - monochrome editorial (OHZI-inspired) === */
 :root {
   /* Surfaces */
   --bg:              #111111;
@@ -16,7 +16,7 @@
   --line-soft:       rgba(255, 255, 255, 0.06);
   --line-strong:     rgba(255, 255, 255, 0.20);
 
-  /* Accent — restrained periwinkle */
+  /* Accent - restrained periwinkle */
   --accent:          #8395f2;
   --accent-soft:     rgba(131, 149, 242, 0.14);
   --accent-line:     rgba(131, 149, 242, 0.40);
@@ -36,7 +36,7 @@
   --radius-lg:       22px;
   --radius-pill:     999px;
 
-  /* Motion — OHZI moves slow and weighty */
+  /* Motion - OHZI moves slow and weighty */
   --ease:            cubic-bezier(0.22, 1, 0.36, 1);
   --transition:      400ms var(--ease);
   --transition-fast: 220ms var(--ease);
@@ -63,7 +63,7 @@ img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; font: inherit; color: inherit; background: none; border: none; }
 
-/* Fluid root — OHZI scales the whole type system off the root */
+/* Fluid root - OHZI scales the whole type system off the root */
 @media (min-width: 1200px) { html { font-size: 17px; } }
 @media (min-width: 1600px) { html { font-size: 18px; } }
 
@@ -81,7 +81,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Subtle vignette instead of dot-grid — keeps the surface calm & premium */
+/* Subtle vignette instead of dot-grid - keeps the surface calm & premium */
 body::before {
   content: '';
   position: fixed;
@@ -162,7 +162,7 @@ main {
   background: var(--bg-card-h);
   transform: translateY(-4px);
 }
-/* legacy alias — no longer a different colour, just a card */
+/* legacy alias - no longer a different colour, just a card */
 .card.cyan-card:hover { border-color: var(--accent-line); }
 
 /* === BUTTONS === */
@@ -209,7 +209,7 @@ main {
   border: 1px solid var(--line);
   color: var(--text-sec);
 }
-/* legacy alias — accent variant */
+/* legacy alias - accent variant */
 .tag.tag-cyan {
   background: var(--accent-soft);
   border-color: var(--accent-line);
@@ -231,7 +231,7 @@ main {
 
 /* === INTRO OPENING (hero rises in as the preloader fades) === */
 /* While the intro plays, hold any .reveal already in view hidden so it can
-   animate in together with the overlay fade — not settle behind it. */
+   animate in together with the overlay fade - not settle behind it. */
 html.pl-intro .reveal { opacity: 0 !important; transform: translateY(34px) !important; }
 
 /* Released: rise every in-view element up into place as the panels lift.

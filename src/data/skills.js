@@ -1,5 +1,5 @@
 // src/data/skills.js
-// Stack grounded in github.com/anrdart — 59 repos:
+// Stack grounded in github.com/anrdart - 59 repos:
 // TypeScript, Python, JavaScript, HTML, Astro, Dart, PHP, Vue, Shell/Bash, C, CSS
 export const SKILLS_DATA = [
   // Mobile

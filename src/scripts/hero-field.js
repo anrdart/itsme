@@ -1,5 +1,5 @@
 // src/scripts/hero-field.js
-// Interactive 3D particle field for the hero — original work.
+// Interactive 3D particle field for the hero - original work.
 // A receding grid of points animated by layered waves; the cursor projects
 // onto the plane and pushes a gaussian ripple through it. Monochrome base
 // with a periwinkle accent that lights up by height + cursor proximity.
@@ -164,7 +164,7 @@ export class HeroField {
         positions[i * 3]     = c * spacing - halfW;
         positions[i * 3 + 1] = 0;
         positions[i * 3 + 2] = r * spacing - halfD;
-        // deterministic pseudo-random — no Math.random (keeps SSR/replay safe)
+        // deterministic pseudo-random - no Math.random (keeps SSR/replay safe)
         const seed = Math.sin(i * 12.9898) * 43758.5453;
         const rnd = seed - Math.floor(seed);
         scales[i] = 0.6 + rnd * 0.9;
