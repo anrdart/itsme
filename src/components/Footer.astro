@@ -23,7 +23,19 @@ const socials = [
       <h2 class="footer-cta-title">
         Have a project worth<br><span class="accent">shipping?</span>
       </h2>
-      <a href="/contact" class="btn btn-primary footer-cta-btn">Start a project →</a>
+      <a
+        href="https://ekalliptus.com"
+        class="btn btn-primary footer-cta-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Start a project - ekalliptus.com"
+      >
+        Start a project
+        <svg class="btn-arrow" viewBox="0 0 32 12" width="32" height="12" aria-hidden="true">
+          <line class="btn-arrow-line" pathLength="100" x1="0" y1="6" x2="20" y2="6" />
+          <path class="btn-arrow-head" d="M14 1 L22 6 L14 11" />
+        </svg>
+      </a>
     </div>
   </div>
 
@@ -92,6 +104,34 @@ const socials = [
 }
 .footer-cta-title .accent { color: var(--accent); }
 .footer-cta-btn { padding: 16px 36px; font-size: 0.875rem; }
+
+/* Custom arrow: a short line that draws out to the head on hover,
+   and the whole arrow nudges forward. No gaps - the line's far end
+   always meets the arrowhead base. */
+.footer-cta-btn { gap: 12px; }
+.btn-arrow {
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+.btn-arrow-line,
+.btn-arrow-head {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Line draws out from the text side: pathLength (set as an SVG
+   attribute on the <line>) normalises the path to 100, so dasharray
+   100 + dashoffset 60 hides most of it, leaving a short segment flush
+   with the arrowhead. Hover reveals the full line. */
+.btn-arrow-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 60;
+  transition: stroke-dashoffset var(--transition);
+}
+.footer-cta-btn:hover .btn-arrow { transform: translateX(4px); }
+.footer-cta-btn:hover .btn-arrow-line { stroke-dashoffset: 0; }
 
 /* Columns */
 .footer-grid {
