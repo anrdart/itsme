@@ -126,6 +126,18 @@ export class HeroField {
   }
 
   _initRenderer() {
+    // Probe WebGL up front. Three.js logs its own console.error when a context
+    // can't be created (e.g. headless bots, software rendering) before throwing,
+    // which try/catch here can't suppress. Testing first means we bail cleanly
+    // without ever instantiating the renderer, so no errors hit the console.
+    const test = this.canvas.getContext
+      ? (this.canvas.getContext('webgl') || this.canvas.getContext('experimental-webgl'))
+      : null;
+    if (!test) return false;
+    // Release the probe context so the renderer can claim its own.
+    const lose = test.getExtension && test.getExtension('WEBGL_lose_context');
+    if (lose && lose.loseContext) lose.loseContext();
+
     try {
       this.renderer = new THREE.WebGLRenderer({
         canvas: this.canvas,
